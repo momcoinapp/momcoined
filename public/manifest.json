@@ -1,0 +1,31 @@
+{
+    "name": "MomCoin",
+    "short_name": "MomCoin",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#FF69B4",
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "frame": {
+        "version": "1",
+        "name": "MomCoin",
+        "iconUrl": "https://app.momcoined.com/logo.png",
+        "homeUrl": "https://app.momcoined.com",
+        "imageUrl": "https://app.momcoined.com/og-image.png",
+        "buttonTitle": "Start Earning",
+        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashBackgroundColor": "#eeccff",
+        "webhookUrl": "https://app.momcoined.com/api/webhook"
+    }
+}
