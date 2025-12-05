@@ -108,3 +108,22 @@ export async function getMomCoinFeed(): Promise<Cast[]> {
         return [];
     }
 }
+
+export async function getCookieScore(tokenId: string): Promise<number> {
+    try {
+        // Search for casts that link to this specific Jar
+        // Query: "app.momcoined.com/jar/{tokenId}"
+        // Note: This requires the NEYNAR_API_KEY to be valid.
+
+        // Mock implementation for now as we might not have a paid plan active or the URL isn't live yet.
+        // In production:
+        // const res = await client.fetchCasts({ q: `app.momcoined.com/jar/${tokenId}` });
+        // const score = res.casts.reduce((acc, cast) => acc + cast.reactions.likes_count + cast.reactions.recasts_count + cast.replies.count, 0);
+
+        // Returning random score for demo purposes
+        return Math.floor(Math.random() * 500);
+    } catch (error) {
+        console.error("Cookie score fetch error:", error);
+        return 0;
+    }
+}

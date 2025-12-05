@@ -8,20 +8,25 @@ import { Trophy, Medal } from "lucide-react";
 
 interface LeaderboardUser {
     walletAddress: string;
-    leaderboardScore: number;
+    leaderboardScore: number; // All Time
+    dailyScore?: number; // Daily
     momBalance: number;
 }
 
 export default function Leaderboard() {
     const [users, setUsers] = useState<LeaderboardUser[]>([]);
     const [loading, setLoading] = useState(true);
+    const [timeframe, setTimeframe] = useState<"daily" | "allTime">("daily");
 
     useEffect(() => {
         const fetchLeaderboard = async () => {
+            setLoading(true);
             try {
+                const sortField = timeframe === "daily" ? "dailyScore" : "leaderboardScore";
+
                 const q = query(
                     collection(db, "users"),
-                    orderBy("leaderboardScore", "desc"),
+                    orderBy(sortField, "desc"),
                     limit(10)
                 );
                 const querySnapshot = await getDocs(q);
@@ -38,7 +43,7 @@ export default function Leaderboard() {
         };
 
         fetchLeaderboard();
-    }, []);
+    }, [timeframe]);
 
     const formatAddress = (address: string) => {
         return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
@@ -46,9 +51,28 @@ export default function Leaderboard() {
 
     return (
         <Card className="p-6 w-full max-w-2xl mx-auto bg-white/10 backdrop-blur-md border-white/20">
-            <div className="flex items-center gap-3 mb-6">
-                <Trophy className="w-8 h-8 text-yellow-500" />
-                <h2 className="text-2xl font-bold text-white">Top Moms</h2>
+            <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                    <Trophy className="w-8 h-8 text-yellow-500" />
+                    <h2 className="text-2xl font-bold text-white">Top Moms</h2>
+                </div>
+
+                <div className="flex bg-black/40 rounded-lg p-1">
+                    <button
+                        onClick={() => setTimeframe("daily")}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${timeframe === "daily" ? "bg-pink-600 text-white" : "text-gray-400 hover:text-white"
+                            }`}
+                    >
+                        Daily
+                    </button>
+                    <button
+                        onClick={() => setTimeframe("allTime")}
+                        className={`px-3 py-1 text-xs font-bold rounded-md transition-colors ${timeframe === "allTime" ? "bg-pink-600 text-white" : "text-gray-400 hover:text-white"
+                            }`}
+                    >
+                        All Time
+                    </button>
+                </div>
             </div>
 
             {loading ? (
@@ -85,8 +109,13 @@ export default function Leaderboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="text-xl font-bold text-pink-500">
-                                {user.leaderboardScore.toLocaleString()} PTS
+                            <div className="text-right">
+                                <div className="text-xl font-bold text-pink-500">
+                                    {(timeframe === "daily" ? user.dailyScore ?? 0 : user.leaderboardScore).toLocaleString()} PTS
+                                </div>
+                                <div className="text-[10px] text-gray-500 uppercase">
+                                    {timeframe}
+                                </div>
                             </div>
                         </div>
                     ))}

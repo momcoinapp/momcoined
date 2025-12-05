@@ -1,10 +1,12 @@
 import { Providers } from "@/components/providers/Providers";
+import FarcasterProvider from "@/components/auth/FarcasterProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { WelcomeOverlay } from "@/components/ui/WelcomeOverlay";
+import { FloatingMomAI } from "@/components/features/FloatingMomAI";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -37,9 +39,12 @@ export const metadata = {
         }
       }
     }),
+    "baseBuilder": JSON.stringify({
+      "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+    }),
   },
 };
-import { FloatingMomAI } from "@/components/features/FloatingMomAI";
+
 
 export default function RootLayout({
   children,
@@ -49,16 +54,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-        <Providers>
-          <div className="particles" />
-          <Navbar />
-          <main className="min-h-screen flex flex-col pt-16">
-            {children}
-            <Footer />
-          </main>
-          <FloatingMomAI />
-          <Toaster position="bottom-center" />
-        </Providers>
+        <FarcasterProvider>
+          <Providers>
+            <div className="particles" />
+            <Navbar />
+            <main className="min-h-screen flex flex-col pt-16">
+              {children}
+              <Footer />
+            </main>
+            <FloatingMomAI />
+            <Toaster position="bottom-center" />
+          </Providers>
+        </FarcasterProvider>
       </body>
     </html>
   );

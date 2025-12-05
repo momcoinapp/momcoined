@@ -38,6 +38,8 @@ yarn-error.log*
 !README.md
 !BRANDING_GUIDE.md
 !ARCHITECTURE_EXPLAINED.md
+FINAL_OPERATIONS_GUIDE.md
+!CONTRACTS.md
 # We want to keep README and maybe BRANDING_GUIDE, but ignore everything else.
 # Actually, let's be specific to avoid hiding important things.
 *_GUIDE.md

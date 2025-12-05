@@ -4,17 +4,12 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { ArrowUpRight, TrendingUp, DollarSign, Activity } from "lucide-react";
 
-const MOM_CONTRACT_ADDRESS = "0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07";
+import { CONTRACT_ADDRESSES } from "@/lib/contracts";
 
 interface TokenStats {
     priceUsd: string;
-    priceChange: {
-        h1: number;
-        h24: number;
-    };
-    volume: {
-        h24: number;
-    };
+    priceChange: { h24: number };
+    volume: { h24: number };
     marketCap: number;
 }
 
@@ -25,8 +20,10 @@ export function ClankerStats() {
     useEffect(() => {
         const fetchStats = async () => {
             try {
+                // Clanker Token Address
+                const CLANKER_ADDRESS = "0x1bc0c42215582d5A085795f4baDbaC3ff36d1Bcb";
                 const response = await fetch(
-                    `https://api.dexscreener.com/latest/dex/tokens/${MOM_CONTRACT_ADDRESS}`
+                    `https://api.dexscreener.com/latest/dex/tokens/${CLANKER_ADDRESS}`
                 );
                 const data = await response.json();
 
@@ -100,7 +97,7 @@ export function ClankerStats() {
             </Card>
 
             <a
-                href={`https://clanker.world/clanker/${MOM_CONTRACT_ADDRESS}`}
+                href={`https://clanker.world/clanker/0x1bc0c42215582d5A085795f4baDbaC3ff36d1Bcb`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"

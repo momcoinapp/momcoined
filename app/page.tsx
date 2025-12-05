@@ -8,6 +8,7 @@ import { useUserSession } from "@/components/providers/UserSessionProvider";
 import Dashboard from "@/components/dashboard/Dashboard";
 import { useEffect, useState } from "react";
 import { NFTMintPromo } from "@/components/features/NFTMintPromo";
+import MomSwap from "@/components/features/MomSwap";
 
 export default function Home() {
   const { address, isConnected, status } = useAccount();
@@ -97,57 +98,21 @@ export default function Home() {
           </div>
         ) : (
           <div className="flex flex-col items-center space-y-8 max-w-2xl w-full">
-            {/* Logo Section */}
-            <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute -inset-4 bg-gradient-to-r from-pink-500 via-purple-500 to-pink-500 rounded-full opacity-75 blur-xl"
-              />
-              <motion.div
-                key={currentLogoIndex}
-                className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl shadow-pink-500/30 z-20"
-              >
-                <img
-                  src={logos[currentLogoIndex]}
-                  alt="MomCoin Logo"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-            </div>
-
             {/* Hero Text */}
-            <div className="text-center space-y-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight drop-shadow-lg">
-                  Make Mom <br />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
-                    Proud Again
-                  </span>
-                </h1>
-                <div className="text-4xl mt-2">💖</div>
-              </motion.div>
+            <div className="text-center space-y-4 pt-12">
+              <h1 className="text-5xl md:text-7xl font-black text-white tracking-tight drop-shadow-lg">
+                Make Mom <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 to-purple-400">
+                  Proud Again
+                </span>
+              </h1>
+              <div className="text-4xl mt-2">💖</div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-                className="text-xl text-pink-100/80 font-medium max-w-lg mx-auto leading-relaxed"
-              >
+              <p className="text-xl text-pink-100/80 font-medium max-w-lg mx-auto leading-relaxed">
                 Let Mom trade with trust, knowledge, and transparency.
                 <br />
                 <span className="text-sm opacity-75">The first AI Agent for Moms.</span>
-              </motion.p>
+              </p>
             </div>
 
             {/* NFT Promo - Visible to all */}

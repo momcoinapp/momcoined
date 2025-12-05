@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
-
-const MOM_TOKEN_ADDRESS = "0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07"; // Your MOM Token
+import { CONTRACT_ADDRESSES } from "@/lib/contracts";
 
 export function MomCoinChart() {
     const [pairAddress, setPairAddress] = useState<string | null>(null);
@@ -13,7 +12,7 @@ export function MomCoinChart() {
         async function fetchPair() {
             try {
                 // Fetch pairs for MOM token
-                const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${MOM_TOKEN_ADDRESS}`);
+                const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CONTRACT_ADDRESSES.MOM_TOKEN}`);
                 const data = await res.json();
 
                 if (data.pairs && data.pairs.length > 0) {

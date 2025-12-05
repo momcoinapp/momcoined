@@ -5,19 +5,32 @@ import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { Gift, Clock, AlertCircle } from "lucide-react";
 import { useWriteContract, useReadContract, useAccount } from "wagmi";
-import { CONTRACT_ADDRESSES, MOM_HELPER_ABI, MOM_PREDICTION_ABI } from "@/lib/contracts";
-import { toast } from "react-hot-toast";
+import { formatEther } from "viem";
+import { CONTRACT_ADDRESSES, MOM_HELPER_ABI, MOM_PREDICTION_ABI, MOM_TOKEN_ABI } from "@/lib/contracts";
 import { formatDistanceToNow } from "date-fns";
+import { toast } from "react-hot-toast";
+import { useUserSession } from "@/components/providers/UserSessionProvider";
 
 export function DailyClaim() {
     const { address } = useAccount();
+    const { userData } = useUserSession();
     const [timeLeft, setTimeLeft] = useState<string | null>(null);
     const [canClaim, setCanClaim] = useState(false);
 
-    // Season 1 Stats (Mocked for now, could be fetched from API)
-    const SEASON_TOTAL = 25000000;
-    const CLAIMED_TOTAL = 1250000; // Mock progress
-    const progress = (CLAIMED_TOTAL / SEASON_TOTAL) * 100;
+    // Real Season 1 Stats
+    const INITIAL_POOL = 1000000; // 1 Million MOM allocated to Helper
+
+    // Fetch Helper's MOM Balance (Remaining Pool)
+    const { data: helperBalance } = useReadContract({
+        address: CONTRACT_ADDRESSES.MOM_TOKEN as `0x${string}`,
+        abi: MOM_TOKEN_ABI,
+        functionName: "balanceOf",
+        args: [CONTRACT_ADDRESSES.MOM_HELPER as `0x${string}`],
+    });
+
+    const remaining = helperBalance ? Number(formatEther(helperBalance)) : INITIAL_POOL;
+    const claimed = INITIAL_POOL - remaining;
+    const progress = Math.min(Math.max((claimed / INITIAL_POOL) * 100, 0), 100);
 
     const { data: lastClaimTimestamp, refetch } = useReadContract({
         address: CONTRACT_ADDRESSES.MOM_HELPER as `0x${string}`,
