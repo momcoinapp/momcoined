@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { Gift, Clock, AlertCircle } from "lucide-react";
 import { useWriteContract, useReadContract, useAccount } from "wagmi";
-import { MOM_HELPER_CONTRACT_ADDRESS, MOM_HELPER_ABI } from "@/lib/contracts";
+import { CONTRACT_ADDRESSES, MOM_HELPER_ABI, MOM_PREDICTION_ABI } from "@/lib/contracts";
 import { toast } from "react-hot-toast";
 import { formatDistanceToNow } from "date-fns";
 
@@ -20,13 +20,19 @@ export function DailyClaim() {
     const progress = (CLAIMED_TOTAL / SEASON_TOTAL) * 100;
 
     const { data: lastClaimTimestamp, refetch } = useReadContract({
-        address: MOM_HELPER_CONTRACT_ADDRESS,
+        address: CONTRACT_ADDRESSES.MOM_HELPER as `0x${string}`,
         abi: MOM_HELPER_ABI,
         functionName: "lastClaimTime",
         args: address ? [address] : undefined,
         query: {
             enabled: !!address,
         }
+    });
+
+    const { data: currentRoundId } = useReadContract({
+        address: CONTRACT_ADDRESSES.MOM_PREDICTION as `0x${string}`,
+        abi: MOM_PREDICTION_ABI,
+        functionName: "currentRoundId",
     });
 
     const { writeContractAsync: claimDaily, isPending } = useWriteContract();
@@ -51,12 +57,16 @@ export function DailyClaim() {
     }, [lastClaimTimestamp]);
 
     const handleClaim = async () => {
-        if (!claimDaily) return;
+        if (!claimDaily || !currentRoundId) {
+            toast.error("Unable to claim at this time (Round ID missing)");
+            return;
+        }
         try {
             await claimDaily({
-                address: MOM_HELPER_CONTRACT_ADDRESS,
+                address: CONTRACT_ADDRESSES.MOM_HELPER as `0x${string}`,
                 abi: MOM_HELPER_ABI,
-                functionName: "claimDaily",
+                functionName: "claim",
+                args: [currentRoundId],
             });
             toast.success("Claim submitted! Waiting for confirmation...");
             // In a real app, we'd wait for receipt here
@@ -93,6 +103,22 @@ export function DailyClaim() {
                         className="h-full bg-gradient-to-r from-pink-500 to-purple-500"
                         style={{ width: `${progress}%` }}
                     />
+                </div>
+
+                {/* Holder Status */}
+                <div className="mb-6 p-3 bg-pink-500/10 border border-pink-500/20 rounded-lg">
+                    <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-pink-300">Holder Status</span>
+                        {Number(userData?.momBalance || 0) >= 50000 ? (
+                            <span className="text-xs font-bold text-green-400 bg-green-400/10 px-2 py-1 rounded">
+                                WHALE (20% OFF MINTS)
+                            </span>
+                        ) : (
+                            <span className="text-xs text-gray-400">
+                                Hold 50k MOM for 20% Off
+                            </span>
+                        )}
+                    </div>
                 </div>
 
                 {canClaim ? (

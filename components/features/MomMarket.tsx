@@ -3,33 +3,110 @@ import { Card } from "@/components/ui/Card";
 import { TrendingUp, TrendingDown, Clock, DollarSign } from "lucide-react";
 import { useAccount, useWriteContract, useReadContract } from "wagmi";
 import { formatEther, parseEther } from "viem";
+import { CONTRACT_ADDRESSES, MOM_PREDICTION_ABI } from "@/lib/contracts";
+import { useUserSession } from "@/components/providers/UserSessionProvider";
+import { toast } from "react-hot-toast";
 
 // Mock Data for Chart
 const MOCK_HISTORY = [100, 102, 98, 105, 110, 108, 115, 120, 118, 125];
 
 export function MomMarket() {
     const { address } = useAccount();
+    const { updateUserScore } = useUserSession();
     const [betAmount, setBetAmount] = useState("100");
-    const [timeLeft, setTimeLeft] = useState("07:59:59");
-    const [currentPrice, setCurrentPrice] = useState(0.015); // Mock Clanker Price
+    const [timeLeft, setTimeLeft] = useState("Loading...");
+    const [currentPrice, setCurrentPrice] = useState(0.00);
 
-    // Timer Logic (Mock)
+    // Fetch Live Price from DexScreener
     useEffect(() => {
-        const timer = setInterval(() => {
-            // Just a visual countdown for now
-            const now = new Date();
-            const hours = 7 - (now.getHours() % 8);
-            const minutes = 59 - now.getMinutes();
-            const seconds = 59 - now.getSeconds();
-            setTimeLeft(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
-        }, 1000);
-        return () => clearInterval(timer);
+        const fetchPrice = async () => {
+            try {
+                // Clanker Pair Address
+                const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/base/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07");
+                const data = await res.json();
+                if (data.pair && data.pair.priceUsd) {
+                    setCurrentPrice(parseFloat(data.pair.priceUsd));
+                }
+            } catch (error) {
+                console.error("Failed to fetch price", error);
+            }
+        };
+
+        fetchPrice();
+        const interval = setInterval(fetchPrice, 30000); // Update every 30s
+        return () => clearInterval(interval);
     }, []);
 
+    // 1. Get Current Round ID
+    const { data: currentRoundId } = useReadContract({
+        address: CONTRACT_ADDRESSES.MOM_PREDICTION,
+        abi: MOM_PREDICTION_ABI,
+        functionName: "currentRoundId",
+    });
+
+    // 2. Get Round Data
+    const { data: roundData } = useReadContract({
+        address: CONTRACT_ADDRESSES.MOM_PREDICTION,
+        abi: MOM_PREDICTION_ABI,
+        functionName: "rounds",
+        args: currentRoundId ? [currentRoundId] : undefined,
+        query: {
+            enabled: !!currentRoundId,
+        }
+    });
+
+    const { writeContract, isPending } = useWriteContract();
+
+    // Timer Logic
+    useEffect(() => {
+        if (!roundData) return;
+        const [id, startTime, lockPrice, closePrice, totalAmount, upAmount, downAmount, resolved, cancelled] = roundData as any; // Cast to any to avoid strict tuple issues for now, or define type
+
+        const roundDuration = 8 * 60 * 60 * 1000; // 8 hours in ms
+        const endTime = Number(startTime) * 1000 + roundDuration;
+
+        const timer = setInterval(() => {
+            const now = Date.now();
+            const diff = endTime - now;
+
+            if (diff <= 0) {
+                setTimeLeft("Round Ended");
+            } else {
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                setTimeLeft(`${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+            }
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [roundData]);
+
     const handleBet = (isUp: boolean) => {
-        // TODO: Integrate with MomPrediction contract
-        console.log(`Betting ${betAmount} MOM on ${isUp ? "UP" : "DOWN"}`);
+        if (!betAmount) return;
+        try {
+            writeContract({
+                address: CONTRACT_ADDRESSES.MOM_PREDICTION,
+                abi: MOM_PREDICTION_ABI,
+                functionName: "placeBet",
+                args: [isUp, parseEther(betAmount)],
+            }, {
+                onSuccess: () => {
+                    toast.success("Bet placed! +50 Points");
+                    updateUserScore("prediction_bet", 50);
+                },
+                onError: (error) => {
+                    console.error("Bet error:", error);
+                    toast.error("Bet failed");
+                }
+            });
+        } catch (error) {
+            console.error("Bet error:", error);
+        }
     };
+
+    // Parse Round Data for UI
+    const upPool = roundData ? formatEther((roundData as any)[5]) : "0";
+    const downPool = roundData ? formatEther((roundData as any)[6]) : "0";
 
     return (
         <div className="space-y-6">
@@ -82,14 +159,16 @@ export function MomMarket() {
                             <div className="flex gap-2">
                                 <button
                                     onClick={() => handleBet(true)}
-                                    className="flex-1 bg-green-600 hover:bg-green-500 text-white p-4 rounded-lg border-b-4 border-green-800 active:border-b-0 active:translate-y-1 transition-all flex flex-col items-center gap-1"
+                                    disabled={isPending}
+                                    className="flex-1 bg-green-600 hover:bg-green-500 text-white p-4 rounded-lg border-b-4 border-green-800 active:border-b-0 active:translate-y-1 transition-all flex flex-col items-center gap-1 disabled:opacity-50"
                                 >
                                     <TrendingUp className="w-8 h-8" />
                                     <span className="font-black text-xl">BET UP</span>
                                 </button>
                                 <button
                                     onClick={() => handleBet(false)}
-                                    className="flex-1 bg-red-600 hover:bg-red-500 text-white p-4 rounded-lg border-b-4 border-red-800 active:border-b-0 active:translate-y-1 transition-all flex flex-col items-center gap-1"
+                                    disabled={isPending}
+                                    className="flex-1 bg-red-600 hover:bg-red-500 text-white p-4 rounded-lg border-b-4 border-red-800 active:border-b-0 active:translate-y-1 transition-all flex flex-col items-center gap-1 disabled:opacity-50"
                                 >
                                     <TrendingDown className="w-8 h-8" />
                                     <span className="font-black text-xl">BET DOWN</span>
@@ -109,7 +188,10 @@ export function MomMarket() {
                             </div>
 
                             <div className="text-center text-xs text-gray-500">
-                                1 MOM = $0.01 USD (Est.)
+                                1 $MOMCOIN = $0.01 USD (Est.)
+                            </div>
+                            <div className="text-center text-xs text-pink-400 font-bold animate-pulse">
+                                "Mom says: Don't bet the house, sweetie! (+50 pts)"
                             </div>
                         </div>
                     </Card>
@@ -118,11 +200,11 @@ export function MomMarket() {
                     <div className="grid grid-cols-2 gap-2">
                         <div className="bg-green-900/30 border border-green-500/30 p-2 rounded text-center">
                             <div className="text-xs text-green-400">UP POOL</div>
-                            <div className="font-mono font-bold text-white">12,500 MOM</div>
+                            <div className="font-mono font-bold text-white">{Number(upPool).toFixed(2)} MOM</div>
                         </div>
                         <div className="bg-red-900/30 border border-red-500/30 p-2 rounded text-center">
                             <div className="text-xs text-red-400">DOWN POOL</div>
-                            <div className="font-mono font-bold text-white">8,200 MOM</div>
+                            <div className="font-mono font-bold text-white">{Number(downPool).toFixed(2)} MOM</div>
                         </div>
                     </div>
                 </div>

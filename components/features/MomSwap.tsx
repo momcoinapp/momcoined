@@ -40,7 +40,7 @@ export default function MomSwap() {
 
     return (
         <Card className="p-6 border-2 border-blue-500/30 bg-blue-900/10">
-            <h3 className="text-xl font-bold mb-4 text-blue-400">Swap for $MOM</h3>
+            <h3 className="text-xl font-bold mb-4 text-blue-400">Swap for $MOMCOIN</h3>
             <div className="flex justify-center">
                 <Swap>
                     <SwapAmountInput

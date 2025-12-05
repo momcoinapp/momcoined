@@ -21,17 +21,20 @@ export function InviteMomModal({ isOpen, onClose }: InviteMomModalProps) {
 
     const handleSend = async () => {
         setIsSubmitting(true);
-        // Mock API call
-        try {
-            await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate network delay
-            // Here we would call the API to burn tokens and send email
-            // await fetch('/api/invite', { method: 'POST', body: JSON.stringify({ email }) });
+
+        // Simulate Burn (Real burn would require wallet signature)
+        // For MVP, we just open the email client
+
+        const subject = encodeURIComponent("Welcome to MomCoin!");
+        const body = encodeURIComponent("Hi Mom,\n\nI'm inviting you to join MomCoin! It's the crypto movement for moms.\n\nClaim your welcome gift here: https://momcoined.com");
+
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+
+        // Show success UI
+        setTimeout(() => {
             setStep("success");
-        } catch (error) {
-            console.error("Failed to send invite:", error);
-        } finally {
             setIsSubmitting(false);
-        }
+        }, 1000);
     };
 
     return (

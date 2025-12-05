@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MomCoin ($MOM) 🍪
 
-## Getting Started
+**The First "Mom" on Base.**
+Honoring the original Mom (Est. 1958).
 
-First, run the development server:
+![MomCoin Banner](public/cookie-jar-promo.jpg)
+
+## 🌟 What is MomCoin?
+
+MomCoin is a social experiment and utility token on the Base L2 blockchain. It combines meme culture with real AI utility and gamified NFT mechanics.
+
+### 🍪 The Cookie Jar (Live Now)
+The **Mom's Cookie Jar** is our genesis NFT collection.
+*   **Mint a Jar**: Get a sealed jar for ~$1 (ETH).
+*   **Fill with Cookies**: Earn cookies by doing social tasks (or pay to fill instantly).
+*   **Reveal Mom**: Once full, the jar opens to reveal your unique 3D Mom or Kid NFT.
+*   **Dynamic Traits**: Your Mom evolves based on your on-chain activity.
+
+### 🤖 MomAI (Coming Soon)
+Your personal AI Mom who:
+*   Gives life advice (and cookie recipes).
+*   Trades for you (Agentic DeFi).
+*   Reminds you to call your real mom.
+
+## 🛠️ Tech Stack
+
+Built with the modern "Based" stack:
+*   **Frontend**: Next.js 14 (App Router), TailwindCSS, Framer Motion
+*   **Blockchain**: Base (Coinbase L2), Wagmi, Viem, OnchainKit
+*   **Smart Wallet**: Passkey login (FaceID/TouchID)
+*   **Identity**: Farcaster (Neynar API) & Firebase
+*   **AI**: Google Gemini 2.0 Flash
+
+## 🔗 Official Links
+
+*   **Website**: [app.momcoined.com](https://app.momcoined.com)
+*   **Twitter**: [@momcoin](https://twitter.com/momcoin)
+*   **Warpcast**: [/momcoin](https://warpcast.com/momcoin)
+*   **Contract**: [`0x2177...b07`](https://basescan.org/token/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07)
+
+## 🚀 Running Locally
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/momcoinapp/momcoined.git
+
+# 2. Install dependencies
+npm install
+
+# 3. Set up environment
+# (See DEPLOYMENT_SECRETS_TEMPLATE.md in docs)
+
+# 4. Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📜 License
+MIT
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

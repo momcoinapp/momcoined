@@ -8,6 +8,8 @@ export const config = createConfig({
         coinbaseWallet({ appName: "MomCoin", preference: "smartWalletOnly" }),
     ],
     transports: {
-        [base.id]: http(),
+        [base.id]: http(process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+            ? `https://base-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}`
+            : undefined),
     },
 });

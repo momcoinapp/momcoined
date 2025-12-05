@@ -1,0 +1,147 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Home, Trophy, CheckSquare, MessageSquare, Menu, X, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+    Wallet,
+    ConnectWallet,
+    WalletDropdown,
+    WalletDropdownDisconnect
+} from '@coinbase/onchainkit/wallet';
+import {
+    Identity,
+    Avatar,
+    Name,
+    Address,
+    EthBalance
+} from '@coinbase/onchainkit/identity';
+
+const NAV_ITEMS = [
+    { label: "Dashboard", href: "/", icon: Home },
+    { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
+    { label: "Tasks", href: "/tasks", icon: CheckSquare },
+    { label: "Mom AI", href: "/chat", icon: MessageSquare },
+    { label: "Clanker Presale", href: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07", icon: Sparkles, external: true },
+];
+
+export function Navbar() {
+    const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
+            <div className="max-w-7xl mx-auto px-4">
+                <div className="flex items-center justify-between h-16">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center font-bold text-white">
+                            M
+                        </div>
+                        <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600">
+                            MomCoin
+                        </span>
+                    </Link>
+
+                    {/* Center Claim Button (Desktop) */}
+                    <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <Link href="/tasks" className="group relative flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border border-yellow-500/30 px-4 py-1.5 rounded-full transition-all hover:scale-105">
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-yellow-500 blur-sm opacity-50 group-hover:opacity-100 animate-pulse"></div>
+                                <div className="relative w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white border border-yellow-300 shadow-lg">
+                                    $
+                                </div>
+                            </div>
+                            <span className="text-yellow-500 font-bold text-sm tracking-wide group-hover:text-yellow-400">
+                                CLAIM REWARDS
+                            </span>
+                        </Link>
+                    </div>
+
+                    {/* Desktop Nav */}
+                    <div className="hidden md:flex items-center gap-6">
+                        {NAV_ITEMS.map((item) => {
+                            const isActive = pathname === item.href;
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    target={(item as any).external ? "_blank" : undefined}
+                                    rel={(item as any).external ? "noopener noreferrer" : undefined}
+                                    className={`flex items-center gap-2 text-sm font-medium transition-colors ${isActive ? "text-pink-500" : "text-gray-400 hover:text-white"
+                                        }`}
+                                >
+                                    <item.icon className="w-4 h-4" />
+                                    {item.label}
+                                </Link>
+                            );
+                        })}
+
+                        {/* OnchainKit Wallet */}
+                        <div className="flex items-center">
+                            <Wallet>
+                                <ConnectWallet className="bg-white text-black font-bold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
+                                    <Avatar className="h-6 w-6" />
+                                    <Name />
+                                </ConnectWallet>
+                                <WalletDropdown>
+                                    <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                                        <Avatar />
+                                        <Name />
+                                        <Address />
+                                        <EthBalance />
+                                    </Identity>
+                                    <WalletDropdownDisconnect />
+                                </WalletDropdown>
+                            </Wallet>
+                        </div>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden p-2 text-gray-400 hover:text-white"
+                    >
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                </div>
+            </div>
+
+            {/* Mobile Nav */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden border-t border-white/10 bg-black/90 backdrop-blur-xl"
+                    >
+                        <div className="p-4 space-y-2">
+                            {NAV_ITEMS.map((item) => {
+                                const isActive = pathname === item.href;
+                                return (
+                                    <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        onClick={() => setIsOpen(false)}
+                                        target={(item as any).external ? "_blank" : undefined}
+                                        rel={(item as any).external ? "noopener noreferrer" : undefined}
+                                        className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${isActive
+                                            ? "bg-pink-500/10 text-pink-500"
+                                            : "text-gray-400 hover:bg-white/5 hover:text-white"
+                                            }`}
+                                    >
+                                        <item.icon className="w-5 h-5" />
+                                        {item.label}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </nav>
+    );
+}

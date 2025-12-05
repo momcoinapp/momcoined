@@ -1,8 +1,10 @@
 import { Providers } from "@/components/providers/Providers";
 import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import { WelcomeOverlay } from "@/components/ui/WelcomeOverlay";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -18,11 +20,26 @@ export const metadata = {
   other: {
     "fc:frame": "vNext",
     "fc:frame:image": "https://momcoined.com/og-image.png",
-    "fc:frame:button:1": "Launch App",
+    "fc:frame:button:1": "Mint Cookie Jar 🍪",
     "fc:frame:button:1:action": "link",
-    "fc:frame:button:1:target": "https://app.momcoined.com",
+    "fc:frame:button:1:target": "https://app.momcoined.com/cookiejar",
+    "fc:miniapp": JSON.stringify({
+      version: "1",
+      imageUrl: "https://momcoined.com/og-image.png",
+      button: {
+        title: "Mint MomCoin Jar",
+        action: {
+          type: "launch_frame",
+          name: "MomCoin",
+          url: "https://app.momcoined.com/cookiejar",
+          splashImageUrl: "https://momcoined.com/splash.png",
+          splashBackgroundColor: "#ec4899"
+        }
+      }
+    }),
   },
 };
+import { FloatingMomAI } from "@/components/features/FloatingMomAI";
 
 export default function RootLayout({
   children,
@@ -34,10 +51,12 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} font-sans`}>
         <Providers>
           <div className="particles" />
-          <main className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="min-h-screen flex flex-col pt-16">
             {children}
             <Footer />
           </main>
+          <FloatingMomAI />
           <Toaster position="bottom-center" />
         </Providers>
       </body>
