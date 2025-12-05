@@ -17,7 +17,8 @@ The **Mom's Cookie Jar** is our genesis NFT collection.
 *   **Dynamic Traits**: Your Mom evolves based on your on-chain activity.
 
 ### 🎥 Presale Video
-[Watch the Official Presale Video](public/presale.mp4)
+[![Watch Presale Video](public/mom-visual-1.jpg)](public/presale.mp4)
+> *Click to watch the video*
 
 ### 🤖 MomAI (Coming Soon)
 Your personal AI Mom who:
