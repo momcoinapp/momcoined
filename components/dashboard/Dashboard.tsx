@@ -89,7 +89,7 @@ export default function Dashboard() {
             >
                 <Card className="overflow-hidden border-2 border-pink-500/30 bg-black/40 backdrop-blur-sm">
                     <div className="relative aspect-video bg-gray-900 flex items-center justify-center group cursor-pointer">
-                        <div className="absolute inset-0 bg-[url('/mom-logo-1.jpg')] bg-cover bg-center opacity-50 group-hover:opacity-40 transition-opacity" />
+                        <div className="absolute inset-0 bg-[url('/mom-coin-logo.jpg')] bg-cover bg-center opacity-50 group-hover:opacity-40 transition-opacity" />
                         <div className="relative z-10 flex flex-col items-center gap-4">
                             <div className="w-20 h-20 bg-pink-600/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-pink-500/50">
                                 <svg className="w-10 h-10 text-white ml-2" fill="currentColor" viewBox="0 0 24 24">
