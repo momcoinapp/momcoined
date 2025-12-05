@@ -44,8 +44,10 @@ export function InviteMomModal({ isOpen, onClose }: InviteMomModalProps) {
                 animate={{ scale: isOpen ? 1 : 0.9, opacity: isOpen ? 1 : 0 }}
                 className="bg-gray-900 border border-pink-500/30 rounded-3xl max-w-md w-full overflow-hidden shadow-2xl"
             >
-                <div className="relative h-32 bg-gradient-to-r from-pink-600 to-purple-600 flex items-center justify-center">
-                    <div className="absolute inset-0 bg-[url('/mom-logo-1.jpg')] bg-cover bg-center opacity-20 mix-blend-overlay" />
+                <div className="relative h-32 bg-gradient-to-r from-pink-600 to-purple-600 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0">
+                        <img src="/momcoin-confetti.png" alt="Confetti Background" className="w-full h-full object-cover opacity-40 mix-blend-overlay" />
+                    </div>
                     <div className="text-center z-10">
                         <h2 className="text-3xl font-black text-white drop-shadow-lg">Invite Mom</h2>
                         <p className="text-pink-100 font-medium">Send her a Digital Welcome Card</p>

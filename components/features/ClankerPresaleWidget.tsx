@@ -133,26 +133,6 @@ export function ClankerPresaleWidget() {
                 </div>
             </Card>
 
-            {/* Visuals Gallery */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                    '/momcoin-glowing.png',
-                    '/momcoin-confetti.png',
-                    '/mom-visual-1.jpg',
-                    '/mom-visual-2.jpg'
-                ].map((src, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="aspect-square rounded-xl overflow-hidden border border-white/10 relative group"
-                    >
-                        <img src={src} alt="MomCoin Visual" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                    </motion.div>
-                ))}
-            </div>
         </motion.div>
     );
 }
