@@ -111,7 +111,7 @@ export default function Home() {
               <p className="text-xl text-pink-100/80 font-medium max-w-lg mx-auto leading-relaxed">
                 Let Mom trade with trust, knowledge, and transparency.
                 <br />
-                <span className="text-sm opacity-75">The first AI Agent for Moms.</span>
+                <span className="text-sm opacity-75">A whole ecosystem and fun app to learn, use crypto, and earn MomCoin.</span>
               </p>
             </div>
 
