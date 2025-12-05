@@ -97,13 +97,9 @@ export function NFTMintPromo() {
                     <div className="relative group">
                         <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
                         <div className="relative w-48 h-48 bg-black rounded-xl overflow-hidden border-2 border-purple-500/50 flex items-center justify-center">
-                            <video
-                                src="/jar-placeholder.mp4"
-                                poster="/cookie-jar-promo.jpg"
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
+                            <img
+                                src="/mom-coin-logo.jpg"
+                                alt="MomCoin Logo"
                                 className="w-full h-full object-cover"
                             />
                         </div>
