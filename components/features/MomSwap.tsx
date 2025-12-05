@@ -44,8 +44,13 @@ export default function MomSwap() {
     const SwapToastAny = SwapToast as any;
 
     return (
-        <Card className="p-6 border-2 border-blue-500/30 bg-blue-900/10">
-            <h3 className="text-xl font-bold mb-4 text-blue-400">Swap for $MOMCOIN</h3>
+        <Card className="p-6 border-2 border-blue-500/30 bg-blue-900/10 relative overflow-hidden">
+            {/* Background Graphic */}
+            <div className="absolute top-0 right-0 w-64 h-64 opacity-20 pointer-events-none">
+                <img src="/momcoin-glowing.png" alt="Glowing MomCoin" className="w-full h-full object-contain" />
+            </div>
+
+            <h3 className="text-xl font-bold mb-4 text-blue-400 relative z-10">Swap for $MOMCOIN</h3>
             <div className="flex justify-center">
                 <SwapAny>
                     <SwapAmountInputAny
