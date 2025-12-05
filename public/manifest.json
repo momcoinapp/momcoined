@@ -27,5 +27,8 @@
         "splashImageUrl": "https://app.momcoined.com/splash.png",
         "splashBackgroundColor": "#eeccff",
         "webhookUrl": "https://app.momcoined.com/api/webhook"
+    },
+    "baseBuilder": {
+        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
     }
 }
