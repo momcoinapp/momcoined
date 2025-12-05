@@ -92,7 +92,7 @@ export async function processReferral(newWalletAddress: string, referralCode: st
             // Update referrer (increment count and points)
             transaction.update(referrerRef, {
                 referralCount: increment(1),
-                referralPoints: increment(100) // 100 points per referral
+                referralPoints: increment(1000) // 1000 points per referral
             });
         });
 

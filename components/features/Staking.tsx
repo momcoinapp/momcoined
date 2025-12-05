@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/Card";
-import { TrendingUp, Lock, ArrowUpRight, ArrowDownLeft } from "lucide-react";
+import { TrendingUp, Lock } from "lucide-react";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
-import { MOM_HELPER_CONTRACT_ADDRESS, MOM_HELPER_ABI, MOM_TOKEN_ADDRESS, MOM_TOKEN_ABI } from "@/lib/contracts";
+import { CONTRACT_ADDRESSES, MOM_HELPER_ABI, MOM_TOKEN_ABI } from "@/lib/contracts";
 import { toast } from "react-hot-toast";
 import { formatEther, parseEther } from "viem";
 
@@ -15,7 +15,7 @@ export default function Staking() {
 
     // Read Staked Balance
     const { data: stakedBalance } = useReadContract({
-        address: MOM_HELPER_CONTRACT_ADDRESS,
+        address: CONTRACT_ADDRESSES.MOM_HELPER,
         abi: MOM_HELPER_ABI,
         functionName: "stakedBalance",
         args: address ? [address] : undefined,
@@ -23,7 +23,7 @@ export default function Staking() {
 
     // Read MOM Balance
     const { data: momBalance } = useReadContract({
-        address: MOM_TOKEN_ADDRESS,
+        address: CONTRACT_ADDRESSES.MOM_TOKEN,
         abi: MOM_TOKEN_ABI,
         functionName: "balanceOf",
         args: address ? [address] : undefined,
@@ -38,14 +38,14 @@ export default function Staking() {
             if (activeTab === "stake") {
                 // Note: In a real app, you'd check allowance first and do approve() if needed
                 writeContract({
-                    address: MOM_HELPER_CONTRACT_ADDRESS,
+                    address: CONTRACT_ADDRESSES.MOM_HELPER,
                     abi: MOM_HELPER_ABI,
                     functionName: "stake",
                     args: [parseEther(amount)],
                 });
             } else {
                 writeContract({
-                    address: MOM_HELPER_CONTRACT_ADDRESS,
+                    address: CONTRACT_ADDRESSES.MOM_HELPER,
                     abi: MOM_HELPER_ABI,
                     functionName: "withdraw",
                     args: [parseEther(amount)],
@@ -112,7 +112,7 @@ export default function Staking() {
                         className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-pink-500"
                     />
                     <button
-                        onClick={() => setAmount(activeTab === "stake" ? formatEther((momBalance as bigint) || 0n) : formatEther((stakedBalance as bigint) || 0n))}
+                        onClick={() => setAmount(activeTab === "stake" ? formatEther((momBalance as bigint) || BigInt(0)) : formatEther((stakedBalance as bigint) || BigInt(0)))}
                         className="absolute right-3 top-1/2 -translate-y-1/2 text-xs bg-white/10 px-2 py-1 rounded hover:bg-white/20"
                     >
                         MAX
@@ -123,8 +123,8 @@ export default function Staking() {
                     onClick={handleAction}
                     disabled={isPending || !amount}
                     className={`w-full py-3 rounded-xl font-bold text-white transition-all ${activeTab === "stake"
-                            ? "bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700"
-                            : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
+                        ? "bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700"
+                        : "bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700"
                         }`}
                 >
                     {isPending ? "Confirming..." : activeTab === "stake" ? "Stake MOM" : "Withdraw MOM"}

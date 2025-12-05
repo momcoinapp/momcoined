@@ -1,0 +1,11 @@
+{
+    "name": "Unrevealed Mom #???",
+    "description": "This Mom is still getting ready. Reveal coming soon!",
+    "image": "https://momcoined.com/nft-placeholder.png",
+    "attributes": [
+        {
+            "trait_type": "Status",
+            "value": "Unrevealed"
+        }
+    ]
+}

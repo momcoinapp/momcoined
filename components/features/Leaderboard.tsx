@@ -63,16 +63,16 @@ export default function Leaderboard() {
                         <div
                             key={user.walletAddress}
                             className={`flex items-center justify-between p-4 rounded-xl transition-all hover:bg-white/5 ${index === 0 ? "bg-yellow-500/20 border border-yellow-500/50" :
-                                    index === 1 ? "bg-gray-400/20 border border-gray-400/50" :
-                                        index === 2 ? "bg-orange-500/20 border border-orange-500/50" :
-                                            "bg-white/5 border border-white/10"
+                                index === 1 ? "bg-gray-400/20 border border-gray-400/50" :
+                                    index === 2 ? "bg-orange-500/20 border border-orange-500/50" :
+                                        "bg-white/5 border border-white/10"
                                 }`}
                         >
                             <div className="flex items-center gap-4">
                                 <div className={`w-8 h-8 flex items-center justify-center rounded-full font-bold ${index === 0 ? "text-yellow-500" :
-                                        index === 1 ? "text-gray-400" :
-                                            index === 2 ? "text-orange-500" :
-                                                "text-gray-500"
+                                    index === 1 ? "text-gray-400" :
+                                        index === 2 ? "text-orange-500" :
+                                            "text-gray-500"
                                     }`}>
                                     {index < 3 ? <Medal className="w-6 h-6" /> : `#${index + 1}`}
                                 </div>
@@ -81,7 +81,7 @@ export default function Leaderboard() {
                                         {formatAddress(user.walletAddress)}
                                     </div>
                                     <div className="text-xs text-gray-400">
-                                        {user.momBalance.toLocaleString()} $MOM
+                                        {user.momBalance.toLocaleString()} $MOMCOIN
                                     </div>
                                 </div>
                             </div>

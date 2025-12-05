@@ -10,11 +10,11 @@ import { useUserSession } from "@/components/providers/UserSessionProvider";
 
 const TASKS = [
     {
-        id: "daily_quote_share",
+        id: "daily_post_share",
         platform: "twitter",
-        title: "Share Daily Mom Quote",
-        reward: 100, // Increased to 100
-        link: "https://twitter.com/intent/tweet?text=My%20mom%20told%20me%20to%20buy%20%24MOM%20%F0%9F%92%8E%20@momcoined",
+        title: "Daily $MOMCOIN Post",
+        reward: 100,
+        link: "https://twitter.com/intent/tweet?text=I%27m%20earning%20%24MOM%20rewards%20on%20Base!%20%F0%9F%A5%9E%20@momcoined&hashtags=MomCoin,Base",
         icon: Quote,
         color: "text-yellow-400",
         repeatable: true
@@ -40,10 +40,10 @@ const TASKS = [
     {
         id: "follow_tiktok",
         platform: "tiktok",
-        title: "Follow @momcoin on TikTok",
+        title: "Follow @momcoined on TikTok",
         reward: 500,
-        link: "https://www.tiktok.com/@momcoin",
-        icon: ExternalLink, // Using ExternalLink as generic icon for TikTok if specific one isn't imported
+        link: "https://www.tiktok.com/@momcoined",
+        icon: ExternalLink,
         color: "text-pink-500"
     },
     {
@@ -51,7 +51,7 @@ const TASKS = [
         platform: "tiktok",
         title: "Share MomCoin on TikTok",
         reward: 1000,
-        link: "https://www.tiktok.com/upload", // Direct link to upload
+        link: "https://www.tiktok.com/upload",
         icon: ExternalLink,
         color: "text-pink-500",
         repeatable: true
@@ -77,8 +77,8 @@ const TASKS = [
     {
         id: "engage_twitter_blokmom",
         platform: "twitter",
-        title: "Like & Repost @blokmom",
-        reward: 50,
+        title: "Like/Repost Pinned @blokmom",
+        reward: 100,
         link: "https://x.com/blokmom",
         icon: Twitter,
         color: "text-pink-400",
@@ -87,35 +87,36 @@ const TASKS = [
     {
         id: "engage_twitter_momcoined",
         platform: "twitter",
-        title: "Like & Repost @momcoined",
-        reward: 50,
+        title: "Like/Repost Pinned @momcoined",
+        reward: 100,
         link: "https://x.com/momcoined",
         icon: Twitter,
         color: "text-pink-400",
         repeatable: true
     },
     {
-        id: "connect_wallet",
-        platform: "wallet",
-        title: "Connect Base Smart Wallet",
-        reward: 500,
-        link: "#",
-        icon: Wallet,
-        color: "text-blue-500"
+        id: "engage_farcaster_momcoined",
+        platform: "farcaster",
+        title: "Like/Recast Pinned on Warpcast",
+        reward: 100,
+        link: "https://warpcast.com/momcoined",
+        icon: MessageCircle,
+        color: "text-purple-400",
+        repeatable: true
     },
     {
-        id: "join_newsletter",
-        platform: "email",
-        title: "Join Mom's Newsletter",
-        reward: 500,
-        link: "#",
-        icon: Mail,
-        color: "text-pink-500"
+        id: "buy_clanker",
+        platform: "clanker",
+        title: "Buy on Clanker Presale",
+        reward: 1000,
+        link: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07",
+        icon: Sparkles,
+        color: "text-purple-500"
     },
     {
         id: "meme_contest",
         platform: "twitter",
-        title: "Post a Meme ($MOM Contest)",
+        title: "Post a Meme ($MOMCOIN Contest)",
         reward: 1000,
         link: "https://twitter.com/intent/tweet?text=Check%20out%20my%20%24MOM%20meme!%20%F0%9F%A4%A3%20@momcoined&hashtags=MomCoin,MemeContest",
         icon: Sparkles,
@@ -125,11 +126,30 @@ const TASKS = [
     {
         id: "join_farcaster",
         platform: "farcaster",
-        title: "Follow /momcoin on Farcaster",
+        title: "Follow /momcoined on Farcaster",
         reward: 500,
-        link: "https://warpcast.com/momcoin",
+        link: "https://warpcast.com/momcoined",
         icon: MessageCircle,
         color: "text-purple-500"
+    },
+    {
+        id: "add_farcaster_frame",
+        platform: "farcaster",
+        title: "Add MomCoin to Farcaster",
+        reward: 1000,
+        link: "https://warpcast.com/~/add-cast-action?url=https://momcoined.com/api/frame",
+        icon: Sparkles,
+        color: "text-purple-600"
+    },
+    {
+        id: "share_reveal",
+        platform: "farcaster",
+        title: "Share Your Mom Reveal",
+        reward: 1000,
+        link: "https://warpcast.com/~/compose?text=I%20just%20minted%20my%20Mom%20on%20Base!%20%F0%9F%A5%9E%20Check%20her%20out!%20@momcoined&embeds[]=https://momcoined.com",
+        icon: Sparkles,
+        color: "text-pink-500",
+        repeatable: true
     }
 ];
 

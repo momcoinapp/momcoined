@@ -1,0 +1,19 @@
+{
+    "accountAssociation": {
+        "header": "eyJmaWQiOiAzNTg4ODAsICJ0eXBlIjogImN1c3RvZHkiLCAia2V5IjogIjB4... (You need to generate this via Warpcast)"
+    },
+    "frame": {
+        "version": "1",
+        "name": "MomCoin",
+        "iconUrl": "https://app.momcoined.com/og-image.png",
+        "homeUrl": "https://app.momcoined.com",
+        "imageUrl": "https://app.momcoined.com/og-image.png",
+        "buttonTitle": "Mint MomCoin Jar",
+        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashBackgroundColor": "#ec4899",
+        "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event"
+    },
+    "baseBuilder": {
+        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+    }
+}

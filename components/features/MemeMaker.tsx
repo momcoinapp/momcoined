@@ -5,10 +5,12 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { Sparkles, Copy, Share2 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { useUserSession } from "@/components/providers/UserSessionProvider";
 
 export default function MemeMaker() {
     const [caption, setCaption] = useState("");
     const [loading, setLoading] = useState(false);
+    const { updateUserScore } = useUserSession();
 
     const generateCaption = async () => {
         setLoading(true);
@@ -21,6 +23,11 @@ export default function MemeMaker() {
             });
             const data = await res.json();
             setCaption(data.response.replace(/"/g, ''));
+
+            // Reward user
+            updateUserScore("meme_gen", 10);
+            toast.success("Meme generated! +10 Points");
+
         } catch (e) {
             toast.error("Mom is tired. Try again.");
         }
@@ -28,7 +35,7 @@ export default function MemeMaker() {
     };
 
     const copyToClipboard = () => {
-        navigator.clipboard.writeText(caption + " $MOM #MomCoin");
+        navigator.clipboard.writeText(caption + " $MOMCOIN #MomCoin");
         toast.success("Copied! Now go post it!");
     };
 
@@ -58,6 +65,9 @@ export default function MemeMaker() {
                         <Copy className="w-4 h-4" />
                     </Button>
                 )}
+            </div>
+            <div className="mt-4 text-center text-xs text-yellow-600 font-bold">
+                "Mom says: Make me famous! (+10 pts)"
             </div>
         </Card>
     );

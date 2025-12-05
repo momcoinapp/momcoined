@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { getMomAdvice, generateMomQuote } from '@/lib/gemini';
-import { usePrivy } from '@privy-io/react-auth'; // Using Privy as per existing setup
-import { doc, updateDoc, increment } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+import { useAccount } from 'wagmi';
+import { useUserSession } from '@/components/providers/UserSessionProvider';
 
 // Mock functions for data fetching - replace with real implementations later
 async function fetchStakeInfo(address: string | undefined) {
@@ -25,17 +24,9 @@ async function fetchMarketData() {
     };
 }
 
-async function updateUserScore(address: string | undefined, type: string, points: number) {
-    if (!address) return;
-    const userRef = doc(db, "users", address.toLowerCase());
-    await updateDoc(userRef, {
-        leaderboardScore: increment(points)
-    });
-}
-
 export default function MomAIDashboard() {
-    const { user } = usePrivy();
-    const address = user?.wallet?.address;
+    const { address } = useAccount();
+    const { updateUserScore } = useUserSession();
 
     const [advice, setAdvice] = useState<any>(null);
     const [quote, setQuote] = useState<string>('');
@@ -61,7 +52,7 @@ export default function MomAIDashboard() {
             setAdvice(aiAdvice);
 
             // Update Firestore with AI interaction (+2 points)
-            await updateUserScore(address, 'ai_usage', 2);
+            await updateUserScore('ai_usage', 2);
 
         } catch (error) {
             console.error('AI Error:', error);
@@ -97,8 +88,8 @@ export default function MomAIDashboard() {
                         <div className="flex items-center gap-2 mt-4">
                             <strong>Recommended Action:</strong>
                             <span className={`px-3 py-1 rounded-full text-sm font-bold ${advice.action === 'buy' ? 'bg-green-500/20 text-green-500' :
-                                    advice.action === 'sell' ? 'bg-red-500/20 text-red-500' :
-                                        'bg-yellow-500/20 text-yellow-500'
+                                advice.action === 'sell' ? 'bg-red-500/20 text-red-500' :
+                                    'bg-yellow-500/20 text-yellow-500'
                                 }`}>
                                 {advice.action?.toUpperCase()}
                             </span>
@@ -112,8 +103,8 @@ export default function MomAIDashboard() {
                             <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
                                 <div
                                     className={`h-full transition-all duration-500 ${advice.riskScore > 7 ? 'bg-red-500' :
-                                            advice.riskScore > 4 ? 'bg-yellow-500' :
-                                                'bg-green-500'
+                                        advice.riskScore > 4 ? 'bg-yellow-500' :
+                                            'bg-green-500'
                                         }`}
                                     style={{ width: `${advice.riskScore * 10}%` }}
                                 />

@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { useAccount } from "wagmi";
-import { doc, getDoc, setDoc, serverTimestamp, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp, onSnapshot, updateDoc, increment } from "firebase/firestore";
 import { db, auth } from "@/lib/firebase";
 
 interface UserData {
@@ -24,12 +24,14 @@ interface UserSessionContextType {
     userData: UserData | null;
     isLoading: boolean;
     userAddress?: string;
+    updateUserScore: (type: string, points: number) => Promise<void>;
 }
 
 const UserSessionContext = createContext<UserSessionContextType>({
     userData: null,
     isLoading: true,
     userAddress: undefined,
+    updateUserScore: async () => { },
 });
 
 export function UserSessionProvider({ children }: { children: React.ReactNode }) {
@@ -103,8 +105,20 @@ export function UserSessionProvider({ children }: { children: React.ReactNode })
         };
     }, [address, isConnected]);
 
+    const updateUserScore = async (type: string, points: number) => {
+        if (!address) return;
+        const userRef = doc(db, "users", address.toLowerCase());
+        try {
+            await updateDoc(userRef, {
+                leaderboardScore: increment(points)
+            });
+        } catch (error) {
+            console.error("Error updating score:", error);
+        }
+    };
+
     return (
-        <UserSessionContext.Provider value={{ userData, isLoading, userAddress: address }}>
+        <UserSessionContext.Provider value={{ userData, isLoading, userAddress: address, updateUserScore }}>
             {children}
         </UserSessionContext.Provider>
     );

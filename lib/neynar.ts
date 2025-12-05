@@ -1,6 +1,6 @@
 import { NeynarAPIClient } from "@neynar/nodejs-sdk";
 
-const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY || "NEYNAR_API_DOCS";
+const NEYNAR_API_KEY = process.env.NEXT_PUBLIC_NEYNAR_API_KEY!;
 const client = new NeynarAPIClient({ apiKey: NEYNAR_API_KEY });
 
 export interface FarcasterUser {

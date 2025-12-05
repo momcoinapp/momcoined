@@ -2,8 +2,18 @@
 
 import { Card } from "@/components/ui/Card";
 import { Heart, TrendingUp } from "lucide-react";
+import { useUserSession } from "@/components/providers/UserSessionProvider";
+import { toast } from "react-hot-toast";
 
 export function CharityJar() {
+    const { updateUserScore } = useUserSession();
+
+    const handleDonate = () => {
+        // Mock donation for now
+        toast.success("Thank you for your donation! +100 Points");
+        updateUserScore("charity_donate", 100);
+    };
+
     return (
         <Card className="p-6 border-2 border-pink-400 bg-pink-500/10">
             <div className="flex items-center gap-2 mb-4">
@@ -30,10 +40,16 @@ export function CharityJar() {
                     </ul>
                 </div>
 
-                <button className="w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg font-bold text-white transition-colors flex items-center justify-center gap-2">
+                <button
+                    onClick={handleDonate}
+                    className="w-full py-2 bg-pink-600 hover:bg-pink-700 rounded-lg font-bold text-white transition-colors flex items-center justify-center gap-2"
+                >
                     <Heart className="w-4 h-4" />
-                    Donate $MOM
+                    Donate $MOMCOIN
                 </button>
+                <div className="text-center text-xs text-pink-300 font-bold">
+                    "Mom says: Sharing is caring! (+100 pts)"
+                </div>
             </div>
         </Card>
     );
