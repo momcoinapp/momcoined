@@ -99,6 +99,7 @@ export function NFTMintPromo() {
                         <div className="relative w-48 h-48 bg-black rounded-xl overflow-hidden border-2 border-purple-500/50 flex items-center justify-center">
                             <video
                                 src="/jar-placeholder.mp4"
+                                poster="/cookie-jar-promo.jpg"
                                 autoPlay
                                 loop
                                 muted
