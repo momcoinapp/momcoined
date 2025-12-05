@@ -56,7 +56,16 @@ export default function DailyMomNews() {
                 </Button>
             </div>
 
-            <div className="min-h-[80px] flex items-center justify-center">
+            <div className="min-h-[80px] flex flex-col items-center justify-center gap-4">
+                {/* Viral News Image */}
+                <div className="w-full rounded-xl overflow-hidden border border-pink-500/30 shadow-lg shadow-pink-500/10">
+                    <img
+                        src="/mom-grok.png"
+                        alt="Viral Mom News"
+                        className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+
                 <AnimatePresence mode="wait">
                     {loading ? (
                         <motion.div
@@ -71,7 +80,7 @@ export default function DailyMomNews() {
                         <motion.p
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="text-lg text-white font-medium italic text-center leading-relaxed"
+                            className="text-lg text-white font-medium italic text-center leading-relaxed px-2"
                         >
                             "{news}"
                         </motion.p>
