@@ -1,28 +1,3 @@
-import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/Card";
-import { MessageCircle, Twitter, RefreshCw } from "lucide-react";
-import { getMomCoinFeed, Cast } from "@/lib/neynar";
-
-export function SocialFeed() {
-    const [activeTab, setActiveTab] = useState<"farcaster" | "twitter">("farcaster");
-    const [casts, setCasts] = useState<Cast[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        if (activeTab === "farcaster") {
-            loadCasts();
-        }
-    }, [activeTab]);
-
-    const loadCasts = async () => {
-        setIsLoading(true);
-        const data = await getMomCoinFeed();
-        setCasts(data);
-        setIsLoading(false);
-    };
-
-    return (
-        <Card className="p-6 bg-white/5 border-white/10 backdrop-blur-sm h-[500px] flex flex-col">
             <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold text-white flex items-center gap-2">
                     Social Feed
@@ -116,6 +91,6 @@ export function SocialFeed() {
                     </div>
                 )}
             </div>
-        </Card>
+        </Card >
     );
 }
