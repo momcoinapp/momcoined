@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
         const userAddress = "0x..."; // Extracted from log
 
         // 1. Generate Metadata with Gemini
-        const metadata = await generateMomMetadata(tokenId, tier, 500); // 500 is mock cookie score
+        const metadata = await generateMomMetadata(tier, 500, tokenId); // 500 is mock cookie score
 
         // 2. Save to Firebase (or IPFS)
         await setDoc(doc(db, "nft_metadata", tokenId), metadata);

@@ -31,7 +31,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
             return NextResponse.json({
                 name: `Mom's Cookie Jar #${tokenId}`,
                 description: "Minted for $1. Feed me cookies to reveal Mom! Pay $5 to instant fill.",
-                image: `${BASE_URL}/nft-placeholder.png`, // Static fallback
+                image: `${BASE_URL}/cookie-jar-promo.jpg`, // The Promo Image
                 animation_url: `${BASE_URL}/jar-placeholder.mp4`, // The rocking jar animation
                 external_url: `${BASE_URL}/jar/${tokenId}`,
                 attributes: [

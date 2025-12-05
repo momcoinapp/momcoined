@@ -21,8 +21,9 @@ export function MomMarket() {
     useEffect(() => {
         const fetchPrice = async () => {
             try {
-                // Clanker Pair Address
-                const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/base/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07");
+                // Target Asset: Clanker (Bet on Clanker Price)
+                const CLANKER_ADDRESS = "0x1bc0c42215582d5A085795f4baDbaC3ff36d1Bcb";
+                const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CLANKER_ADDRESS}`);
                 const data = await res.json();
                 if (data.pair && data.pair.priceUsd) {
                     setCurrentPrice(parseFloat(data.pair.priceUsd));
@@ -114,7 +115,7 @@ export function MomMarket() {
             <div className="flex items-center justify-between bg-black border-2 border-green-500 p-4 rounded-lg font-mono text-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]">
                 <div className="flex items-center gap-2">
                     <TrendingUp className="w-6 h-6 animate-pulse" />
-                    <span className="text-xl font-bold tracking-wider">MOM MARKET</span>
+                    <span className="text-xl font-bold tracking-wider">CLANKER PREDICTIONS</span>
                 </div>
                 <div className="text-right">
                     <div className="text-sm opacity-70">CLANKER PRICE</div>
@@ -184,11 +185,11 @@ export function MomMarket() {
                                     className="bg-transparent w-full text-white font-mono outline-none"
                                     placeholder="Amount to Bet"
                                 />
-                                <span className="text-gray-500 font-bold">MOM</span>
+                                <span className="text-gray-500 font-bold">$MomCoin</span>
                             </div>
 
                             <div className="text-center text-xs text-gray-500">
-                                1 $MOMCOIN = $0.01 USD (Est.)
+                                Bet on Clanker Price using $MomCoin
                             </div>
                             <div className="text-center text-xs text-pink-400 font-bold animate-pulse">
                                 "Mom says: Don't bet the house, sweetie! (+50 pts)"
@@ -200,11 +201,11 @@ export function MomMarket() {
                     <div className="grid grid-cols-2 gap-2">
                         <div className="bg-green-900/30 border border-green-500/30 p-2 rounded text-center">
                             <div className="text-xs text-green-400">UP POOL</div>
-                            <div className="font-mono font-bold text-white">{Number(upPool).toFixed(2)} MOM</div>
+                            <div className="font-mono font-bold text-white">{Number(upPool).toFixed(2)} $MomCoin</div>
                         </div>
                         <div className="bg-red-900/30 border border-red-500/30 p-2 rounded text-center">
                             <div className="text-xs text-red-400">DOWN POOL</div>
-                            <div className="font-mono font-bold text-white">{Number(downPool).toFixed(2)} MOM</div>
+                            <div className="font-mono font-bold text-white">{Number(downPool).toFixed(2)} $MomCoin</div>
                         </div>
                     </div>
                 </div>

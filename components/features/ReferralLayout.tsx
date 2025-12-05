@@ -7,10 +7,35 @@ import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { toast } from "react-hot-toast";
 
+import { useState, useEffect } from "react";
+import { useUserSession } from "@/components/providers/UserSessionProvider";
+import { getOrCreateReferralCode } from "@/lib/referral";
+
 export function ReferralLayout() {
-    // Mock Referral Code (Replace with real user ID later)
-    const referralCode = "MOM-1234-5678";
-    const referralLink = `https://app.momcoined.com?ref=${referralCode}`;
+    const { userData } = useUserSession();
+    const [referralCode, setReferralCode] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function fetchCode() {
+            if (userData?.walletAddress) {
+                // In a real app, this should be an API call to avoid client-side DB access issues if rules are strict
+                // But since we have the lib and it uses Firebase directly (assuming rules allow), we can try:
+                try {
+                    const code = await getOrCreateReferralCode(userData.walletAddress);
+                    setReferralCode(code);
+                } catch (e) {
+                    console.error("Failed to get code", e);
+                }
+            }
+            setLoading(false);
+        }
+        fetchCode();
+    }, [userData]);
+
+    const referralLink = referralCode 
+        ? `https://app.momcoined.com?ref=${referralCode}` 
+        : "Connect Wallet to get link";
 
     const handleCopy = () => {
         navigator.clipboard.writeText(referralLink);

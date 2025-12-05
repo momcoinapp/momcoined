@@ -7,15 +7,16 @@ import { MerchStoreTeaser } from "@/components/features/MerchStoreTeaser";
 import { SocialFeed } from "@/components/features/SocialFeed";
 import MemeMaker from "@/components/features/MemeMaker";
 import { CharityJar } from "@/components/features/CharityJar";
-import MomSwap from "@/components/features/MomSwap";
 import { Wallet, Star, Users, Trophy, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/Card";
 import { ClankerStats } from "@/components/features/ClankerStats";
+import { ClankerPresaleWidget } from "@/components/features/ClankerPresaleWidget";
 import { TokenStats } from "@/components/features/TokenStats";
 import { NFTMintPromo } from "@/components/features/NFTMintPromo";
 import MomChat from "@/components/features/MomChat";
 import { DailyClaim } from "@/components/features/DailyClaim";
+import DailyMomNews from "@/components/features/DailyMomNews";
 import { MomMarket } from "@/components/features/MomMarket";
 import ReferralDashboard from "@/components/features/ReferralDashboard";
 import Leaderboard from "@/components/features/Leaderboard";
@@ -125,14 +126,15 @@ export default function Dashboard() {
             {/* Main Action Area */}
             < div className="grid md:grid-cols-3 gap-6" >
                 {/* Mom AI Agent */}
-                < div className="md:col-span-2" >
+                <div className="md:col-span-2">
                     <MomChat />
-                </div >
+                </div>
 
-                {/* Daily Claim */}
-                < div className="md:col-span-1" >
+                {/* Daily Claim & News */}
+                <div className="md:col-span-1 space-y-6">
                     <DailyClaim />
-                </div >
+                    <DailyMomNews />
+                </div>
 
                 {/* Social Tasks */}
                 < div className="md:col-span-2" >
@@ -149,10 +151,10 @@ export default function Dashboard() {
                     <MomMarket />
                 </div >
 
-                {/* Swap Widget */}
-                < div className="md:col-span-3" >
-                    <MomSwap />
-                </div >
+                {/* Clanker Presale Widget (Replaces Swap) */}
+                <div className="md:col-span-3">
+                    <ClankerPresaleWidget />
+                </div>
 
                 {/* Buy MOM Widget (Legacy/External) */}
                 < div className="md:col-span-3" >

@@ -24,12 +24,23 @@ const NAV_ITEMS = [
     { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
     { label: "Tasks", href: "/tasks", icon: CheckSquare },
     { label: "Mom AI", href: "/chat", icon: MessageSquare },
-    { label: "Clanker Presale", href: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07", icon: Sparkles, external: true },
+    { label: "Buy on Clanker", href: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07", icon: Sparkles, external: true },
 ];
 
 export function Navbar() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
+
+    // Cast components to any to bypass TypeScript errors with React 18
+    const WalletAny = Wallet as any;
+    const ConnectWalletAny = ConnectWallet as any;
+    const WalletDropdownAny = WalletDropdown as any;
+    const WalletDropdownDisconnectAny = WalletDropdownDisconnect as any;
+    const IdentityAny = Identity as any;
+    const AvatarAny = Avatar as any;
+    const NameAny = Name as any;
+    const AddressAny = Address as any;
+    const EthBalanceAny = EthBalance as any;
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-lg border-b border-white/10">
@@ -81,21 +92,21 @@ export function Navbar() {
 
                         {/* OnchainKit Wallet */}
                         <div className="flex items-center">
-                            <Wallet>
-                                <ConnectWallet className="bg-white text-black font-bold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
-                                    <Avatar className="h-6 w-6" />
-                                    <Name />
-                                </ConnectWallet>
-                                <WalletDropdown>
-                                    <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                                        <Avatar />
-                                        <Name />
-                                        <Address />
-                                        <EthBalance />
-                                    </Identity>
-                                    <WalletDropdownDisconnect />
-                                </WalletDropdown>
-                            </Wallet>
+                            <WalletAny>
+                                <ConnectWalletAny className="bg-white text-black font-bold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
+                                    <AvatarAny className="h-6 w-6" />
+                                    <NameAny />
+                                </ConnectWalletAny>
+                                <WalletDropdownAny>
+                                    <IdentityAny className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                                        <AvatarAny />
+                                        <NameAny />
+                                        <AddressAny />
+                                        <EthBalanceAny />
+                                    </IdentityAny>
+                                    <WalletDropdownDisconnectAny />
+                                </WalletDropdownAny>
+                            </WalletAny>
                         </div>
                     </div>
 

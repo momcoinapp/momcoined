@@ -10,14 +10,16 @@ import { base } from "wagmi/chains";
 const queryClient = new QueryClient();
 
 export function Providers({ children }: { children: React.ReactNode }) {
+    const OnchainKitProviderAny = OnchainKitProvider as any;
+
     return (
         <QueryClientProvider client={queryClient}>
             <WagmiProvider config={config}>
-                <OnchainKitProvider apiKey={process.env.NEXT_PUBLIC_CDP_API_KEY} chain={base}>
+                <OnchainKitProviderAny apiKey={process.env.NEXT_PUBLIC_CDP_API_KEY} chain={base}>
                     <UserSessionProvider>
                         {children}
                     </UserSessionProvider>
-                </OnchainKitProvider>
+                </OnchainKitProviderAny>
             </WagmiProvider>
         </QueryClientProvider>
     );

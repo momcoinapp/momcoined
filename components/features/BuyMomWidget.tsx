@@ -1,19 +1,23 @@
+"use client";
+
 import { Card } from "@/components/ui/Card";
 import { CreditCard } from "lucide-react";
-
-// Note: In a real implementation, we would use the OnchainKit Buy component.
-// Since we are in a dev environment without the full OnchainKit setup verified,
-// we will create a placeholder that links to the Coinbase Onramp or simulates the flow.
-// For production, you would uncomment the import and usage below.
-
-// import { Buy } from '@coinbase/onchainkit/buy';
+import { getOnrampBuyUrl } from '@coinbase/onchainkit/fund';
 
 export function BuyMomWidget() {
-    const projectId = process.env.NEXT_PUBLIC_WC_PROJECT_ID;
+    const projectId = process.env.NEXT_PUBLIC_CDP_API_KEY;
 
     const handleBuy = () => {
-        // For now, we can link to a DEX or open the Coinbase Wallet buy flow
-        window.open("https://wallet.coinbase.com/", "_blank");
+        if (projectId) {
+            const onrampUrl = getOnrampBuyUrl({
+                projectId,
+                assets: ['USDC', 'ETH'],
+                network: 'base'
+            } as any);
+            window.open(onrampUrl, "_blank");
+        } else {
+            window.open("https://wallet.coinbase.com/", "_blank");
+        }
     };
 
     return (
@@ -29,23 +33,15 @@ export function BuyMomWidget() {
                     </p>
                 </div>
 
-                {/* 
-                  TODO: Uncomment this when ready to test with live Project ID
-                  <Buy 
-                    projectId={projectId} 
-                    defaultAsset="USDC" 
-                    defaultNetwork="base" 
-                    defaultPaymentMethod="CARD" 
-                  /> 
-                */}
-
-                <button
-                    onClick={handleBuy}
-                    className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors flex items-center gap-2 shadow-lg shadow-blue-500/20"
-                >
-                    <CreditCard className="w-5 h-5" />
-                    Buy with Card
-                </button>
+                <div className="flex items-center">
+                    <button
+                        onClick={handleBuy}
+                        className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-colors flex items-center gap-2 shadow-lg shadow-blue-500/20"
+                    >
+                        <CreditCard className="w-5 h-5" />
+                        Buy with Card
+                    </button>
+                </div>
             </div>
         </Card>
     );

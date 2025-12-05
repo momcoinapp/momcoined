@@ -10,7 +10,10 @@ interface Message {
     text: string;
 }
 
+import { useUserSession } from "@/components/providers/UserSessionProvider";
+
 export default function MomChat() {
+    const { userData } = useUserSession();
     const [messages, setMessages] = useState<Message[]>([
         { role: "mom", text: "Hello sweetie! Have you claimed your $MOMCOIN today? 🍪 Also, don't forget to invite your REAL mom for a special reward! And check out the new NFT mint - it's like a digital family album!" }
     ]);
@@ -37,7 +40,10 @@ export default function MomChat() {
             const res = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userMsg }),
+                body: JSON.stringify({
+                    message: userMsg,
+                    walletAddress: userData?.walletAddress
+                }),
             });
             const data = await res.json();
 

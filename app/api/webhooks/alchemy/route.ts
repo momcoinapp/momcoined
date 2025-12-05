@@ -3,25 +3,27 @@ import { generateMomMetadata } from "@/lib/gemini-generator";
 import { db } from "@/lib/firebase";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { CONTRACT_ADDRESSES } from "@/lib/contracts";
-import { isValidSignatureForAlchemyRequest } from "alchemy-sdk";
+import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
     try {
-        const body = await req.json();
+        const textBody = await req.text();
         const signature = req.headers.get("x-alchemy-signature");
         const signingKey = process.env.ALCHEMY_WEBHOOK_SIGNING_KEY;
 
         // Verify Signature (Security)
         if (signingKey && signature) {
-            // Reconstruct body string for verification (Next.js body handling can be tricky, 
-            // but passing the raw body object usually works with the SDK helper if it expects JSON)
-            // Note: In strict environments, you need the raw string buffer. 
-            // For this MVP, we will log if missing but proceed if key is not set.
-            if (!isValidSignatureForAlchemyRequest(JSON.stringify(body), signature, signingKey)) {
+            const hmac = crypto.createHmac("sha256", signingKey);
+            hmac.update(textBody, "utf8");
+            const digest = hmac.digest("hex");
+
+            if (signature !== digest) {
                 console.error("Invalid Alchemy Signature");
                 return NextResponse.json({ message: "Invalid Signature" }, { status: 403 });
             }
         }
+
+        const body = JSON.parse(textBody);
 
         const { event } = body;
 

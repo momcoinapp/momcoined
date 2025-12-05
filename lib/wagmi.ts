@@ -1,11 +1,14 @@
 import { http, createConfig } from "wagmi";
 import { base } from "wagmi/chains";
-import { coinbaseWallet } from "wagmi/connectors";
+import { coinbaseWallet, walletConnect } from "wagmi/connectors";
+
+const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "cc97e2d8d1441819bd41f75c101a4ccf";
 
 export const config = createConfig({
     chains: [base],
     connectors: [
-        coinbaseWallet({ appName: "MomCoin", preference: "smartWalletOnly" }),
+        coinbaseWallet({ appName: "MomCoin", preference: "smartWalletOnly" }), // Enforce Smart Wallet
+        walletConnect({ projectId, showQrModal: true }), // Added WalletConnect for Metamask/Rainbow
     ],
     transports: {
         [base.id]: http(process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
