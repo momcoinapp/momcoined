@@ -6,51 +6,56 @@
     },
     "miniapp": {
         "version": "1",
-        "name": "MomCoin App",
+        "name": "MomCoin Cookie Jar",
+        "subtitle": "Fill jars, win moms, build homes",
+        "tagline": "Free daily plays for 1958-family NFTs | Every action funds tiny homes for survivors",
         "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
-        "homeUrl": "https://momcoin.vercel.app",
-        "description": "Experience the future of social networking for Moms. Daily claims, agentic trading, and charity.",
-        "subtitle": "Earn daily rewards & connect with other moms.",
-        "primaryCategory": "social",
+        "homeUrl": "https://app.momcoined.com",
+        "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
+        "splashBackgroundColor": "#FFB6C1",
+        "heroImageUrl": "https://app.momcoined.com/mom-visual-5.png",
+        "category": "social",
+        "description": "Join the MomCoin ecosystem: Fill your Cookie Jar with likes/recasts/shares to climb the leaderboard—Top 25 daily win a rare Based Mom/Kid NFT FREE. Or $5 instant mint (0.0025 ETH on Base). Only 1958 of each family member ever (Based Momz → FarMomz → BasedKidz → FarKidz). Buy $MomCoin on Clanker to power agentic trading (Jan 2026). Built by real mom @godreameme + her degen son. Every jar fill/mint/buy builds tiny homes for trafficking survivor families—track live impact!",
         "screenshotUrls": [
             "https://app.momcoined.com/app-screenshot-v1.png",
             "https://app.momcoined.com/mom-visual-5.png"
         ],
-        "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "heroImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "buttonTitle": "JOIN AND CLAIM MOMCOIN",
-        "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "splashBackgroundColor": "#ec4899",
         "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event",
-        "tags": [
-            "social",
-            "moms",
-            "crypto",
+        "requiredPermissions": [
+            "wallet",
+            "notifications"
+        ],
+        "requiredChains": [
             "base"
         ],
-        "tagline": "Grow, Raid & Rise with Mom",
-        "ogTitle": "MomCoin - Daily Claims & Rewards",
-        "ogDescription": "Join the Mom Movement. Claim free $MOMCOIN, mint your Cookie Jar, and fight for families.",
-        "ogImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "castShareUrl": "https://warpcast.com/~/compose?text=I%20just%20claimed%20my%20daily%20%24MOM!%20Join%20the%20movement%20on%20Base.%20%40momcoin"
+        "tags": [
+            "crypto",
+            "rewards",
+            "moms",
+            "base",
+            "farcaster"
+        ],
+        "ogTitle": "MomCoin Cookie Jar",
+        "ogDescription": "Fill jars, win moms, build homes. Join the movement.",
+        "ogImageUrl": "https://app.momcoined.com/mom-visual-5.png"
     },
     "frame": {
         "version": "vNext",
-        "name": "MomCoin App",
+        "name": "MomCoin Cookie Jar",
         "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "buttonTitle": "JOIN AND CLAIM MOMCOIN",
+        "buttonTitle": "Fill Cookie Jar (Free)",
         "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "splashBackgroundColor": "#ec4899",
+        "splashBackgroundColor": "#FFB6C1",
         "buttons": [
             {
-                "label": "🎁 JOIN AND CLAIM MOMCOIN",
+                "label": "🍪 Fill Cookie Jar (Free)",
                 "action": "link",
                 "target": "https://app.momcoined.com/earn"
             },
             {
-                "label": "💰 Mint Cookie Jar",
+                "label": "🏠 $5 Instant Mint",
                 "action": "link",
                 "target": "https://app.momcoined.com/nfts"
             },
