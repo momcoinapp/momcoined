@@ -1,15 +1,15 @@
 {
     "accountAssociation": {
-        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhlYTFCQTQ4MjVjQTA3MjQ0YThEOWFmYjBhOEM4NmJiMGZmNzI4OTBCIn0",
+        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
-        "signature": "LBU75tSBK4He0BHsfTpEGvGAWaWOrYXz32JjE1L2buZVt5qydqZBKWykHaOUAJ0SuIcNIwnVsNR1EuJAmkFF2xw="
+        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
     },
     "miniapp": {
         "version": "1",
-        "name": "MomCoin",
+        "name": "Based Moms & Kids ∞ | $MomCoin",
         "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
-        "description": "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
+        "description": "Adopt your own Based Mom & Kid NFT on Base—locked on-chain forever. Chat with her today. Coming Jan 2026: She becomes your agentic trading mom. Buy $MomCoin to power her up. Every mint/buy fights human trafficking.",
         "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
         "buttonTitle": "Daily Claim",
         "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
@@ -17,15 +17,36 @@
         "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event"
     },
     "frame": {
-        "version": "1",
-        "name": "MomCoin",
+        "version": "vNext",
+        "name": "Based Moms & Kids ∞",
         "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
         "buttonTitle": "Daily Claim",
         "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
         "splashBackgroundColor": "#ec4899",
-        "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event"
+        "buttons": [
+            {
+                "label": "🍼 Mint Your Based Mom",
+                "action": "post",
+                "target": "https://app.momcoined.com/frame/mint-nft"
+            },
+            {
+                "label": "💰 Buy $MomCoin on Clanker",
+                "action": "link",
+                "target": "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07"
+            },
+            {
+                "label": "💬 Chat With Mom",
+                "action": "link",
+                "target": "https://app.momcoined.com/mom-ai"
+            },
+            {
+                "label": "🛑 Fight Trafficking",
+                "action": "link",
+                "target": "https://app.momcoined.com/impact"
+            }
+        ]
     },
     "baseBuilder": {
         "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
