@@ -1,82 +1,64 @@
 "use client";
 
+import Leaderboard from "@/components/features/Leaderboard";
+import { CookieLeaderboard } from "@/components/features/CookieLeaderboard";
+import { useState } from "react";
 import { Card } from "@/components/ui/Card";
-import { motion } from "framer-motion";
-import { Trophy, ArrowLeft, Medal } from "lucide-react";
-import Link from "next/link";
 
 export function LeaderboardLayout() {
-    // Mock Data for MVP (Replace with Firebase Fetch later)
-    const leaderboard = [
-        { rank: 1, name: "CryptoMom_OG", cookies: 15420, tier: "Based Mom" },
-        { rank: 2, name: "CookieMonster", cookies: 12100, tier: "Far Mom" },
-        { rank: 3, name: "BaseBuilder", cookies: 9800, tier: "Based Kid" },
-        { rank: 4, name: "WarpcastUser", cookies: 8500, tier: "Far Kid" },
-        { rank: 5, name: "MomFan123", cookies: 7200, tier: "Based Mom" },
-    ];
+    const [activeTab, setActiveTab] = useState<"points" | "cookies">("points");
 
     return (
-        <div className="min-h-screen bg-black text-white p-4 md:p-8 flex flex-col items-center relative overflow-hidden">
+        <div className="container mx-auto px-4 py-8 max-w-4xl space-y-8">
+            <div className="text-center space-y-4">
+                <h1 className="text-4xl font-black text-white drop-shadow-lg">
+                    MomCoin Hall of Fame 🏆
+                </h1>
+                <p className="text-xl text-pink-200">
+                    See who is winning the Mom Movement.
+                </p>
 
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-20%] right-[-10%] w-[60%] h-[60%] bg-yellow-900/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[100px]" />
+                {/* Toggle */}
+                <div className="flex justify-center mt-6">
+                    <div className="bg-black/40 p-1 rounded-xl flex gap-2 border border-white/10">
+                        <button
+                            onClick={() => setActiveTab("points")}
+                            className={`px-6 py-2 rounded-lg font-bold transition-all ${activeTab === "points"
+                                    ? "bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg"
+                                    : "text-gray-400 hover:text-white"
+                                }`}
+                        >
+                            Start App Rank 🌟
+                        </button>
+                        <button
+                            onClick={() => setActiveTab("cookies")}
+                            className={`px-6 py-2 rounded-lg font-bold transition-all ${activeTab === "cookies"
+                                    ? "bg-gradient-to-r from-yellow-500 to-orange-600 text-white shadow-lg"
+                                    : "text-gray-400 hover:text-white"
+                                }`}
+                        >
+                            Cookie Jar Rank 🍪
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div className="max-w-2xl w-full relative z-10 space-y-8">
-                {/* Back Link */}
-                <Link href="/" className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Dashboard
-                </Link>
-
-                {/* Header */}
-                <div className="text-center space-y-2">
-                    <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 flex items-center justify-center gap-3">
-                        <Trophy className="w-8 h-8 text-yellow-400" />
-                        Top Moms
-                    </h1>
-                    <p className="text-gray-400">
-                        The most active cookie bakers in the family.
-                    </p>
-                </div>
-
-                {/* List */}
-                <div className="space-y-3">
-                    {leaderboard.map((user, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                        >
-                            <Card className="p-4 flex items-center justify-between bg-white/5 border-white/10 hover:bg-white/10 transition-colors">
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-8 h-8 flex items-center justify-center rounded-full font-bold ${index === 0 ? "bg-yellow-500 text-black" :
-                                            index === 1 ? "bg-gray-400 text-black" :
-                                                index === 2 ? "bg-orange-700 text-white" :
-                                                    "bg-white/10 text-gray-400"
-                                        }`}>
-                                        {user.rank}
-                                    </div>
-                                    <div>
-                                        <p className="font-bold text-white">{user.name}</p>
-                                        <p className="text-xs text-gray-400">{user.tier}</p>
-                                    </div>
-                                </div>
-                                <div className="text-right">
-                                    <p className="font-mono text-yellow-400 font-bold">{user.cookies.toLocaleString()}</p>
-                                    <p className="text-xs text-gray-500">Cookies</p>
-                                </div>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </div>
-
-                <div className="text-center text-xs text-gray-500">
-                    *Top 25 updated daily at midnight UTC.
-                </div>
+            <div className="min-h-[500px]">
+                {activeTab === "points" ? (
+                    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
+                        <div className="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 text-center text-sm text-purple-200">
+                            Daily Tasks + Login Streaks = <b>Mom Power Points</b>
+                        </div>
+                        <Leaderboard />
+                    </div>
+                ) : (
+                    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4">
+                        <div className="bg-orange-900/20 p-4 rounded-xl border border-orange-500/30 text-center text-sm text-orange-200">
+                            Social Fame (Likes/Recasts) = <b>Cookies</b>. Top 25 Daily get Revealed!
+                        </div>
+                        <CookieLeaderboard />
+                    </div>
+                )}
             </div>
         </div>
     );
