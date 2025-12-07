@@ -38,7 +38,7 @@ export const metadata = {
       version: "1",
       imageUrl: "https://app.momcoined.com/mom-visual-5.png",
       button: {
-        title: "Claim Daily Rewards",
+        title: "JOIN AND CLAIM MOMCOIN",
         action: {
           type: "launch_frame",
           name: "MomCoin",
