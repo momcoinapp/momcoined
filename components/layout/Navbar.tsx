@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Trophy, CheckSquare, MessageSquare, Menu, X, Sparkles } from "lucide-react";
+const NAV_ITEMS = [
+    { label: "Dashboard", href: "/", icon: Home },
+    { label: "Earn", href: "/earn", icon: CheckSquare },
+    { label: "Do Good", href: "/impact", icon: Heart },
+    { label: "Learn", href: "/learn", icon: GraduationCap },
+    { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
+    { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
+];
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -21,11 +28,11 @@ import {
 
 const NAV_ITEMS = [
     { label: "Dashboard", href: "/", icon: Home },
-    { label: "Tasks", href: "/tasks", icon: CheckSquare },
-    { label: "Feed", href: "/feed", icon: MessageSquare }, // Replaces "Mom AI" chat link temporarily or adds to it
+    { label: "Earn", href: "/earn", icon: CheckSquare },
+    { label: "Do Good", href: "/impact", icon: Heart },
+    { label: "Learn", href: "/learn", icon: GraduationCap },
     { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
     { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
-    { label: "Buy on Clanker", href: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07", icon: Sparkles, external: true },
 ];
 
 export function Navbar() {
