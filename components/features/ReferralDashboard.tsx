@@ -74,8 +74,8 @@ export default function ReferralDashboard() {
                 <button
                     onClick={() => setActiveTab("general")}
                     className={`flex-1 p-4 text-sm font-bold transition-colors ${activeTab === "general"
-                            ? "bg-purple-500/20 text-white border-b-2 border-purple-500"
-                            : "text-purple-300 hover:bg-white/5"
+                        ? "bg-purple-500/20 text-white border-b-2 border-purple-500"
+                        : "text-purple-300 hover:bg-white/5"
                         }`}
                 >
                     Invite Friends
@@ -83,8 +83,8 @@ export default function ReferralDashboard() {
                 <button
                     onClick={() => setActiveTab("mom")}
                     className={`flex-1 p-4 text-sm font-bold transition-colors ${activeTab === "mom"
-                            ? "bg-pink-500/20 text-white border-b-2 border-pink-500"
-                            : "text-purple-300 hover:bg-white/5"
+                        ? "bg-pink-500/20 text-white border-b-2 border-pink-500"
+                        : "text-purple-300 hover:bg-white/5"
                         }`}
                 >
                     Invite Mom
@@ -125,6 +125,13 @@ export default function ReferralDashboard() {
                             >
                                 <Share2 className="w-5 h-5" />
                                 Share on X
+                            </button>
+                            <button
+                                onClick={() => window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent(`Join me on MomCoin! ${inviteLink}`)}`, "_blank")}
+                                className="flex-1 py-3 bg-[#7C65C1] hover:bg-[#6952A3] text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-colors"
+                            >
+                                <MessageCircle className="w-5 h-5" />
+                                Warpcast
                             </button>
                         </div>
                     </div>
