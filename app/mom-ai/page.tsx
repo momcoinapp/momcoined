@@ -16,7 +16,7 @@ export default function MomAIPage() {
                     MomAI Agent 🤖
                 </h1>
                 <p className="text-gray-300 text-lg">
-                    The smartest Mom in the room. Powered by Gemini 2.0.
+                    MomAI agentic mom to chat and trade with. Powered by Gemini 2.0.
                 </p>
             </div>
 

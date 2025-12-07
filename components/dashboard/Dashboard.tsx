@@ -124,64 +124,56 @@ export default function Dashboard() {
             </div>
 
             {/* Main Action Area */}
-            < div className="grid md:grid-cols-3 gap-6" >
-                {/* Mom AI Agent */}
-                <div className="md:col-span-2">
-                    <MomChat />
+            <div className="grid md:grid-cols-3 gap-6">
+                {/* Mom Market Prediction Game (Top Feature) */}
+                <div className="md:col-span-3">
+                    <MomMarket />
                 </div>
 
-                {/* Daily Claim & News */}
+                {/* Daily Claim (Key Retention) */}
                 <div className="md:col-span-1 space-y-6">
                     <DailyClaim />
-                    <DailyMomNews />
                 </div>
 
-                {/* Social Tasks */}
-                < div className="md:col-span-2" >
-                    <SocialTasks />
-                </div >
+                {/* Leaderboard Teaser */}
+                <div className="md:col-span-2">
+                    <Card className="p-6 flex flex-col items-center justify-center text-center space-y-4 h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 border-white/10">
+                        <Trophy className="w-12 h-12 text-yellow-500" />
+                        <div>
+                            <h3 className="text-xl font-bold text-white">Who is the Best Mom?</h3>
+                            <p className="text-purple-200">Check the rankings for Points and Cookie Jars.</p>
+                        </div>
+                        <a href="/leaderboard" className="px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full font-bold transition-colors">
+                            View Leaderboard 🏆
+                        </a>
+                    </Card>
+                </div>
 
-                {/* Redeem Points */}
-                < div className="md:col-span-1" >
-                    <RedeemPoints />
-                </div >
-
-                {/* Mom Market Prediction Game */}
-                < div className="md:col-span-3" >
-                    <MomMarket />
-                </div >
-
-                {/* Clanker Presale Widget (Replaces Swap) */}
+                {/* Clanker Presale Widget */}
                 <div className="md:col-span-3">
                     <ClankerPresaleWidget />
                 </div>
 
                 {/* Buy MOM Widget (Legacy/External) */}
-                < div className="md:col-span-3" >
+                <div className="md:col-span-3">
                     <BuyMomWidget />
-                </div >
-
+                </div>
 
                 {/* Charity Jar */}
-                < div className="md:col-span-1" >
+                <div className="md:col-span-1">
                     <CharityJar />
-                </div >
+                </div>
 
                 {/* Referral Dashboard */}
-                < div className="md:col-span-1" >
+                <div className="md:col-span-1">
                     <ReferralDashboard />
-                </div >
+                </div>
 
                 {/* Merch Store Teaser */}
-                < div className="md:col-span-1" >
+                <div className="md:col-span-1">
                     <MerchStoreTeaser />
-                </div >
-
-                {/* Social Feed */}
-                < div className="md:col-span-2" >
-                    <SocialFeed />
-                </div >
-            </div >
+                </div>
+            </div>
 
             {/* Modals */}
             {
