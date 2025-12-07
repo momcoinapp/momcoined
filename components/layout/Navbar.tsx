@@ -21,9 +21,10 @@ import {
 
 const NAV_ITEMS = [
     { label: "Dashboard", href: "/", icon: Home },
-    { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
     { label: "Tasks", href: "/tasks", icon: CheckSquare },
-    { label: "Mom AI", href: "/chat", icon: MessageSquare },
+    { label: "Feed", href: "/feed", icon: MessageSquare }, // Replaces "Mom AI" chat link temporarily or adds to it
+    { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
+    { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
     { label: "Buy on Clanker", href: "https://clanker.world/clanker/0x2177bCAC5c26507bfb4F0FF2cCbd255AE4BEDb07", icon: Sparkles, external: true },
 ];
 
