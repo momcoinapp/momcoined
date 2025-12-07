@@ -20,21 +20,30 @@ export const metadata = {
   description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
   manifest: "/manifest.json",
   other: {
-    "fc:frame": "vNext",
-    "fc:frame:image": "https://momcoined.com/og-image.png",
-    "fc:frame:button:1": "Mint Cookie Jar 🍪",
-    "fc:frame:button:1:action": "link",
-    "fc:frame:button:1:target": "https://app.momcoined.com/cookiejar",
-    "fc:miniapp": JSON.stringify({
-      version: "1",
-      imageUrl: "https://momcoined.com/og-image.png",
+    "fc:frame": JSON.stringify({
+      version: "next",
+      imageUrl: "https://app.momcoined.com/mom-visual-5.png",
       button: {
-        title: "Mint MomCoin Jar",
+        title: "Claim FREE $MomCoin! 🚀",
         action: {
           type: "launch_frame",
           name: "MomCoin",
-          url: "https://app.momcoined.com/cookiejar",
-          splashImageUrl: "https://momcoined.com/splash.png",
+          url: "https://app.momcoined.com",
+          splashImageUrl: "https://app.momcoined.com/mom-visual-5.png",
+          splashBackgroundColor: "#ec4899"
+        }
+      }
+    }),
+    "fc:miniapp": JSON.stringify({
+      version: "1",
+      imageUrl: "https://app.momcoined.com/mom-visual-5.png",
+      button: {
+        title: "Claim FREE $MomCoin! 🚀",
+        action: {
+          type: "launch_frame",
+          name: "MomCoin",
+          url: "https://app.momcoined.com",
+          splashImageUrl: "https://app.momcoined.com/mom-visual-5.png",
           splashBackgroundColor: "#ec4899"
         }
       }
