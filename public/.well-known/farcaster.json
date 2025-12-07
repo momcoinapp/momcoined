@@ -4,14 +4,26 @@
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
         "signature": "LBU75tSBK4He0BHsfTpEGvGAWaWOrYXz32JjE1L2buZVt5qydqZBKWykHaOUAJ0SuIcNIwnVsNR1EuJAmkFF2xw="
     },
+    "miniapp": {
+        "version": "1",
+        "name": "MomCoin",
+        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
+        "homeUrl": "https://app.momcoined.com",
+        "description": "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
+        "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
+        "buttonTitle": "Daily Claim",
+        "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
+        "splashBackgroundColor": "#ec4899",
+        "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event"
+    },
     "frame": {
         "version": "1",
         "name": "MomCoin",
-        "iconUrl": "https://app.momcoined.com/og-image.png",
+        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
-        "imageUrl": "https://app.momcoined.com/og-image.png",
-        "buttonTitle": "Mint MomCoin Jar",
-        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
+        "buttonTitle": "Daily Claim",
+        "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
         "splashBackgroundColor": "#ec4899",
         "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event"
     },
