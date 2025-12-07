@@ -1,14 +1,3 @@
-"accountAssociation": {
-    "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhlYTFCQTQ4MjVjQTA3MjQ0YThEOWFmYjBhOEM4NmJiMGZmNzI4OTBCIn0",
-    "payload": "eyJkb21haW4iOiJtb21jb2luLnZlcmNlbC5hcHAifQ",
-    "signature": "IoagGal2/gnrIo+tGZEBQbQp+Zn80GmwRn1/WxiffOs1SNRpY35Zeg6HarYwZXJEzqW+dNq1IJDAK3D6N1tlcxw="
-},
-"miniapp": {
-    "version": "1",
-    "name": "MomCoin App",
-    "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
-    "homeUrl": "https://momcoin.vercel.app",
-    "description": "Experience the future of social networking for Moms. Daily claims, agentic trading, and charity.",
     "subtitle": "Earn daily rewards & connect with other moms.",
     "base"
 ],
