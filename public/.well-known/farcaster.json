@@ -1,52 +1,51 @@
-{
-    "accountAssociation": {
-        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
-        "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
-        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
-    },
-    "miniapp": {
-        "version": "1",
-        "name": "MomCoin App",
-        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
-        "homeUrl": "https://app.momcoined.com",
-        "description": "Experience the future of social networking for Moms. Daily claims, agentic trading, and charity.",
-        "subtitle": "Earn daily rewards & connect with other moms.",
-        "base"
-    ],
-    "tagline": "Grow, Raid & Rise with Mom",
-    "ogTitle": "MomCoin - Daily Claims & Rewards",
-    "ogDescription": "Join the Mom Movement. Claim free $MOMCOIN, mint your Cookie Jar, and fight for families.",
-    "ogImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-    "castShareUrl": "https://warpcast.com/~/compose?text=I%20just%20claimed%20my%20daily%20%24MOM!%20Join%20the%20movement%20on%20Base.%20%40momcoin"
+"accountAssociation": {
+    "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhlYTFCQTQ4MjVjQTA3MjQ0YThEOWFmYjBhOEM4NmJiMGZmNzI4OTBCIn0",
+    "payload": "eyJkb21haW4iOiJtb21jb2luLnZlcmNlbC5hcHAifQ",
+    "signature": "IoagGal2/gnrIo+tGZEBQbQp+Zn80GmwRn1/WxiffOs1SNRpY35Zeg6HarYwZXJEzqW+dNq1IJDAK3D6N1tlcxw="
 },
-"frame": {
-    "version": "vNext",
+"miniapp": {
+    "version": "1",
     "name": "MomCoin App",
     "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
-    "homeUrl": "https://app.momcoined.com",
-    "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
-    "buttonTitle": "JOIN AND CLAIM MOMCOIN",
-    "splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-    "splashBackgroundColor": "#ec4899",
-    "buttons": [
-        {
-            "label": "🎁 Claim Daily Rewards",
-            "action": "link",
-            "target": "https://app.momcoined.com/earn"
-        },
-        {
-            "label": "💰 Mint Cookie Jar",
-            "action": "link",
-            "target": "https://app.momcoined.com/frame/mint-nft"
-        },
-        {
-            "label": "💬 Chat With Mom",
-            "action": "link",
-            "target": "https://app.momcoined.com/mom-ai"
-        }
-    ]
+    "homeUrl": "https://momcoin.vercel.app",
+    "description": "Experience the future of social networking for Moms. Daily claims, agentic trading, and charity.",
+    "subtitle": "Earn daily rewards & connect with other moms.",
+    "base"
+],
+"tagline": "Grow, Raid & Rise with Mom",
+"ogTitle": "MomCoin - Daily Claims & Rewards",
+"ogDescription": "Join the Mom Movement. Claim free $MOMCOIN, mint your Cookie Jar, and fight for families.",
+"ogImageUrl": "https://app.momcoined.com/mom-visual-5.png",
+"castShareUrl": "https://warpcast.com/~/compose?text=I%20just%20claimed%20my%20daily%20%24MOM!%20Join%20the%20movement%20on%20Base.%20%40momcoin"
+},
+"frame": {
+"version": "vNext",
+"name": "MomCoin App",
+"iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
+"homeUrl": "https://app.momcoined.com",
+"imageUrl": "https://app.momcoined.com/mom-visual-5.png",
+"buttonTitle": "JOIN AND CLAIM MOMCOIN",
+"splashImageUrl": "https://app.momcoined.com/mom-visual-5.png",
+"splashBackgroundColor": "#ec4899",
+"buttons": [
+    {
+        "label": "🎁 Claim Daily Rewards",
+        "action": "link",
+        "target": "https://app.momcoined.com/earn"
+    },
+    {
+        "label": "💰 Mint Cookie Jar",
+        "action": "link",
+        "target": "https://app.momcoined.com/frame/mint-nft"
+    },
+    {
+        "label": "💬 Chat With Mom",
+        "action": "link",
+        "target": "https://app.momcoined.com/mom-ai"
+    }
+]
 },
 "baseBuilder": {
-    "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+"ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
 }
 }
