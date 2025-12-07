@@ -2,14 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-const NAV_ITEMS = [
-    { label: "Dashboard", href: "/", icon: Home },
-    { label: "Earn", href: "/earn", icon: CheckSquare },
-    { label: "Do Good", href: "/impact", icon: Heart },
-    { label: "Learn", href: "/learn", icon: GraduationCap },
-    { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
-    { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
-];
+import { Home, Trophy, CheckSquare, MessageSquare, Menu, X, Sparkles, Heart, GraduationCap } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -66,7 +59,7 @@ export function Navbar() {
 
                     {/* Center Claim Button (Desktop) */}
                     <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Link href="/tasks" className="group relative flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border border-yellow-500/30 px-4 py-1.5 rounded-full transition-all hover:scale-105">
+                        <Link href="/earn" className="group relative flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border border-yellow-500/30 px-4 py-1.5 rounded-full transition-all hover:scale-105">
                             <div className="relative">
                                 <div className="absolute inset-0 bg-yellow-500 blur-sm opacity-50 group-hover:opacity-100 animate-pulse"></div>
                                 <div className="relative w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white border border-yellow-300 shadow-lg">
