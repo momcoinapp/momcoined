@@ -20,54 +20,46 @@ export const metadata = {
   description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
   manifest: "/manifest.json",
   other: {
-    "fc:frame": JSON.stringify({
-      version: "next",
-      imageUrl: "https://app.momcoined.com/mom-visual-5.png",
-      button: {
-        title: "Claim FREE $MomCoin! 🚀",
-        action: {
-          type: "launch_frame",
-          "fc:frame": "vNext",
-          "fc:frame:image": "https://app.momcoined.com/mom-visual-5.png",
-          "fc:frame:button:1": "🍪 Fill Cookie Jar (Free)",
-          "fc:frame:button:1:action": "link",
-          "fc:frame:button:1:target": "https://app.momcoined.com/earn",
-          "fc:frame:button:2": "🏠 $5 Instant Mint",
-          "fc:frame:button:2:action": "link",
-          "fc:frame:button:2:target": "https://app.momcoined.com/nfts",
-          "fc:miniapp": "1",
-          "fc:miniapp:action": "launch_frame",
-          "fc:miniapp:name": "MomCoin Cookie Jar",
-          "fc:miniapp:button": "Fill Cookie Jar (Free)",
-          "fc:miniapp:icon": "https://app.momcoined.com/mom-coin-logo.jpg",
-          "baseBuilder": JSON.stringify({
-            "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
-          }),
-        },
-      };
+    "fc:frame": "vNext",
+    "fc:frame:image": "https://app.momcoined.com/mom-visual-5.png",
+    "fc:frame:button:1": "🍪 Fill Cookie Jar (Free)",
+    "fc:frame:button:1:action": "link",
+    "fc:frame:button:1:target": "https://app.momcoined.com/earn",
+    "fc:frame:button:2": "🏠 $5 Instant Mint",
+    "fc:frame:button:2:action": "link",
+    "fc:frame:button:2:target": "https://app.momcoined.com/nfts",
+    "fc:miniapp": "1",
+    "fc:miniapp:action": "launch_frame",
+    "fc:miniapp:name": "MomCoin Cookie Jar",
+    "fc:miniapp:button": "Fill Cookie Jar (Free)",
+    "fc:miniapp:icon": "https://app.momcoined.com/mom-coin-logo.jpg",
+    "baseBuilder": JSON.stringify({
+      "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+    }),
+  },
 
 
-      export default function RootLayout({
-        children,
-      }: Readonly<{
-        children: React.ReactNode;
-      }>) {
-      return(
-    <html lang = "en" >
-          <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-            <FarcasterProvider>
-              <Providers>
-                <div className="particles" />
-                <Navbar />
-                <main className="min-h-screen flex flex-col pt-16">
-                  {children}
-                  <Footer />
-                </main>
-                <FloatingMomAI />
-                <Toaster position="bottom-center" />
-              </Providers>
-            </FarcasterProvider>
-          </body>
-    </html >
-  );
+  export default function RootLayout({
+    children,
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
+    return(
+      <html lang="en" >
+        <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+          <FarcasterProvider>
+            <Providers>
+              <div className="particles" />
+              <Navbar />
+              <main className="min-h-screen flex flex-col pt-16">
+                {children}
+                <Footer />
+              </main>
+              <FloatingMomAI />
+              <Toaster position="bottom-center" />
+            </Providers>
+          </FarcasterProvider>
+        </body>
+      </html >
+    );
 }
