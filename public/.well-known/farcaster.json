@@ -1,19 +1,30 @@
+{
+    "accountAssociation": {
+        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
+        "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
+        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
+    },
+    "frame": {
+        "version": "1",
+        "name": "MomCoin",
+        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "buttonTitle": "Claim Daily $MOM → Start Earning",
+        "buttonTitle": "Start Earning $MOM",
         "splashImageUrl": "https://app.momcoined.com/meme-mom-1.png",
         "splashBackgroundColor": "#ec4899",
         "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event",
+        "subtitle": "The Meme That Trades Like a Boss Mom",
+        "description": "Join the Mom Movement! Earn $MOM, mint interactions, and trade with MomAI. Daily claims and rewards for making Mom proud.",
+        "tagline": "Make Mom Proud Again",
         "primaryCategory": "social",
         "tags": [
-            "dailyrewards",
-            "momai",
-            "tasks",
-            "momcoin",
-            "familybuilt",
-            "onboarding",
-            "charity",
-            "base"
+            "crypto",
+            "meme",
+            "social",
+            "base",
+            "mom",
+            "dailyrewards"
         ],
         "heroImageUrl": "https://app.momcoined.com/meme-mom-2.png",
         "screenshotUrls": [
@@ -21,13 +32,10 @@
             "https://app.momcoined.com/meme-mom-2.png",
             "https://app.momcoined.com/mom-visual-5.png"
         ],
-        "ogTitle": "MomCoin • Free Daily Claims + MomAI Trades Coming Soon",
-        "ogDescription": "Earn $MOM via tasks & chats • Race leaderboards for BaseMomz perks • Real charity for moms/kids • Wholesome crypto by a mom-son team",
+        "ogTitle": "MomCoin - Make Mom Proud Again",
+        "ogDescription": "The first meme coin ecosystem for Moms. Daily rewards, AI trading, and charity.",
         "ogImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "castShareUrl": "https://warpcast.com/~/compose?text=Claimed%20my%20free%20daily%20%24MOM%20on%20%40momcoin%20🍪%20Tasks%2C%20MomAI%20chats%2C%20+%20charity%20impact%20%E2%9D%A4%EF%B8%8F%20Top%2025%20unlocks%20rare%20BaseMomz!%20https://app.momcoined.com",
-        "requiredChains": [
-            "eip155:8453"
-        ]
+        "castShareUrl": "https://warpcast.com/~/compose?text=Just%20joined%20MomCoin!%20%F0%9F%8D%AA%20Make%20Mom%20Proud%20Again.&embeds[]=https://app.momcoined.com"
     },
     "baseBuilder": {
         "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
