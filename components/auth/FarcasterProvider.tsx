@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import sdk from "@farcaster/miniapp-sdk";
 
 const config = {
-    rpcUrl: "https://mainnet.optimism.io",
+    rpcUrl: "https://mainnet.base.org",
     domain: "momcoined.com",
     siweUri: "https://momcoined.com/login",
 };
