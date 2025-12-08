@@ -1,15 +1,3 @@
-{
-    "accountAssociation": {
-        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJhdXRoIiwia2V5IjoiMHhlYTFCQTQ4MjVjQTA3MjQ0YThEOWFmYjBhOEM4NmJiMGZmNzI4OTBCIn0",
-        "payload": "eyJkb21haW4iOiJtb21jb2luLnZlcmNlbC5hcHAifQ",
-        "signature": "IoagGal2/gnrIo+tGZEBQbQp+Zn80GmwRn1/WxiffOs1SNRpY35Zeg6HarYwZXJEzqW+dNq1IJDAK3D6N1tlcxw="
-    },
-    "miniapp": {
-        "version": "1",
-        "name": "MomCoin",
-        "subtitle": "Daily free $MOM claims • Tasks & MomAI chats • Built by mom & son",
-        "description": "Claim free $MOM daily, crush tasks for bonus earns, chat with MomAI (trade guidance soon!), and fill Cookie Jars to race Top 25 leaderboards—unlock rare BaseMomz/Kidz NFTs as perks. Every action helps homeless moms & kids with transparent onchain charity. Made by a real mom-son duo onboarding millions: learn crypto, do good, make moms proud. Much more incoming—join the movement! 💖🍪",
-        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
         "buttonTitle": "Claim Daily $MOM → Start Earning",
