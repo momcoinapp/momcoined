@@ -11,6 +11,36 @@ const nextConfig = {
     config.resolve.fallback = { fs: false, net: false, tls: false };
     return config;
   },
+  async headers() {
+    return [
+      {
+        source: "/.well-known/farcaster.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      {
+        source: "/manifest.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/manifest+json"
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*"
+          }
+        ]
+      }
+    ];
+  },
 };
 
 export default nextConfig;
