@@ -1,6 +1,6 @@
 "use client";
 
-import NFTMintPromo from "@/components/features/NFTMintPromo";
+import { NFTMintPromo } from "@/components/features/NFTMintPromo";
 import { Cookie } from "lucide-react";
 
 export default function NFTsPage() {

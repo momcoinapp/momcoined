@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Trophy, CheckSquare, MessageSquare, Menu, X, Sparkles, Heart, GraduationCap, Cookie } from "lucide-react";
+import { Home, Trophy, CheckSquare, MessageSquare, Menu, X, Sparkles, Heart, GraduationCap, Gift } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -22,7 +22,7 @@ import {
 const NAV_ITEMS = [
     { label: "Dashboard", href: "/", icon: Home },
     { label: "Earn", href: "/earn", icon: CheckSquare },
-    { label: "NFTs", href: "/nfts", icon: Cookie },
+    { label: "NFTs", href: "/nfts", icon: Gift },
     { label: "Do Good", href: "/impact", icon: Heart },
     { label: "Learn", href: "/learn", icon: GraduationCap },
     { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
