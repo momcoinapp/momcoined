@@ -33,9 +33,7 @@ export const metadata = {
     "fc:miniapp:name": "MomCoin",
     "fc:miniapp:button": "Claim Daily $MOM",
     "fc:miniapp:icon": "https://app.momcoined.com/icon.png",
-    "baseBuilder": JSON.stringify({
-      "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
-    }),
+    "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
   },
 };
 

@@ -49,37 +49,8 @@ export default function Home() {
       </div>
 
       {/* Header */}
-      <header className="border-b border-white/10 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white font-black shadow-lg shadow-pink-500/20 text-xl border-2 border-white/20">
-              M
-            </div>
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-600 hidden sm:block">
-              MomCoin
-            </span>
-          </div>
-
-          <div className="flex items-center gap-4">
-            {isConnected && (
-              <div className="hidden md:flex items-center gap-4 text-sm font-medium text-gray-300 bg-white/5 px-4 py-2 rounded-full border border-white/10">
-                <span className="text-pink-400 font-bold">{userData?.momBalance?.toLocaleString() ?? 0} $MOM</span>
-                <span className="w-px h-4 bg-white/10" />
-                <span className="text-purple-400">{userData?.leaderboardScore?.toLocaleString() ?? 0} Cookies</span>
-              </div>
-            )}
-            <Button
-              onClick={isConnected ? () => disconnect() : handleLogin}
-              variant={isConnected ? "outline" : "primary"}
-              className={isConnected
-                ? "border-pink-500/50 text-pink-500 hover:bg-pink-500/10 rounded-full"
-                : "bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 shadow-lg shadow-pink-600/20 border-none rounded-full font-bold px-6"}
-            >
-              {isConnected ? "Disconnect" : "Connect Wallet"}
-            </Button>
-          </div>
-        </div>
-      </header>
+      {/* Header removed (Duplicate of Navbar) */}
+      <div className="h-16" /> {/* Spacer for fixed Navbar */}
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center min-h-screen pb-20">
