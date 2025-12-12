@@ -6,38 +6,13 @@
     },
     "frame": {
         "version": "1",
-        "name": "MomCoin",
-        "iconUrl": "https://app.momcoined.com/mom-coin-logo.jpg",
+        "name": "MomCoin: Based Family",
+        "iconUrl": "https://app.momcoined.com/icon.png",
         "homeUrl": "https://app.momcoined.com",
-        "imageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "buttonTitle": "Start Earning $MOM",
-        "splashImageUrl": "https://app.momcoined.com/meme-mom-1.png",
-        "splashBackgroundColor": "#ec4899",
-        "webhookUrl": "https://api.neynar.com/f/app/b5a99cd5-bf47-4816-8cf4-101c0a18bc13/event",
-        "subtitle": "The Meme That Trades Like a Boss Mom",
-        "description": "Join the Mom Movement! Earn $MOM, mint interactions, and trade with MomAI. Daily claims and rewards for making Mom proud.",
-        "tagline": "Make Mom Proud Again",
-        "primaryCategory": "social",
-        "tags": [
-            "crypto",
-            "meme",
-            "social",
-            "base",
-            "mom",
-            "dailyrewards"
-        ],
-        "heroImageUrl": "https://app.momcoined.com/meme-mom-2.png",
-        "screenshotUrls": [
-            "https://app.momcoined.com/meme-mom-1.png",
-            "https://app.momcoined.com/meme-mom-2.png",
-            "https://app.momcoined.com/mom-visual-5.png"
-        ],
-        "ogTitle": "MomCoin - Make Mom Proud Again",
-        "ogDescription": "The first meme coin ecosystem for Moms. Daily rewards, AI trading, and charity.",
-        "ogImageUrl": "https://app.momcoined.com/mom-visual-5.png",
-        "castShareUrl": "https://warpcast.com/~/compose?text=Just%20joined%20MomCoin!%20%F0%9F%8D%AA%20Make%20Mom%20Proud%20Again.&embeds[]=https://app.momcoined.com"
-    },
-    "baseBuilder": {
-        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+        "imageUrl": "https://app.momcoined.com/image.png",
+        "buttonTitle": "Claim FREE $MomCoin",
+        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashBackgroundColor": "#eeccff",
+        "webhookUrl": "https://app.momcoined.com/api/webhook"
     }
 }

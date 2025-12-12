@@ -21,7 +21,7 @@ export const metadata = {
   manifest: "/manifest.json",
   other: {
     "fc:frame": "vNext",
-    "fc:frame:image": "https://app.momcoined.com/mom-visual-5.png",
+    "fc:frame:image": "https://app.momcoined.com/image.png",
     "fc:frame:button:1": "🍪 Claim Daily $MOM",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": "https://app.momcoined.com/earn",
@@ -32,34 +32,34 @@ export const metadata = {
     "fc:miniapp:action": "launch_frame",
     "fc:miniapp:name": "MomCoin",
     "fc:miniapp:button": "Claim Daily $MOM",
-    "fc:miniapp:icon": "https://app.momcoined.com/mom-coin-logo.jpg",
+    "fc:miniapp:icon": "https://app.momcoined.com/icon.png",
     "baseBuilder": JSON.stringify({
       "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
     }),
   },
+};
 
-
-  export default function RootLayout({
-    children,
-  }: Readonly<{
-    children: React.ReactNode;
-  }>) {
-    return(
-      <html lang="en" >
-        <body className={`${inter.variable} ${poppins.variable} font-sans`}>
-          <FarcasterProvider>
-            <Providers>
-              <div className="particles" />
-              <Navbar />
-              <main className="min-h-screen flex flex-col pt-16">
-                {children}
-                <Footer />
-              </main>
-              <FloatingMomAI />
-              <Toaster position="bottom-center" />
-            </Providers>
-          </FarcasterProvider>
-        </body>
-      </html >
-    );
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" >
+      <body className={`${inter.variable} ${poppins.variable} font-sans`}>
+        <FarcasterProvider>
+          <Providers>
+            <div className="particles" />
+            <Navbar />
+            <main className="min-h-screen flex flex-col pt-16">
+              {children}
+              <Footer />
+            </main>
+            <FloatingMomAI />
+            <Toaster position="bottom-center" />
+          </Providers>
+        </FarcasterProvider>
+      </body>
+    </html >
+  );
 }
