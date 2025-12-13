@@ -20,7 +20,7 @@ export function TokenomicsTeaser() {
                 <div className="flex-1 space-y-6">
                     <h2 className="text-4xl font-black text-white">Mom's Secret Recipe 📜</h2>
                     <p className="text-xl text-gray-300">
-                        Not your average memecoin. $MOM is baked with fair mechanics and long-term sustainability. No rugs, just hugs.
+                        Not your average memecoin. $MomCoin is baked with fair mechanics and long-term sustainability. No rugs, just hugs.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">

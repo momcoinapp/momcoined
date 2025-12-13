@@ -24,6 +24,7 @@ const NAV_ITEMS = [
     { label: "Earn", href: "/earn", icon: CheckSquare },
     { label: "NFTs", href: "/nfts", icon: Gift },
     { label: "Do Good", href: "/impact", icon: Heart },
+    { label: "Predict", href: "/predictions", icon: Sparkles },
     { label: "Learn", href: "/learn", icon: GraduationCap },
     { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
     { label: "Leaderboard", href: "/leaderboard", icon: Trophy },

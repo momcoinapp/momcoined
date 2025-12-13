@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { BarChart3, ArrowLeft, DollarSign, Users, Flame } from "lucide-react";
 import Link from "next/link";
+import { ClankerPresaleWidget } from "@/components/features/ClankerPresaleWidget";
 
 export function StatsLayout() {
     // Mock Data (Replace with real API calls to Basescan/DexScreener)
@@ -59,6 +60,8 @@ export function StatsLayout() {
                         </motion.div>
                     ))}
                 </div>
+
+                <ClankerPresaleWidget />
 
                 {/* Chart Placeholder */}
                 {/* Chart Embed */}

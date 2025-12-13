@@ -63,6 +63,12 @@ export function NFTMintPromo() {
                 functionName: "mintJarETH",
                 args: [],
                 value: parseEther("0.0003"),
+                // @ts-ignore
+                capabilities: {
+                    paymasterService: {
+                        url: process.env.NEXT_PUBLIC_PAYMASTER_URL || "https://api.developer.coinbase.com/rpc/v1/base/sb", // Fallback or Env
+                    }
+                }
             });
             toast.success("Cookie Jar Minted! 🍪");
         } catch (error) {

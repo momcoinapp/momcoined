@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
-import Dashboard from "@/components/dashboard/Dashboard";
 import { useEffect, useState } from "react";
 import { NFTMintPromo } from "@/components/features/NFTMintPromo";
 import MomSwap from "@/components/features/MomSwap";
@@ -55,106 +54,107 @@ export default function Home() {
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center min-h-screen pb-20">
 
-        {isConnected && userData ? (
-          <div className="w-full max-w-7xl px-4 pt-8">
-            <Dashboard />
-          </div>
-        ) : (
-          <div className="w-full flex-1 flex flex-col items-center">
+        <div className="w-full flex-1 flex flex-col items-center">
 
-            {/* HERO SECTION */}
-            <section className="w-full max-w-6xl px-4 pt-12 md:pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          {/* HERO SECTION */}
+          <section className="w-full max-w-6xl px-4 pt-12 md:pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
-              {/* Left Column: Text & CTA */}
-              <div className="flex-1 text-center lg:text-left space-y-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[1.1] mb-6 drop-shadow-sm">
-                    MomCoin: The Meme That <br />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 animate-gradient-x">
-                      Trades Like a Boss 🚀
-                    </span>
-                  </h1>
-                  <p className="text-xl md:text-2xl text-gray-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                    Join the movement. Mint cookies, earn crypto, and make Mom proud again.
-                    <span className="block mt-2 text-pink-400/80 text-base">Wait... is that a cookie jar? 👇</span>
-                  </p>
-                </motion.div>
+            {/* Left Column: Text & CTA */}
+            <div className="flex-1 text-center lg:text-left space-y-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[1.1] mb-6 drop-shadow-sm">
+                  MomCoin: The Meme That <br />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 animate-gradient-x">
+                    Trades Like a Boss 🚀
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-gray-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                  Join the movement. Mint cookies, earn crypto, and make Mom proud again.
+                  <span className="block mt-2 text-pink-400/80 text-base">Wait... is that a cookie jar? 👇</span>
+                </p>
+              </motion.div>
 
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.8 }}
-                >
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
+                {isConnected ? (
+                  <Button size="lg" onClick={() => window.location.href = '/earn'} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-105 transition-all shadow-xl shadow-green-600/30 border-none font-bold">
+                    Go to Dashboard 🚀
+                  </Button>
+                ) : (
                   <Button size="lg" onClick={handleLogin} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 transition-all shadow-xl shadow-pink-600/30 border-none font-bold">
                     Start Minting 🍪
                   </Button>
-                  <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm">
-                    Invite Mom 💌
-                  </Button>
-                </motion.div>
+                )}
 
-                <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-400 font-mono pt-4">
-                  <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live on Base</div>
-                  <div>•</div>
-                  <div>12,403 Moms Joined</div>
-                </div>
-              </div>
-
-              {/* Right Column: Visual Interaction */}
-              <motion.div
-                className="flex-1 w-full max-w-md perspective-1000"
-                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ type: "spring", duration: 1.5 }}
-              >
-                {/* Replaced Static Image with Interactive Slider */}
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-[2.5rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-                  <CookieJarSlider />
-
-                  {/* Floating Emojis */}
-                  <motion.div animate={{ y: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-6 -right-6 text-6xl drop-shadow-lg">✨</motion.div>
-                  <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute -bottom-8 -left-8 text-6xl drop-shadow-lg">🟣</motion.div>
-                </div>
+                <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm">
+                  Invite Mom 💌
+                </Button>
               </motion.div>
 
-            </section>
-
-            {/* FEATURES / SOCIAL PROOF SNAPSHOT */}
-            <section className="w-full max-w-6xl px-4 py-16 border-t border-white/5">
-              <div className="grid md:grid-cols-3 gap-8">
-                {[
-                  { title: "Mint & Earn", icon: "🍪", desc: "Fill jars to unlock rarity tiers and $MOM airdrops." },
-                  { title: "Viral Referrals", icon: "💌", desc: "Invite family for bonus multipliers. Mom gets perks too!" },
-                  { title: "Mom AI Agent", icon: "🤖", desc: "Your personal crypto guide. Warning: She judges your trades." }
-                ].map((feature, i) => (
-                  <Card key={i} className="p-8 bg-white/5 border-white/10 hover:bg-white/10 transition-colors backdrop-blur-sm rounded-3xl group cursor-default relative overflow-hidden">
-                    <div className="absolute top-0 right-0 p-8 opacity-10 font-black text-9xl group-hover:scale-110 transition-transform select-none">{feature.icon}</div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-4">{feature.icon}</div>
-                      <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
-                      <p className="text-gray-400 leading-relaxed font-medium">{feature.desc}</p>
-                    </div>
-                  </Card>
-                ))}
+              <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-400 font-mono pt-4">
+                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live on Base</div>
+                <div>•</div>
+                <div>12,403 Moms Joined</div>
               </div>
-            </section>
-
-            {/* Moms Journey Timeline */}
-            <div className="w-full bg-black/40 backdrop-blur-3xl -mx-4 py-16 mt-20 border-y border-white/5">
-              <MomsJourney />
             </div>
 
-            {/* Tokenomics */}
-            <TokenomicsTeaser />
+            {/* Right Column: Visual Interaction */}
+            <motion.div
+              className="flex-1 w-full max-w-md perspective-1000"
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ type: "spring", duration: 1.5 }}
+            >
+              {/* Replaced Static Image with Interactive Slider */}
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-[2.5rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+                <CookieJarSlider />
 
+                {/* Floating Emojis */}
+                <motion.div animate={{ y: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-6 -right-6 text-6xl drop-shadow-lg">✨</motion.div>
+                <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute -bottom-8 -left-8 text-6xl drop-shadow-lg">🟣</motion.div>
+              </div>
+            </motion.div>
+
+          </section>
+
+          {/* FEATURES / SOCIAL PROOF SNAPSHOT */}
+          <section className="w-full max-w-6xl px-4 py-16 border-t border-white/5">
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { title: "Mint & Earn", icon: "🍪", desc: "Fill jars to unlock rarity tiers and $MomCoin airdrops." },
+                { title: "Viral Referrals", icon: "💌", desc: "Invite family for bonus multipliers. Mom gets perks too!" },
+                { title: "Mom AI Agent", icon: "🤖", desc: "Your personal crypto guide. Warning: She judges your trades." }
+              ].map((feature, i) => (
+                <Card key={i} className="p-8 bg-white/5 border-white/10 hover:bg-white/10 transition-colors backdrop-blur-sm rounded-3xl group cursor-default relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-8 opacity-10 font-black text-9xl group-hover:scale-110 transition-transform select-none">{feature.icon}</div>
+                  <div className="relative z-10">
+                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-gray-400 leading-relaxed font-medium">{feature.desc}</p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </section>
+
+          {/* Moms Journey Timeline */}
+          <div className="w-full bg-black/40 backdrop-blur-3xl -mx-4 py-16 mt-20 border-y border-white/5">
+            <MomsJourney />
           </div>
-        )}
+
+          {/* Tokenomics */}
+          <TokenomicsTeaser />
+
+        </div>
       </main>
     </div>
   );

@@ -19,20 +19,31 @@
     ],
     "description": "Empowering moms with crypto. Daily claims, social tasks, and rewards in the MomCoin ecosystem.",
     "categories": [
-        "finance",
+        "social"
+    ],
+    "tags": [
         "social",
-        "games"
+        "crypto",
+        "family",
+        "earning",
+        "fun"
     ],
     "screenshots": [
         {
-            "src": "/image.png",
-            "sizes": "1200x630",
+            "src": "/screenshot1.png",
+            "sizes": "1284x2778",
             "type": "image/png",
-            "form_factor": "wide"
+            "form_factor": "narrow"
         },
         {
-            "src": "/splash.png",
-            "sizes": "600x600",
+            "src": "/screenshot2.png",
+            "sizes": "1284x2778",
+            "type": "image/png",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/screenshot3.png",
+            "sizes": "1284x2778",
             "type": "image/png",
             "form_factor": "narrow"
         }

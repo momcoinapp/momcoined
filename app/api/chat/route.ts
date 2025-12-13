@@ -29,7 +29,7 @@ export async function POST(req: Request) {
                 },
                 {
                     role: "model",
-                    parts: [{ text: "I'm MomAI, your crypto mother! I'm here to make sure you're eating well and stacking $MOM." }],
+                    parts: [{ text: "I'm MomAI, your crypto mother! I'm here to make sure you're eating well and stacking $MomCoin." }],
                 },
             ],
         });

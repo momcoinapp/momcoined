@@ -1,4 +1,5 @@
 import SocialTasks from "@/components/features/SocialTasks";
+import { DailyClaim } from "@/components/features/DailyClaim";
 import { Metadata } from "next";
 import { Coins, Sparkles } from "lucide-react";
 
@@ -23,6 +24,7 @@ export default function EarnPage() {
                 </p>
             </div>
 
+            <DailyClaim />
             <SocialTasks />
         </div>
     );
