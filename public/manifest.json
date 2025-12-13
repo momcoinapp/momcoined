@@ -17,6 +17,28 @@
             "type": "image/png"
         }
     ],
+    "description": "Empowering moms with crypto. Daily claims, social tasks, and rewards in the MomCoin ecosystem.",
+    "categories": [
+        "finance",
+        "social",
+        "games"
+    ],
+    "screenshots": [
+        {
+            "src": "/image.png",
+            "sizes": "1200x630",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/splash.png",
+            "sizes": "600x600",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ],
+    "orientation": "portrait",
+    "scope": "/",
     "frame": {
         "version": "1",
         "name": "MomCoin",
