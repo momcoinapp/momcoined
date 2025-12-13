@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Heart, HandHeart, Home, ShieldCheck } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { CharityJar } from "@/components/features/CharityJar";
 
 export const metadata: Metadata = {
     title: "Mom's Mission | Fight Trafficking",
@@ -68,6 +69,7 @@ export default function ImpactPage() {
                     "Every blockchain needs a Mom. Every survivor needs a home."
                 </p>
             </div>
+            <CharityJar />
         </div>
     );
 }

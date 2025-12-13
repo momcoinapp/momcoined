@@ -37,7 +37,7 @@ export const metadata = {
   other: {
     "fc:frame": "vNext",
     "fc:frame:image": "https://app.momcoined.com/image.png",
-    "fc:frame:button:1": "🍪 Claim Daily $MOM",
+    "fc:frame:button:1": "🍪 Claim Daily $MomCoin",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": "https://app.momcoined.com/earn",
     "fc:frame:button:2": "🏠 Mint Mom/Kid NFT",
@@ -46,7 +46,7 @@ export const metadata = {
     "fc:miniapp": "1",
     "fc:miniapp:action": "launch_frame",
     "fc:miniapp:name": "MomCoin",
-    "fc:miniapp:button": "Claim Daily $MOM",
+    "fc:miniapp:button": "Claim Daily $MomCoin",
     "fc:miniapp:icon": "https://app.momcoined.com/icon.png",
     "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
   },
