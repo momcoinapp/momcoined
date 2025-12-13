@@ -3,8 +3,10 @@
 "use client";
 
 import { Card } from "@/components/ui/Card";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as motionOriginal, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
+
+const motion = motionOriginal as any;
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { toast } from "react-hot-toast";
 import { useWriteContract, useReadContract, useSwitchChain, useChainId } from "wagmi";
@@ -117,13 +119,11 @@ export function NFTMintPromo() {
     };
 
     return (
-        {/* @ts-ignore */ }
-        < motion.div
-            initial = {{ opacity: 0, scale: 0.95 }
-}
-animate = {{ opacity: 1, scale: 1 }}
-className = "w-full"
-    >
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-full"
+        >
             <Card className="p-6 bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-purple-500/30 backdrop-blur-md overflow-hidden relative min-h-[200px]">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                     <Sparkles className="w-32 h-32 text-pink-500" />
@@ -132,14 +132,12 @@ className = "w-full"
                 {/* Cooking Animation Overlay */}
                 <AnimatePresence>
                     {isPending && (
-                        {/* @ts-ignore */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             className="absolute inset-0 z-50 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6"
                         >
-                            {/* @ts-ignore */}
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -225,18 +223,18 @@ className = "w-full"
                                     className="p-2 bg-black/40 hover:bg-black/60 rounded-lg text-white transition flex items-center gap-2 text-xs"
                                 >
                                     𝕏 Share
-                                </button >
+                                </button>
 
                                 {/* Farcaster */}
-                                < button
+                                <button
                                     onClick={() => window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent("Helping free the locked Moms on Base! 🍪\n\nHonoring the real OG Mom (Est. 1958) ❤️\n\n1. Mint Jar 🏺\n2. Fill with Cookies 🍪\n3. Reveal Mom 👩\n\n@momcoin #Base #MomsCookieJar\nhttps://app.momcoined.com")}`, '_blank')}
                                     className="p-2 bg-purple-900/40 hover:bg-purple-900/60 rounded-lg text-purple-200 transition flex items-center gap-2 text-xs"
                                 >
                                     🟣 Warpcast
-                                </button >
+                                </button>
 
                                 {/* TikTok (Copy Link) */}
-                                < button
+                                <button
                                     onClick={() => {
                                         navigator.clipboard.writeText("https://app.momcoined.com");
                                         toast.success("Link Copied! Post on TikTok! 🎵");
@@ -244,13 +242,13 @@ className = "w-full"
                                     className="p-2 bg-pink-900/40 hover:bg-pink-900/60 rounded-lg text-pink-200 transition flex items-center gap-2 text-xs"
                                 >
                                     🎵 TikTok
-                                </button >
-                            </div >
-                        </div >
-                    </div >
-                </div >
-            </Card >
-        </motion.div >
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Card>
+        </motion.div>
     );
 }
 

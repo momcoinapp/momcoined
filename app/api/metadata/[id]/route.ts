@@ -5,7 +5,8 @@ import { doc, getDoc } from "firebase/firestore";
 // Base URL for assets
 const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://momcoined.com";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+    const params = await props.params;
     const tokenId = params.id;
 
     try {

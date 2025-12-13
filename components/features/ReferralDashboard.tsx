@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/Card";
-import { Users, Share2, Copy, Check, Loader2 } from "lucide-react";
+import { Users, Share2, Copy, Check, Loader2, MessageCircle } from "lucide-react";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { toast } from "react-hot-toast";
 import { InviteMom } from "./InviteMom";
