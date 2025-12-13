@@ -34,22 +34,14 @@ const UserSessionContext = createContext<UserSessionContextType>({
     updateUserScore: async () => { },
 });
 
+import sdk from "@farcaster/miniapp-sdk";
+
 export function UserSessionProvider({ children }: { children: React.ReactNode }) {
     const { address, isConnected } = useAccount();
     const [userData, setUserData] = useState<UserData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Listen for Firebase Auth state (Newsletter/Email)
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            if (user) {
-                console.log("Firebase User:", user.email);
-            }
-        });
-        return () => unsubscribe();
-    }, []);
-
-    // Sync Wallet User
+    // Sync Wallet User & Farcaster Context
     useEffect(() => {
         let unsubscribe: () => void;
 
@@ -64,12 +56,29 @@ export function UserSessionProvider({ children }: { children: React.ReactNode })
             const userRef = doc(db, "users", walletAddress);
 
             try {
+                // Get Farcaster Context (if available) -> Update Profile
+                const context = await sdk.context;
+                let farcasterData = {};
+                if (context?.user) {
+                    farcasterData = {
+                        farcasterId: context.user.fid,
+                        farcasterUsername: context.user.username,
+                        farcasterPfp: context.user.pfpUrl,
+                        displayName: context.user.displayName,
+                    };
+                }
+
                 const urlParams = new URLSearchParams(window.location.search);
                 const refCode = urlParams.get("ref");
 
                 unsubscribe = onSnapshot(userRef, async (docSnap) => {
                     if (docSnap.exists()) {
-                        setUserData(docSnap.data() as UserData);
+                        const existingData = docSnap.data();
+                        // If we have new Farcaster data that isn't saved, update it
+                        if (context?.user && !existingData.farcasterId) {
+                            await updateDoc(userRef, farcasterData);
+                        }
+                        setUserData({ ...existingData, ...farcasterData } as UserData);
                     } else {
                         const newUser: UserData = {
                             walletAddress,
@@ -83,6 +92,7 @@ export function UserSessionProvider({ children }: { children: React.ReactNode })
                             tasksCompleted: [],
                             aiAgentActive: false,
                             totalClaimed: 0,
+                            ...farcasterData // seed with FC data
                         };
                         await setDoc(userRef, newUser);
                     }

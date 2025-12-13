@@ -19,6 +19,21 @@ export const metadata = {
   title: "MomCoin - The Mom Movement",
   description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
   manifest: "/manifest.json",
+  openGraph: {
+    title: "MomCoin - The Mom Movement",
+    description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
+    url: "https://app.momcoined.com",
+    siteName: "MomCoin",
+    images: [
+      {
+        url: "https://app.momcoined.com/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "MomCoin App",
+      },
+    ],
+    type: "website",
+  },
   other: {
     "fc:frame": "vNext",
     "fc:frame:image": "https://app.momcoined.com/image.png",
