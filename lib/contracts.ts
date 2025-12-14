@@ -37,8 +37,8 @@ export const MOM_HELPER_ABI = [
         type: "function",
     },
     {
-        inputs: [{ name: "_roundId", type: "uint256" }],
-        name: "claim",
+        inputs: [],
+        name: "claimDaily",
         outputs: [],
         stateMutability: "nonpayable",
         type: "function",

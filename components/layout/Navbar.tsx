@@ -20,13 +20,9 @@ import {
 } from '@coinbase/onchainkit/identity';
 
 const NAV_ITEMS = [
-    { label: "Dashboard", href: "/", icon: Home },
     { label: "Earn", href: "/earn", icon: CheckSquare },
     { label: "NFTs", href: "/nfts", icon: Gift },
-    { label: "Do Good", href: "/impact", icon: Heart },
     { label: "Predict", href: "/predictions", icon: Sparkles },
-    { label: "Learn", href: "/learn", icon: GraduationCap },
-    { label: "Mom AI", href: "/mom-ai", icon: Sparkles },
     { label: "Leaderboard", href: "/leaderboard", icon: Trophy },
 ];
 
@@ -59,20 +55,7 @@ export function Navbar() {
                         </span>
                     </Link>
 
-                    {/* Center Claim Button (Desktop) */}
-                    <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                        <Link href="/earn" className="group relative flex items-center gap-2 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border border-yellow-500/30 px-4 py-1.5 rounded-full transition-all hover:scale-105">
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-yellow-500 blur-sm opacity-50 group-hover:opacity-100 animate-pulse"></div>
-                                <div className="relative w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-full flex items-center justify-center text-[10px] font-bold text-white border border-yellow-300 shadow-lg">
-                                    $
-                                </div>
-                            </div>
-                            <span className="text-yellow-500 font-bold text-sm tracking-wide group-hover:text-yellow-400">
-                                CLAIM REWARDS
-                            </span>
-                        </Link>
-                    </div>
+
 
                     {/* Desktop Nav */}
                     <div className="hidden md:flex items-center gap-6">
@@ -94,7 +77,7 @@ export function Navbar() {
                         })}
 
                         {/* OnchainKit Wallet */}
-                        <div className="flex items-center">
+                        <div className="flex items-center relative z-50">
                             <WalletAny>
                                 <ConnectWalletAny className="bg-white text-black font-bold px-4 py-2 rounded-full hover:bg-gray-200 transition-colors">
                                     <AvatarAny className="h-6 w-6" />
@@ -152,6 +135,25 @@ export function Navbar() {
                                     </Link>
                                 );
                             })}
+                        </div>
+
+                        {/* Mobile Wallet Connect */}
+                        <div className="p-4 border-t border-white/10 flex justify-center">
+                            <WalletAny>
+                                <ConnectWalletAny className="w-full bg-white text-black font-bold px-4 py-3 rounded-xl hover:bg-gray-200 transition-colors flex justify-center items-center gap-2">
+                                    <AvatarAny className="h-6 w-6" />
+                                    <NameAny />
+                                </ConnectWalletAny>
+                                <WalletDropdownAny>
+                                    <IdentityAny className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                                        <AvatarAny />
+                                        <NameAny />
+                                        <AddressAny />
+                                        <EthBalanceAny />
+                                    </IdentityAny>
+                                    <WalletDropdownDisconnectAny />
+                                </WalletDropdownAny>
+                            </WalletAny>
                         </div>
                     </motion.div>
                 )}

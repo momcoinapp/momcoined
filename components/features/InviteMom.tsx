@@ -5,11 +5,11 @@ import { Card } from "@/components/ui/Card";
 import { Heart, Mail, Copy, Check } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-interface InviteMomProps {
-    referralCode: string;
-}
+import { useUserSession } from "@/components/providers/UserSessionProvider";
 
-export function InviteMom({ referralCode }: InviteMomProps) {
+export function InviteMom() {
+    const { userData } = useUserSession();
+    const referralCode = userData?.referralCode || "MOM";
     const [copied, setCopied] = useState(false);
     const inviteLink = typeof window !== "undefined"
         ? `${window.location.origin}?ref=${referralCode}`

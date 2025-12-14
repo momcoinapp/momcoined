@@ -93,7 +93,7 @@ export default function ReferralDashboard() {
 
             <div className="p-6">
                 {activeTab === "mom" ? (
-                    <InviteMom referralCode={referralCode!} />
+                    <InviteMom />
                 ) : (
                     <div className="space-y-6">
                         <div className="text-center space-y-2">

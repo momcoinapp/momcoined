@@ -46,8 +46,26 @@ export function CookieJarSlider() {
                         className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-pink-500 to-purple-600"
                         style={{ height: useTransform(progress, (p) => `${p}%`), opacity: fillOpacity }}
                     />
+
+                    {/* Falling Cookies */}
+                    <div className="absolute inset-0 overflow-hidden">
+                        {[...Array(10)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute text-2xl"
+                                style={{
+                                    left: `${Math.random() * 80 + 10}%`,
+                                    top: useTransform(progress, (p) => `${100 - (p * (0.8 + Math.random() * 0.2))}%`), // Cookies rise/stack as it fills
+                                    rotate: useTransform(progress, [0, 100], [0, Math.random() * 360])
+                                }}
+                            >
+                                🍪
+                            </motion.div>
+                        ))}
+                    </div>
+
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span className="text-4xl filter drop-shadow-md">🫙</span>
+                        <span className="text-4xl filter drop-shadow-md opacity-20">🫙</span>
                     </div>
                 </div>
 
@@ -82,9 +100,22 @@ export function CookieJarSlider() {
                             JAR FILLED! 🎉
                         </h4>
                         <p className="text-white mb-6">Mom is proud! Ready to mint your earnings?</p>
-                        <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-105 border-none shadow-lg shadow-pink-500/20">
-                            Mint Rewards Now
-                        </Button>
+                        <div className="flex gap-2 w-full">
+                            <Button className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-105 border-none shadow-lg shadow-pink-500/20">
+                                Mint Rewards
+                            </Button>
+                            <Button
+                                variant="outline"
+                                className="border-white/20 hover:bg-white/10"
+                                onClick={() => {
+                                    const text = encodeURIComponent("I just filled Mom's Cookie Jar! 🍪\n\nCan you fill it faster?\n");
+                                    const url = encodeURIComponent("https://app.momcoined.com");
+                                    window.open(`https://warpcast.com/~/compose?text=${text}&embeds[]=${url}`, "_blank");
+                                }}
+                            >
+                                Share 🍪
+                            </Button>
+                        </div>
                         <button
                             onClick={() => {
                                 setFilled(false);

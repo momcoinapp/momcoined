@@ -3,6 +3,7 @@ import FarcasterProvider from "@/components/auth/FarcasterProvider";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { Inter, Poppins } from "next/font/google";
+import "@coinbase/onchainkit/styles.css"; // Crucial for Wallet Button
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { WelcomeOverlay } from "@/components/ui/WelcomeOverlay";

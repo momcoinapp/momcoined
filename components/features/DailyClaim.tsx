@@ -70,19 +70,26 @@ export function DailyClaim() {
     }, [lastClaimTimestamp]);
 
     const handleClaim = async () => {
-        if (!claimDaily || !currentRoundId) {
-            toast.error("Unable to claim at this time (Round ID missing)");
+        if (!claimDaily) {
+            toast.error("Wallet not ready");
             return;
         }
         try {
             await claimDaily({
                 address: CONTRACT_ADDRESSES.MOM_HELPER as `0x${string}`,
                 abi: MOM_HELPER_ABI,
-                functionName: "claim",
-                args: [currentRoundId],
+                functionName: "claimDaily",
+                args: [],
+                // @ts-ignore
+                capabilities: {
+                    paymasterService: {
+                        url: process.env.NEXT_PUBLIC_PAYMASTER_URL || "https://api.developer.coinbase.com/rpc/v1/base/sb",
+                    }
+                }
             });
-            toast.success("Claim submitted! Waiting for confirmation...");
-            // In a real app, we'd wait for receipt here
+            toast.success("MomCoin Claimed! 🍪 (Sponsored by Mom)");
+            setCanClaim(false);
+            // In a real app, we'd wait for receipt here or optimistic update
         } catch (error) {
             console.error("Claim error:", error);
             toast.error("Failed to claim. Try again later.");
