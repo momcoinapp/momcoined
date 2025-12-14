@@ -11,12 +11,24 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  /* Improved Legibility: Darker background + Confetti Pattern */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    /* Dark overlay for text contrast */
+    url('/metadata/momcoin-confetti.png'),
+    /* Confetti Pattern */
+    linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background-blend-mode: overlay, normal, normal;
+  background-attachment: fixed;
+  background-size: auto, 400px, auto;
+  /* Scale confetti */
+  background-repeat: no-repeat, repeat, no-repeat;
+
   font-family: var(--font-poppins), sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Glassmorphism Utilities */
