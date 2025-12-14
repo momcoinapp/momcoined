@@ -181,12 +181,16 @@ export function NFTMintPromo() {
                                 Mom's Cookie Jar 🍪
                             </h3>
                             <p className="text-pink-200 font-medium text-sm">
-                                Honoring the Original Mom (Est. 1958)
+                                Your Place in the Digital Family (Est. 1958)
                             </p>
                             <p className="text-purple-200/80 text-sm mt-2 leading-relaxed">
-                                Help free the locked Moms! Mint a jar to start the journey.
+                                1. Mint your Jar (Hold your spot).
                                 <br />
-                                <span className="text-xs opacity-75">4 Rarities. 1,958 of each. Rarest mint first.</span>
+                                2. Fill with Cookies (or $5) to Reveal.
+                                <br />
+                                3. Get your **BasedMomz NFT**.
+                                <br />
+                                <span className="text-xs opacity-75">Target: Rarest 1,958 start at Mint #1.</span>
                             </p>
                         </div>
 

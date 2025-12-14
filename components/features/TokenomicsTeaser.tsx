@@ -70,7 +70,7 @@ export function TokenomicsTeaser() {
                     {/* Center Text */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
                         <span className="text-5xl">🍪</span>
-                        <span className="font-bold text-white mt-2">1B Supply</span>
+                        <span className="font-bold text-white mt-2">100B Supply</span>
                     </div>
                 </div>
             </div>

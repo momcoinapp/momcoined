@@ -11,6 +11,7 @@ import MomSwap from "@/components/features/MomSwap";
 import { CookieJarSlider } from "@/components/features/CookieJarSlider";
 import { MomsJourney } from "@/components/features/MomsJourney";
 import { TokenomicsTeaser } from "@/components/features/TokenomicsTeaser";
+import { MomStory } from "@/components/features/MomStory";
 
 export default function Home() {
   const { address, isConnected, status } = useAccount();
@@ -145,6 +146,9 @@ export default function Home() {
               ))}
             </div>
           </section>
+
+          {/* Mom Story / Team Section */}
+          <MomStory />
 
           {/* Moms Journey Timeline */}
           <div className="w-full bg-black/40 backdrop-blur-3xl -mx-4 py-16 mt-20 border-y border-white/5">
