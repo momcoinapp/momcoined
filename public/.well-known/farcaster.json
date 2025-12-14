@@ -24,7 +24,7 @@
     ],
     "heroImageUrl": "https://app.momcoined.com/hero.png",
     "tagline": "Crypto for Moms",
-    "category": "social",
+    "primaryCategory": "social",
     "tags": [
         "community",
         "nft",
@@ -32,6 +32,7 @@
         "education",
         "momai"
     ],
+    "castShareUrl": "https://warpcast.com/~/compose?text=Join%20MomCoin!%20%F0%9F%8D%AA",
     "ogTitle": "MomCoin",
     "ogDescription": "The first crypto app built for Moms. Earn rewards daily.",
     "ogImageUrl": "https://app.momcoined.com/og-image.png",
