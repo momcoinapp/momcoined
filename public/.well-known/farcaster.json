@@ -13,28 +13,27 @@
         "buttonTitle": "Claim FREE MomCoin",
         "splashImageUrl": "https://app.momcoined.com/splash.png",
         "splashBackgroundColor": "#eeccff",
-        "webhookUrl": "https://app.momcoined.com/api/webhook"
-    },
-    "subtitle": "Moms First Crypto App",
-    "description": "Earn rewards, mint cookies, and join the best crypto family. Simple, fun, and rewarding for everyone.",
-    "screenshotUrls": [
-        "https://app.momcoined.com/screenshot1.png",
-        "https://app.momcoined.com/screenshot2.png",
-        "https://app.momcoined.com/screenshot3.png"
-    ],
-    "heroImageUrl": "https://app.momcoined.com/hero.png",
-    "tagline": "Crypto for Moms",
-    "primaryCategory": "social",
-    "tags": [
-        "community",
-        "nft",
-        "family",
-        "education",
-        "momai"
-    ],
-    "castShareUrl": "https://warpcast.com/~/compose?text=Join%20MomCoin!%20%F0%9F%8D%AA",
-    "ogTitle": "MomCoin",
-    "ogDescription": "The first crypto app built for Moms. Earn rewards daily.",
-    "ogImageUrl": "https://app.momcoined.com/og-image.png",
-    "noindex": false
+        "webhookUrl": "https://app.momcoined.com/api/webhook",
+        "subtitle": "Moms First Crypto App",
+        "description": "Earn rewards, mint cookies, and join the best crypto family. Simple, fun, and rewarding for everyone.",
+        "screenshotUrls": [
+            "https://app.momcoined.com/screenshot1.png",
+            "https://app.momcoined.com/screenshot2.png",
+            "https://app.momcoined.com/screenshot3.png"
+        ],
+        "heroImageUrl": "https://app.momcoined.com/hero.png",
+        "tagline": "Crypto for Moms",
+        "primaryCategory": "social",
+        "tags": [
+            "community",
+            "nft",
+            "family",
+            "education",
+            "momai"
+        ],
+        "castShareUrl": "https://warpcast.com/~/compose?text=Join%20MomCoin!%20%F0%9F%8D%AA",
+        "ogTitle": "MomCoin",
+        "ogDescription": "The first crypto app built for Moms. Earn rewards daily.",
+        "ogImageUrl": "https://app.momcoined.com/og-image.png"
+    }
 }
