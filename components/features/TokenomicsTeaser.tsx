@@ -23,16 +23,40 @@ export function TokenomicsTeaser() {
                         Not your average memecoin. $MomCoin is baked with fair mechanics and long-term sustainability. No rugs, just hugs.
                     </p>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                        {data.map((item, i) => (
-                            <div key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
-                                <div className="w-4 h-4 rounded-full" style={{ backgroundColor: item.color }} />
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                        <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                            <div className="text-3xl font-black text-white mb-2">100B</div>
+                            <div className="text-sm text-gray-400 uppercase tracking-wider">Total Supply</div>
+                        </div>
+                        <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                            <div className="text-3xl font-black text-pink-400 mb-2">8.2B</div>
+                            <div className="text-sm text-gray-400 uppercase tracking-wider">Locked (Moms)</div>
+                            <div className="text-xs text-gray-500 mt-1">One for every human on Earth</div>
+                        </div>
+                        <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                            <div className="text-3xl font-black text-purple-400 mb-2">20B</div>
+                            <div className="text-sm text-gray-400 uppercase tracking-wider">Community Grant</div>
+                        </div>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-pink-900/20 to-purple-900/20 rounded-3xl p-8 border border-white/10">
+                        <h3 className="text-2xl font-bold text-white mb-6 text-center">Our Mission Goals</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="flex items-center gap-3 text-left p-3 bg-black/30 rounded-lg">
+                                <span className="text-2xl">🏠</span>
                                 <div>
-                                    <div className="font-bold text-white text-lg">{item.value}%</div>
-                                    <div className="text-sm text-gray-400">{item.name}</div>
+                                    <div className="font-bold text-pink-200">Tiny Home Communities</div>
+                                    <div className="text-xs text-gray-400">Safe housing for single moms</div>
                                 </div>
                             </div>
-                        ))}
+                            <div className="flex items-center gap-3 text-left p-3 bg-black/30 rounded-lg">
+                                <span className="text-2xl">🛡️</span>
+                                <div>
+                                    <div className="font-bold text-purple-200">Anti-Trafficking Support</div>
+                                    <div className="text-xs text-gray-400">Direct aid to victims & prevention</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="pt-6">
