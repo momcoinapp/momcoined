@@ -130,6 +130,13 @@ export const CONTRACT_ADDRESSES = {
 
 export const MOM_COOKIE_JAR_ABI = [
     {
+        inputs: [{ name: "owner", type: "address" }],
+        name: "balanceOf",
+        outputs: [{ name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [],
         name: "mintJarETH",
         outputs: [],
