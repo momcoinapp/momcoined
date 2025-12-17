@@ -6,17 +6,16 @@ import { Card } from "@/components/ui/Card";
 import { motion } from "framer-motion";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { useEffect, useState } from "react";
-import { NFTMintPromo } from "@/components/features/NFTMintPromo";
-import MomSwap from "@/components/features/MomSwap";
 import { CookieJarSlider } from "@/components/features/CookieJarSlider";
 import { MomsJourney } from "@/components/features/MomsJourney";
-import { TokenomicsTeaser } from "@/components/features/TokenomicsTeaser";
 import { MomStory } from "@/components/features/MomStory";
+import { TikTokEmbed } from "@/components/ui/TikTokEmbed";
+import { DailyClaim } from "@/components/features/DailyClaim";
+import { ArrowRight, Gift, Sparkles } from "lucide-react";
 
 export default function Home() {
-  const { address, isConnected, status } = useAccount();
+  const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
-  const { disconnect } = useDisconnect();
   const { userData } = useUserSession();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -45,12 +44,7 @@ export default function Home() {
       <div className="fixed inset-0 z-0 pointer-events-none">
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-pink-600/20 blur-[120px]" />
         <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/20 blur-[120px]" />
-        <div className="absolute top-[40%] left-[30%] w-[30%] h-[30%] rounded-full bg-yellow-500/10 blur-[100px]" />
       </div>
-
-      {/* Header */}
-      {/* Header removed (Duplicate of Navbar) */}
-      <div className="h-16" /> {/* Spacer for fixed Navbar */}
 
       {/* Main Content */}
       <main className="relative z-10 flex flex-col items-center min-h-screen pb-20">
@@ -59,7 +53,6 @@ export default function Home() {
 
           {/* HERO SECTION */}
           <section className="w-full max-w-6xl px-4 pt-12 md:pt-20 pb-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-
             {/* Left Column: Text & CTA */}
             <div className="flex-1 text-center lg:text-left space-y-8">
               <motion.div
@@ -74,8 +67,7 @@ export default function Home() {
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                  Join the movement. Mint cookies, earn crypto, and make Mom proud again.
-                  <span className="block mt-2 text-pink-400/80 text-base">Wait... is that a cookie jar? 👇</span>
+                  Join the movement. Mint cookies, send cards, and make Mom proud again.
                 </p>
               </motion.div>
 
@@ -86,77 +78,100 @@ export default function Home() {
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
                 {isConnected ? (
-                  <Button size="lg" onClick={() => window.location.href = '/earn'} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-105 transition-all shadow-xl shadow-green-600/30 border-none font-bold">
+                  <Button size="lg" onClick={() => window.location.href = '/earn'} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-105 transition-all shadow-xl font-bold">
                     Go to Dashboard 🚀
                   </Button>
                 ) : (
-                  <Button size="lg" onClick={handleLogin} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 transition-all shadow-xl shadow-pink-600/30 border-none font-bold">
+                  <Button size="lg" onClick={handleLogin} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 transition-all shadow-xl font-bold">
                     Start Minting 🍪
                   </Button>
                 )}
-
                 <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm">
                   Invite Mom 💌
                 </Button>
               </motion.div>
-
-              <div className="flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-400 font-mono pt-4">
-                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" /> Live on Base</div>
-                <div>•</div>
-                <div>12,403 Moms Joined</div>
-              </div>
             </div>
 
-            {/* Right Column: Visual Interaction */}
+            {/* Right Column: Interactive Slider */}
             <motion.div
-              className="flex-1 w-full max-w-md perspective-1000"
+              className="flex-1 w-full max-w-md"
               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ type: "spring", duration: 1.5 }}
             >
-              {/* Replaced Static Image with Interactive Slider */}
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-[2.5rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                 <CookieJarSlider />
-
                 {/* Floating Emojis */}
                 <motion.div animate={{ y: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-6 -right-6 text-6xl drop-shadow-lg">✨</motion.div>
                 <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute -bottom-8 -left-8 text-6xl drop-shadow-lg">🟣</motion.div>
               </div>
             </motion.div>
-
           </section>
 
-          {/* FEATURES / SOCIAL PROOF SNAPSHOT */}
-          <section className="w-full max-w-6xl px-4 py-16 border-t border-white/5">
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { title: "Mint & Earn", icon: "🍪", desc: "Fill jars to unlock rarity tiers and $MomCoin airdrops." },
-                { title: "Viral Referrals", icon: "💌", desc: "Invite family for bonus multipliers. Mom gets perks too!" },
-                { title: "Mom AI Agent", icon: "🤖", desc: "Your personal crypto guide. Warning: She judges your trades." }
-              ].map((feature, i) => (
-                <Card key={i} className="p-8 bg-white/5 border-white/10 hover:bg-white/10 transition-colors backdrop-blur-sm rounded-3xl group cursor-default relative overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 font-black text-9xl group-hover:scale-110 transition-transform select-none">{feature.icon}</div>
-                  <div className="relative z-10">
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-gray-400 leading-relaxed font-medium">{feature.desc}</p>
-                  </div>
-                </Card>
-              ))}
+          {/* ACTIVE DROPS SECTION (Christmas + Cookie Jar) */}
+          <section className="w-full max-w-6xl px-4 pb-16 grid md:grid-cols-2 gap-8">
+
+            {/* 1. Christmas Cards (Featured) */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 to-green-900 border border-white/20 shadow-2xl p-8 flex flex-col items-center text-center group">
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/snow.png')] opacity-20"></div>
+              <div className="relative z-10 space-y-4">
+                <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wide">
+                  ⚠️ Limited Time Holiday Event
+                </div>
+                <h2 className="text-3xl font-black text-white">Free Christmas Cards 🎄</h2>
+                <p className="text-gray-200">
+                  Mint a blockchain card for Mom. We pay gas. She gets 100 MOM.
+                </p>
+                <img src="/cards/cryptmas-card.png" className="w-48 mx-auto -rotate-3 group-hover:rotate-3 transition-transform duration-500" />
+                <Button
+                  onClick={() => window.location.href = '/christmas'}
+                  className="w-full bg-white text-red-900 font-bold py-4 rounded-xl hover:scale-105 transition-all"
+                >
+                  Send Card Now <ArrowRight className="ml-2 w-4 h-4 inline" />
+                </Button>
+              </div>
             </div>
+
+            {/* 2. Mom's Cookie Jar */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-pink-900 to-purple-900 border border-white/20 shadow-2xl p-8 flex flex-col items-center text-center group">
+              <div className="relative z-10 space-y-4">
+                <div className="inline-block px-3 py-1 bg-pink-500/20 rounded-full text-xs font-bold uppercase tracking-wide text-pink-300">
+                  🔥 Minting Live
+                </div>
+                <h2 className="text-3xl font-black text-white">Mom's Cookie Jar 🍪</h2>
+                <p className="text-gray-200">
+                  The legendary NFT that gives you daily sweet rewards and perks.
+                </p>
+                <div className="text-6xl py-4">🍯</div>
+                <Button
+                  onClick={() => window.location.href = '/ear'}
+                  className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-4 rounded-xl hover:scale-105 transition-all"
+                >
+                  Mint Cookie Jar <Sparkles className="ml-2 w-4 h-4 inline" />
+                </Button>
+              </div>
+            </div>
+
           </section>
 
-          {/* Mom Story / Team Section */}
+          {/* DAILY CLAIM TEASER */}
+          <section className="w-full max-w-md mx-auto px-4 pb-16">
+            <DailyClaim />
+          </section>
+
+          {/* TikTok Section */}
+          <section className="w-full max-w-lg mx-auto pb-12">
+            <TikTokEmbed />
+          </section>
+
+          {/* Mom Story */}
           <MomStory />
 
-          {/* Moms Journey Timeline */}
+          {/* Timeline */}
           <div className="w-full bg-black/40 backdrop-blur-3xl -mx-4 py-16 mt-20 border-y border-white/5">
             <MomsJourney />
           </div>
-
-          {/* Tokenomics */}
-          <TokenomicsTeaser />
 
         </div>
       </main>

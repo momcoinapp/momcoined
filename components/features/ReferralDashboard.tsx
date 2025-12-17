@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/Card";
 import { Users, Share2, Copy, Check, Loader2, MessageCircle } from "lucide-react";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { toast } from "react-hot-toast";
-import { InviteMom } from "./InviteMom";
+
 
 export default function ReferralDashboard() {
     const { userData, userAddress } = useUserSession();
@@ -93,7 +93,7 @@ export default function ReferralDashboard() {
 
             <div className="p-6">
                 {activeTab === "mom" ? (
-                    <InviteMom />
+
                 ) : (
                     <div className="space-y-6">
                         <div className="text-center space-y-2">
@@ -134,20 +134,21 @@ export default function ReferralDashboard() {
                                 Warpcast
                             </button>
                         </div>
-                    </div>
-                )}
+                    </div >
+                )
+}
 
-                <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-4 text-center">
-                    <div>
-                        <div className="text-2xl font-bold text-white">{userData?.referralCount || 0}</div>
-                        <div className="text-xs text-purple-300 uppercase tracking-wider">Referrals</div>
-                    </div>
-                    <div>
-                        <div className="text-2xl font-bold text-yellow-400">{userData?.referralPoints || 0}</div>
-                        <div className="text-xs text-purple-300 uppercase tracking-wider">Points Earned</div>
-                    </div>
-                </div>
-            </div>
-        </Card>
+<div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-4 text-center">
+    <div>
+        <div className="text-2xl font-bold text-white">{userData?.referralCount || 0}</div>
+        <div className="text-xs text-purple-300 uppercase tracking-wider">Referrals</div>
+    </div>
+    <div>
+        <div className="text-2xl font-bold text-yellow-400">{userData?.referralPoints || 0}</div>
+        <div className="text-xs text-purple-300 uppercase tracking-wider">Points Earned</div>
+    </div>
+</div>
+            </div >
+        </Card >
     );
 }

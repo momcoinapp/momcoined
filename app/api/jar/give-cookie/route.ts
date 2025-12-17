@@ -37,6 +37,14 @@ export async function POST(req: NextRequest) {
             cookies: increment(1)
         });
 
+        // 4. Increment User's "Cookies Given" Count (For Dashboard/Leaderboard)
+        const userRef = doc(db, "users", userAddress.toLowerCase());
+        // Lazy init user if not exists (should exist from login, but safety first)
+        await setDoc(userRef, { lastActive: serverTimestamp() }, { merge: true });
+        await updateDoc(userRef, {
+            cookiesGiven: increment(1)
+        });
+
         return NextResponse.json({ success: true, message: "Cookie Added!" });
 
     } catch (error) {

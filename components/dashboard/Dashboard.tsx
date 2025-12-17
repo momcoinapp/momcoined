@@ -20,13 +20,12 @@ import DailyMomNews from "@/components/features/DailyMomNews";
 import { MomMarket } from "@/components/features/MomMarket";
 import ReferralDashboard from "@/components/features/ReferralDashboard";
 import Leaderboard from "@/components/features/Leaderboard";
-import { InviteMomModal } from "@/components/features/InviteMomModal";
+
 import SocialTasks from "@/components/features/SocialTasks";
 import { RedeemPoints } from "@/components/features/RedeemPoints";
 
 export default function Dashboard() {
     const { userData, isLoading } = useUserSession();
-    const [showLeaderboard, setShowLeaderboard] = useState(false);
     const [showInviteModal, setShowInviteModal] = useState(false);
 
     if (isLoading) {
@@ -57,8 +56,8 @@ export default function Dashboard() {
             color: "text-purple-500",
         },
         {
-            label: "Tasks Done",
-            value: (userData?.tasksCompleted?.length || 0).toString(),
+            label: "Cookies Given",
+            value: (userData?.cookiesGiven || 0).toString(),
             icon: CheckCircle,
             color: "text-green-500",
         },
@@ -191,11 +190,6 @@ export default function Dashboard() {
                     </div>
                 )
             }
-
-            <InviteMomModal
-                isOpen={showInviteModal}
-                onClose={() => setShowInviteModal(false)}
-            />
         </div >
     );
 }

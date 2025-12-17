@@ -57,7 +57,7 @@
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/og-image.png",
         "buttonTitle": "Start Earning",
-        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
         "splashBackgroundColor": "#eeccff",
         "webhookUrl": "https://app.momcoined.com/api/webhook"
     },

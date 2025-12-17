@@ -58,6 +58,7 @@ ENV_TEMPLATE.md
 GEMINI_SETUP_GUIDE.md
 SECRETS.md
 KEYS.md
+secrets/
 
 # Logs
 *.log

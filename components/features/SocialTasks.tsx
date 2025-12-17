@@ -57,6 +57,26 @@ const TASKS = [
         repeatable: true
     },
     {
+        id: "twitter_follow",
+        platform: "twitter" as const,
+        title: "Follow @momcoined",
+        description: "Follow us on X for updates!",
+        reward: 500,
+        icon: Twitter,
+        actionLabel: "Follow",
+        link: "https://twitter.com/momcoined"
+    },
+    {
+        id: "invite_mom",
+        platform: "mom" as const,
+        title: "Invite Mom",
+        description: "Send a Holiday Card or Invite Link!",
+        reward: 1000,
+        icon: Users,
+        actionLabel: "Invite",
+        link: "/christmas"
+    },
+    {
         id: "follow_twitter_blokmom",
         platform: "twitter",
         title: "Follow @blokmom on X",
@@ -157,6 +177,21 @@ export default function SocialTasks() {
     const { userData } = useUserSession();
     const [verifying, setVerifying] = useState<string | null>(null);
 
+    // Helper to get verification params for each task
+    const getVerificationParams = (taskId: string): { type: string, target?: string } | null => {
+        switch (taskId) {
+            case "engage_farcaster_momcoined":
+                return { type: "like", target: "0x..." }; // TODO: Need actual cast hash
+            case "join_farcaster":
+                return { type: "follow", target: "815259" }; // MomCoin FID (example, need actual)
+            case "share_reveal":
+            case "daily_post_share": // Assuming this is also a share task
+                return { type: "share_url", target: "momcoined.com" };
+            default:
+                return null;
+        }
+    };
+
     const handleTask = async (task: typeof TASKS[0]) => {
         if (!userData?.walletAddress) {
             toast.error("Please connect wallet first");
@@ -166,36 +201,78 @@ export default function SocialTasks() {
         // Open link
         window.open(task.link, "_blank");
 
-        // Simulate verification (Optimistic)
+        // Check if verifyable via API
+        const params = getVerificationParams(task.id);
+
+        // If not verifiable (e.g. twitter), fall back to optimistic 5s timer
+        if (!params || task.platform === "twitter" || task.platform === "tiktok") {
+            setVerifying(task.id);
+            setTimeout(async () => {
+                await completeTask(task);
+            }, 5000);
+            return;
+        }
+
+        // Real Verification
         setVerifying(task.id);
+        try {
+            // Wait a bit for the action to propagate (optional but helpful)
+            await new Promise(r => setTimeout(r, 2000));
 
-        setTimeout(async () => {
-            try {
-                const userRef = doc(db, "users", userData.walletAddress);
+            // We need user's FID. Assuming it's in userData or we prompt.
+            // For now, let's assume userData has fid if they connected Farcaster.
+            // If they only connected wallet, we might need to resolve FID from address?
+            // Let's assume userData.fid exists implementation details.
 
-                // Check if already completed (unless repeatable)
-                if (!task.repeatable && userData.tasksCompleted?.includes(task.id)) {
-                    toast.error("Task already completed");
-                    setVerifying(null);
-                    return;
-                }
-
-                // For repeatable tasks, we might want to check a "lastCompleted" timestamp
-                // For now, we'll just allow it (simple implementation) or rely on the "Done" state in UI
-
-                await updateDoc(userRef, {
-                    leaderboardScore: increment(task.reward),
-                    tasksCompleted: arrayUnion(task.id)
-                });
-                toast.success(`Task verified! +${task.reward} Points`);
-            } catch (error) {
-                console.error("Task error:", error);
-                toast.error("Verification failed");
-            } finally {
+            const userFid = userData.fid;
+            if (!userFid) {
+                toast.error("Please connect Farcaster ID to verify.");
                 setVerifying(null);
+                return;
             }
-        }, 5000); // 5 second delay
+
+            const res = await fetch("/api/social/verify", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    userFid: userFid,
+                    actionType: params.type,
+                    target: params.target
+                })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                await completeTask(task);
+            } else {
+                toast.error("Verification failed: Action not found.");
+            }
+        } catch (error) {
+            console.error("Verification error:", error);
+            toast.error("Error verifying task");
+        } finally {
+            setVerifying(null);
+        }
     };
+
+    const completeTask = async (task: typeof TASKS[0]) => {
+        try {
+            const userRef = doc(db, "users", userData!.walletAddress);
+            if (!task.repeatable && userData?.tasksCompleted?.includes(task.id)) {
+                toast.error("Task already completed");
+                return;
+            }
+
+            await updateDoc(userRef, {
+                leaderboardScore: increment(task.reward),
+                tasksCompleted: arrayUnion(task.id)
+            });
+            toast.success(`Task verified! +${task.reward} Points`);
+        } catch (error) {
+            console.error("Task completion error", error);
+        }
+    }
 
     const isCompleted = (taskId: string) => {
         // If repeatable, maybe check if done TODAY? 

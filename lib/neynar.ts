@@ -127,3 +127,63 @@ export async function getCookieScore(tokenId: string): Promise<number> {
         return 0;
     }
 }
+
+// Verification Utilities
+
+export async function verifyLike(fid: number, hash: string): Promise<boolean> {
+    try {
+        // Use fetchBulkCasts to check viewer_context
+        // Passing 'casts' as array of strings (hashes) based on error message indicating it expects string[]
+        const castRes = await client.fetchBulkCasts({ casts: [hash], viewerFid: fid });
+        if (castRes.result.casts && castRes.result.casts.length > 0) {
+            return castRes.result.casts[0].viewer_context?.liked || false;
+        }
+        return false;
+    } catch (error) {
+        console.error("Verify like error:", error);
+        return false;
+    }
+}
+
+export async function verifyRecast(fid: number, hash: string): Promise<boolean> {
+    try {
+        const castRes = await client.fetchBulkCasts({ casts: [hash], viewerFid: fid });
+        if (castRes.result.casts && castRes.result.casts.length > 0) {
+            return castRes.result.casts[0].viewer_context?.recasted || false;
+        }
+        return false;
+    } catch (error) {
+        console.error("Verify recast error:", error);
+        return false;
+    }
+}
+
+export async function verifyFollow(userFid: number, targetFid: number): Promise<boolean> {
+    try {
+        const response = await client.fetchBulkUsers({ fids: [targetFid], viewerFid: userFid });
+        if (response.users && response.users.length > 0) {
+            return response.users[0].viewer_context?.following || false;
+        }
+        return false;
+    } catch (error) {
+        console.error("Verify follow error:", error);
+        return false;
+    }
+}
+
+export async function verifyCastWithUrl(fid: number, url: string): Promise<boolean> {
+    try {
+        const response = await client.fetchCastsForUser({ fid, limit: 10 });
+
+        if (response.casts) {
+            return response.casts.some(cast =>
+                cast.text.includes(url) ||
+                cast.embeds?.some(embed => (embed as any).url?.includes(url))
+            );
+        }
+        return false;
+    } catch (error) {
+        console.error("Verify URL share error:", error);
+        return false;
+    }
+}

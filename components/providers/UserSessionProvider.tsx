@@ -18,6 +18,13 @@ interface UserData {
     aiAgentActive?: boolean;
     lastClaimTime?: any;
     totalClaimed?: number;
+    cookiesGiven?: number;
+    farcasterId?: number;
+    farcasterUsername?: string;
+    farcasterPfp?: string;
+    displayName?: string;
+    twitterHandle?: string;
+    instagramHandle?: string;
 }
 
 interface UserSessionContextType {

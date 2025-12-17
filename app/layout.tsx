@@ -1,3 +1,4 @@
+import React from "react";
 import { Providers } from "@/components/providers/Providers";
 import FarcasterProvider from "@/components/auth/FarcasterProvider";
 import { Footer } from "@/components/layout/Footer";
@@ -16,38 +17,55 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "MomCoin - The Mom Movement",
-  description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
+  title: "Momcoin ❤️ Real Utility on Base – MomAI, BaseMomz NFTs & Real Change",
+  description: "Real mom & son building trust on Base. MomAI advice, BaseMomz/BaseKidz legendary NFTs, learn & earn rewards, housing Americans, helping trafficking victims. Join the family 🏠💪",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
-    title: "MomCoin - The Mom Movement",
-    description: "Empowering moms with crypto. Daily claims, social tasks, and rewards.",
-    url: "https://app.momcoined.com",
-    siteName: "MomCoin",
+    title: "Momcoin ❤️ Real Mom & Son on Base",
+    description: "MomAI • BaseMomz/BaseKidz NFTs • Learn & Earn Rewards • Housing Americans 🏠 Helping Trafficking Victims 💪 Real change, real trust on Base.",
     images: [
       {
-        url: "https://app.momcoined.com/og-image.png",
+        url: "https://app.momcoined.com/og-preview.jpg",
         width: 1200,
         height: 630,
-        alt: "MomCoin App",
+        alt: "Momcoin – glowing cookie jar, mom & son, Base utility & social good",
       },
     ],
+    url: "https://app.momcoined.com",
     type: "website",
+    siteName: "Momcoin",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Momcoin ❤️ Real Utility on Base",
+    description: "MomAI • BaseMomz/BaseKidz • Learn & Earn • Real Social Good 🏠💪",
+    images: ["https://app.momcoined.com/og-preview.jpg"],
+    creator: "@momcoined",
+    site: "@momcoined",
   },
   other: {
     "fc:frame": "vNext",
-    "fc:frame:image": "https://app.momcoined.com/image.png",
-    "fc:frame:button:1": "🍪 Claim Daily $MomCoin",
+    "fc:frame:image": "https://app.momcoined.com/og-preview.jpg",
+    "fc:frame:button:1": "🍪 Claim 100 $MOM",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": "https://app.momcoined.com/earn",
-    "fc:frame:button:2": "🏠 Mint Mom/Kid NFT",
+    "fc:frame:button:2": "🎁 Gift FREE Card",
     "fc:frame:button:2:action": "link",
-    "fc:frame:button:2:target": "https://app.momcoined.com/nfts",
-    "fc:miniapp": "1",
-    "fc:miniapp:action": "launch_frame",
-    "fc:miniapp:name": "MomCoin",
-    "fc:miniapp:button": "Claim Daily $MomCoin",
-    "fc:miniapp:icon": "https://app.momcoined.com/icon.png",
+    "fc:frame:button:2:target": "https://app.momcoined.com/christmas",
+    "fc:miniapp": JSON.stringify({
+      version: "1.0",
+      name: "MomCoin",
+      iconUrl: "https://app.momcoined.com/icon.png",
+      splashImageUrl: "https://app.momcoined.com/splash.jpg",
+      splashBackgroundColor: "#eeccff",
+      button: { label: "Launch MomCoin" },
+      postUrl: "https://app.momcoined.com/api/frame"
+    }),
     "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
   },
 };

@@ -6,24 +6,31 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract MomChristmasCards is ERC1155, Ownable {
-    IERC20 public momToken;
-    uint256 public constant MIN_HOLDINGS = 100 * 10**18; // Must hold 100 MOM
-
-    // 10 Christmas Card Designs (IDs 1-10)
+    // 10 Christmas Card Designs (IDs 1-10) are Free. 
+    // Custom AI Cards (IDs 1000+) are 0.0003 ETH (~$1).
     uint256 public constant CARD_1 = 1;
     uint256 public constant CARD_10 = 10;
+    uint256 public constant CUSTOM_START_ID = 1000;
+    uint256 public constant MINT_PRICE = 0.0003 ether; // Approx $1
 
-    constructor(address _momToken) ERC1155("https://api.momcoined.com/metadata/christmas/{id}.json") Ownable(msg.sender) {
-        momToken = IERC20(_momToken);
+    constructor() ERC1155("https://app.momcoined.com/api/metadata/christmas/{id}") Ownable(msg.sender) {}
+
+    // Free Mint for Official Designs
+    function mintCard(uint256 id) external {
+        require(id >= CARD_1 && id < CUSTOM_START_ID, "Invalid or Custom ID");
+        _mint(msg.sender, id, 1, "");
     }
 
-    function mintCard(uint256 id) external {
-        require(id >= CARD_1 && id <= CARD_10, "Invalid Card ID");
-        require(momToken.balanceOf(msg.sender) >= MIN_HOLDINGS, "Must hold 100 MOM");
-        
-        // Free Mint (Gas only) - Limit 1 per card per wallet? 
-        // For simplicity: Open mint if holding.
+    // Paid Mint for Custom AI Designs
+    function mintCustomCard(uint256 id) external payable {
+        require(id >= CUSTOM_START_ID, "Must be a custom ID");
+        require(msg.value >= MINT_PRICE, "Insufficient ETH");
         _mint(msg.sender, id, 1, "");
+    }
+
+    function withdraw() external onlyOwner {
+        (bool success, ) = payable(owner()).call{value: address(this).balance}("");
+        require(success, "Withdraw failed");
     }
 
     // Admin can airdrop to top Moms

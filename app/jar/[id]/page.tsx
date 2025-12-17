@@ -9,6 +9,8 @@ import { motion } from "framer-motion";
 import Confetti from "react-confetti";
 import { useAccount } from "wagmi";
 import { toast } from "react-hot-toast";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 export default function JarPage() {
     const params = useParams();
@@ -23,10 +25,23 @@ export default function JarPage() {
 
     // Real Fetch
     useEffect(() => {
-        // In a real production app, you'd fetch initial stats here.
-        // For now we default to 120 + random to look alive.
-        setCookies(Math.floor(Math.random() * 50) + 120);
-        setLoading(false);
+        if (!id) return;
+
+        // Listen to active Jar data
+        const unsub = onSnapshot(doc(db, "jars", id), (doc) => {
+            if (doc.exists()) {
+                setCookies(doc.data().cookies || 0);
+            } else {
+                setCookies(0); // New jar
+            }
+            setLoading(false);
+        });
+
+        // Check if user already gave today (Optional: separate collection check or local storage)
+        // For simple MVP we trust the API to reject, but UI state can assume enabled until "Given"
+        // To be strict, we would check 'jar_interactions' here too.
+
+        return () => unsub();
     }, [id]);
 
     const handleGiveCookie = async () => {

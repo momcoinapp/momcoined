@@ -7,8 +7,8 @@ import sdk from "@farcaster/miniapp-sdk";
 
 const config = {
     rpcUrl: "https://mainnet.base.org",
-    domain: "momcoined.com",
-    siweUri: "https://momcoined.com/login",
+    domain: "app.momcoined.com",
+    siweUri: "https://app.momcoined.com/login",
 };
 
 export default function FarcasterProvider({ children }: { children: React.ReactNode }) {

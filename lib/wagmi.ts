@@ -9,7 +9,6 @@ export const config = createConfig({
     connectors: [
         coinbaseWallet({
             appName: "MomCoin",
-            preference: "smartWalletOnly",
         }),
         walletConnect({ projectId, showQrModal: true }),
     ],
