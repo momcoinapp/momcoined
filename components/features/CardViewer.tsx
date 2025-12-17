@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { Transaction, TransactionButton, TransactionStatus, TransactionStatusLabel, TransactionToast, TransactionToastIcon, TransactionToastLabel, TransactionToastAction } from '@coinbase/onchainkit/transaction';
 
 const CARDS = [
-    { id: 1, name: "Merry Cryptmas", img: "/cards/cryptmas-card.png", bg: "bg-black" },
+    { id: 1, name: "Merry Cryptmas", img: "/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png", bg: "bg-black" },
     { id: 2, name: "Diamond Hands Mom", img: "/cards/Diamond_Hands_Mom_-_Crypto_meme_NFT.png", bg: "bg-blue-900" },
     { id: 3, name: "Bitcoin Mom", img: "/cards/Bitcoin_Mom_-_Crypto_maximalist_NFT.png", bg: "bg-yellow-900" },
     { id: 4, name: "Mom Hodls Dip", img: "/cards/Mom_Hodls_the_Dip_-_Trading_meme_NFT.png", bg: "bg-red-900" },
@@ -40,7 +40,7 @@ const ABI = [
         "stateMutability": "payable",
         "type": "function"
     }
-];
+] as const;
 
 export function CardViewer({ id }: { id: string }) {
     const { address, isConnected } = useAccount();
@@ -97,9 +97,7 @@ export function CardViewer({ id }: { id: string }) {
             {/* Background Effects */}
             <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-pink-900/20 to-transparent pointer-events-none" />
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+            <div
                 className="w-full max-w-lg space-y-8 relative z-10"
             >
                 {/* The Card */}
@@ -147,8 +145,8 @@ export function CardViewer({ id }: { id: string }) {
                             </div>
                         ) : (
                             <Transaction
-                                contracts={[{
-                                    address: CONTRACT_ADDRESS as `0x${string}`,
+                                calls={[{
+                                    to: CONTRACT_ADDRESS as `0x${string}`,
                                     abi: ABI,
                                     functionName: isCustom ? 'mintCustomCard' : 'mintCard',
                                     args: [BigInt(cardData?.cardId || 1)],
@@ -190,7 +188,7 @@ export function CardViewer({ id }: { id: string }) {
                         Send your own card
                     </a>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 }

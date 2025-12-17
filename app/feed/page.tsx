@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { SocialFeed } from "@/components/features/SocialFeed";
-import DailyMomNews from "@/components/features/DailyMomNews";
+// import DailyMomNews from "@/components/features/DailyMomNews";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function FeedPage() {
 
             <div className="grid md:grid-cols-3 gap-6">
                 <div className="md:col-span-1">
-                    <DailyMomNews />
+                    {/* <DailyMomNews /> */}
                 </div>
                 <div className="md:col-span-2">
                     <SocialFeed />

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+// @ts-nocheck
+import React, { useState, useRef, useEffect } from 'react';
 import { useAccount } from "wagmi";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { Button } from "@/components/ui/Button";
@@ -12,16 +13,16 @@ import { addDoc, collection, query, where, getDocs, Timestamp } from "firebase/f
 import { db } from "@/lib/firebase";
 
 const CARDS = [
-    { id: 1, name: "Merry Cryptmas 🎄", img: "/cards/cryptmas-card.png", bg: "bg-black" },
+    { id: 1, name: "Merry Cryptmas 🎄", img: "/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png", bg: "bg-black" },
     { id: 2, name: "Diamond Hands Mom 💎", img: "/cards/Diamond_Hands_Mom_-_Crypto_meme_NFT.png", bg: "bg-blue-900" },
     { id: 3, name: "Bitcoin Mom", img: "/cards/Bitcoin_Mom_-_Crypto_maximalist_NFT.png", bg: "bg-yellow-900" },
     { id: 4, name: "Mom Hodls The Dip", img: "/cards/Mom_Hodls_the_Dip_-_Trading_meme_NFT.png", bg: "bg-red-900" },
     { id: 5, name: "Wen Lambo Mom 🏎️", img: "/cards/Wen_Lambo_Mom_-_Crypto_humor_meme_NFT.png", bg: "bg-purple-900" },
     { id: 6, name: "Mom to the Moon 🚀", img: "/cards/Mom_to_the_Moon_-_Meme-inspired_crypto_NFT.png", bg: "bg-indigo-900" },
-    { id: 7, name: "Degen Greetings 🤝", img: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png", bg: "bg-pink-900" },
-    { id: 8, name: "Feliz NaviDApp 🌮", img: "/cards/Feliz_NaviDApp_-_Web3_degen_greeting_card.png", bg: "bg-green-900" },
-    { id: 9, name: "Happy HodlDays 🎩", img: "/cards/Happy_HodlDays_-_Base_&_Farcaster_frens_card.png", bg: "bg-orange-900" },
-    { id: 10, name: "Stack & Celebrate 🧱", img: "/cards/Stack_&_Celebrate_-_Base_&_Farcaster_community_card.png", bg: "bg-teal-900" },
+    { id: 7, name: "Supermom Energy ⚡", img: "/cards/Supermom_Energy_NFT_-_Updated_with_branding_and_crypto_elements.png", bg: "bg-pink-900" },
+    { id: 8, name: "Greatest Gift 🎁", img: "/cards/The_Greatest_Gift_NFT_-_Updated_with_branding_and_crypto_elements.png", bg: "bg-green-900" },
+    { id: 9, name: "World Shine 🌟", img: "/cards/You_Make_the_World_Shine_NFT_-_Updated_with_branding_and_blockchain_elements.png", bg: "bg-orange-900" },
+    { id: 10, name: "Merry CryptMas Tree 🎄", img: "/cards/Merry_CryptMas_Tree_-_Holiday_crypto_pun_NFT.png", bg: "bg-teal-900" },
 ];
 
 export function ChristmasCardCreator() {

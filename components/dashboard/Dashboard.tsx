@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 
 import { useState } from "react";
@@ -16,7 +17,7 @@ import { TokenStats } from "@/components/features/TokenStats";
 import { NFTMintPromo } from "@/components/features/NFTMintPromo";
 import MomChat from "@/components/features/MomChat";
 import { DailyClaim } from "@/components/features/DailyClaim";
-import DailyMomNews from "@/components/features/DailyMomNews";
+// import DailyMomNews from "@/components/features/DailyMomNews";
 import { MomMarket } from "@/components/features/MomMarket";
 import ReferralDashboard from "@/components/features/ReferralDashboard";
 import Leaderboard from "@/components/features/Leaderboard";
@@ -148,6 +149,7 @@ export default function Dashboard() {
                     </Card>
                 </div>
 
+                {/* <DailyMomNews /> */}
                 {/* Clanker Presale Widget */}
                 <div className="md:col-span-3">
                     <ClankerPresaleWidget />

@@ -2,7 +2,7 @@ import SocialTasks from "@/components/features/SocialTasks";
 import { DailyClaim } from "@/components/features/DailyClaim";
 import { CookieCounter } from "@/components/features/CookieCounter";
 
-import DailyMomNews from "@/components/features/DailyMomNews";
+// import DailyMomNews from "@/components/features/DailyMomNews";
 import { Metadata } from "next";
 import { Coins, Sparkles } from "lucide-react";
 
@@ -35,7 +35,7 @@ export default function EarnPage() {
             {/* New Widget Section: Restoring Dashboard functionality */}
             <div className="grid md:grid-cols-2 gap-6">
 
-                <DailyMomNews />
+                {/* <DailyMomNews /> */}
             </div>
 
             <SocialTasks />
