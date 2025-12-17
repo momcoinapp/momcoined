@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/Card";
-import { Twitter, MessageCircle, CheckCircle, ExternalLink, Send, Quote, TrendingUp, Wallet, Mail, Sparkles } from "lucide-react";
+import { Twitter, MessageCircle, CheckCircle, ExternalLink, Send, Quote, TrendingUp, Wallet, Mail, Sparkles, Users } from "lucide-react";
 import { toast } from "react-hot-toast";
 import { doc, updateDoc, increment, arrayUnion } from "firebase/firestore";
 import { db } from "@/lib/firebase";

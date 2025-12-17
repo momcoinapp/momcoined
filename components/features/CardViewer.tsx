@@ -24,7 +24,7 @@ const CARDS = [
     { id: 10, name: "Merry CryptMas Tree", img: "/cards/Merry_CryptMas_Tree_-_Holiday_crypto_pun_NFT.png", bg: "bg-teal-900" },
 ];
 
-const CONTRACT_ADDRESS = "0xYOUR_DEPLOYED_CONTRACT_ADDRESS_HERE"; // TODO: UPDATE THIS AFTER DEPLOYMENT
+const CONTRACT_ADDRESS = "0xE2feD307E70E76F1B089EF34996c4b2187051AFE"; // Deployed MomChristmasCards
 const ABI = [
     {
         "inputs": [{ "internalType": "uint256", "name": "id", "type": "uint256" }],
