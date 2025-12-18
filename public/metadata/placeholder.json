@@ -1,0 +1,11 @@
+{
+    "name": "Unrevealed Mom #???",
+    "description": "This Mom is still getting ready. Reveal coming soon!",
+    "image": "https://app.momcoined.com/cookie-jar-promo.jpg",
+    "attributes": [
+        {
+            "trait_type": "Status",
+            "value": "Unrevealed"
+        }
+    ]
+}

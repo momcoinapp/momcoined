@@ -1,0 +1,27 @@
+"use client";
+
+import { AuthKitProvider } from "@farcaster/auth-kit";
+import "@farcaster/auth-kit/styles.css";
+import { useEffect } from "react";
+import sdk from "@farcaster/miniapp-sdk";
+
+const config = {
+    rpcUrl: "https://mainnet.base.org",
+    domain: "app.momcoined.com",
+    siweUri: "https://app.momcoined.com/login",
+};
+
+export default function FarcasterProvider({ children }: { children: React.ReactNode }) {
+    useEffect(() => {
+        const load = async () => {
+            sdk.actions.ready();
+        };
+        load();
+    }, []);
+
+    return (
+        <AuthKitProvider config={config}>
+            {children}
+        </AuthKitProvider>
+    );
+}
