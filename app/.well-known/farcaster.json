@@ -1,0 +1,21 @@
+{
+    "accountAssociation": {
+        "header": "eyJmaWQiOjM1NTA1OSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDMyMDc4N2YwYjZjMTYzYWViQ2ZGRTMwOEE5Njk1QWE1ZTk3NjFCNWUifQ",
+        "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
+        "signature": "MOCK_SIGNATURE_REPLACE_WITH_REAL_ONE_IF_NEEDED"
+    },
+    "frame": {
+        "version": "1",
+        "name": "MomCoin App",
+        "iconUrl": "https://app.momcoined.com/icon.png",
+        "homeUrl": "https://app.momcoined.com",
+        "imageUrl": "https://app.momcoined.com/og-image.png",
+        "buttonTitle": "Open MomCoin",
+        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashBackgroundColor": "#ec4899",
+        "webhookUrl": "https://app.momcoined.com/api/webhook/farcaster"
+    },
+    "baseBuilder": {
+        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+    }
+}

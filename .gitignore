@@ -1,0 +1,76 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+google-service-account.json
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+# Internal Documentation (Do not push)
+*.md
+!README.md
+!BRANDING_GUIDE.md
+!ARCHITECTURE_EXPLAINED.md
+FINAL_OPERATIONS_GUIDE.md
+!CONTRACTS.md
+# We want to keep README and maybe BRANDING_GUIDE, but ignore everything else.
+# Actually, let's be specific to avoid hiding important things.
+*_GUIDE.md
+*_PLAN.md
+*_LIST.md
+*_CHECKLIST.md
+*_REQUIREMENTS.md
+*_PROMPT.md
+*_STRATEGY.md
+*_FOUND.md
+*_HANDOFF.md
+*_TEMPLATE.md
+WHITEPAPER.md
+SESSION_SUMMARY.md
+ENV_TEMPLATE.md
+GEMINI_SETUP_GUIDE.md
+SECRETS.md
+KEYS.md
+secrets/
+
+# Logs
+*.log
+*.txt
+build_error*.log
+build_log*.txt
+lint_errors*.log
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+VERCEL_ENV_COPY_PASTE.md
+
+
