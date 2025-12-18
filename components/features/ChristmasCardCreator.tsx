@@ -2,7 +2,7 @@
 
 // @ts-nocheck
 import React, { useState, useRef, useEffect } from 'react';
-import { useAccount } from "wagmi";
+import { useAccount, useWriteContract } from "wagmi";
 import { useUserSession } from "@/components/providers/UserSessionProvider";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -64,54 +64,72 @@ export function ChristmasCardCreator() {
         }
     };
 
-    const handleCreateLink = async () => {
+    const { writeContract, isPending: isMinting, error: mintError } = useWriteContract();
+
+    // ABI for MomChristmasCards
+    const CHRISTMAS_ABI = [
+        {
+            inputs: [{ name: "id", type: "uint256" }],
+            name: "mintCard",
+            outputs: [],
+            stateMutability: "nonpayable",
+            type: "function",
+        },
+        {
+            inputs: [{ name: "id", type: "uint256" }],
+            name: "mintCustomCard",
+            outputs: [],
+            stateMutability: "payable",
+            type: "function",
+        }
+    ] as const;
+
+    const MOM_CHRISTMAS_CARDS_ADDR = "0xE2feD307E70E76F1B089EF34996c4b2187051AFE";
+
+    const handleMint = async () => {
         if (!message || !name) return;
         if (mode === "ai" && !generatedImage) return;
 
-        setIsGeneratingLink(true);
-
         try {
-            // SPAM CHECK: Limit to 3 cards per day per wallet
-            if (address) {
-                const oneDayAgo = new Date();
-                oneDayAgo.setHours(oneDayAgo.getHours() - 24);
-
-                const q = query(
-                    collection(db, "christmas_cards"),
-                    where("senderAddress", "==", address),
-                    where("createdAt", ">=", oneDayAgo)
-                );
-
-                const querySnapshot = await getDocs(q);
-                if (querySnapshot.size >= 3) {
-                    alert("You've created 3 cards today! Please come back tomorrow or try a custom AI card.");
-                    setIsGeneratingLink(false);
-                    return;
-                }
-            }
-
             const cardId = mode === "ai" ? 1000 + Math.floor(Math.random() * 9000) : selectedCard.id;
 
-            // Save to Firebase
-            const docRef = await addDoc(collection(db, "christmas_cards"), {
+            // 1. Mint NFT on Base
+            if (mode === "standard") {
+                writeContract({
+                    address: MOM_CHRISTMAS_CARDS_ADDR,
+                    abi: CHRISTMAS_ABI,
+                    functionName: "mintCard",
+                    args: [BigInt(cardId)],
+                });
+            } else {
+                writeContract({
+                    address: MOM_CHRISTMAS_CARDS_ADDR,
+                    abi: CHRISTMAS_ABI,
+                    functionName: "mintCustomCard",
+                    args: [BigInt(cardId)],
+                    value: BigInt(300000000000000), // 0.0003 ETH
+                });
+            }
+
+            // 2. Save metadata to Firebase (Gasless "Backup" or Context)
+            await addDoc(collection(db, "christmas_cards"), {
                 cardId: cardId,
                 imageUrl: mode === "ai" ? generatedImage : null,
                 message,
                 senderName: name,
                 senderAddress: address || "0x00...00",
                 createdAt: new Date(),
-                claimed: false,
+                claimed: true, // Mark as "claimed" since they minted
                 isAiCustom: mode === "ai"
             });
 
-            const refCode = userData?.referralCode || "MOM";
-            const link = `${window.location.origin}/card/${docRef.id}?ref=${refCode}`;
+            // Generate link for sharing
+            const link = `${window.location.origin}/card/${cardId}?sender=${address}`;
             setGeneratedLink(link);
+
         } catch (error) {
-            console.error("Error creating card:", error);
-            alert("Failed to create card. Please try again.");
-        } finally {
-            setIsGeneratingLink(false);
+            console.error("Error minting card:", error);
+            alert("Failed to mint card. See console.");
         }
     };
 
@@ -292,17 +310,17 @@ export function ChristmasCardCreator() {
                             </div>
                         ) : (
                             <Button
-                                onClick={handleCreateLink}
-                                disabled={!message || !name || isGeneratingLink || (mode === "ai" && !generatedImage)}
+                                onClick={handleMint}
+                                disabled={!message || !name || isMinting || (mode === "ai" && !generatedImage)}
                                 className="w-full h-14 text-lg font-bold bg-gradient-to-r from-pink-500 to-purple-600 hover:scale-[1.02] transition-transform shadow-xl shadow-pink-500/20"
                             >
-                                {isGeneratingLink ? (
+                                {isMinting ? (
                                     <>
                                         <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                                        Creating Magic Link...
+                                        Minting NFT...
                                     </>
                                 ) : (
-                                    "Create & Copy Link 🎁"
+                                    "Mint Card NO GAS (Mom Pays) 🎁"
                                 )}
                             </Button>
                         )}
