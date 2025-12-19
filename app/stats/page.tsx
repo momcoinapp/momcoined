@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "MomCoin Stats 📈",
         description: "Live Price, Holders, and Market Cap.",
-        images: ["https://momcoined.com/og-image.png"],
+        images: ["https://app.momcoined.com/og-preview.jpg"],
     },
     other: {
         "fc:frame": "vNext",
-        "fc:frame:image": "https://momcoined.com/og-image.png",
+        "fc:frame:image": "https://app.momcoined.com/og-preview.jpg",
         "fc:frame:button:1": "View Live Stats 📈",
         "fc:frame:button:1:action": "link",
         "fc:frame:button:1:target": "https://app.momcoined.com/stats",
