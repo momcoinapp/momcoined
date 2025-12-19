@@ -4,6 +4,7 @@
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
         "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
     },
+    "noindex": false,
     "frame": {
         "version": "1",
         "name": "MomCoin: Based Family",
@@ -11,7 +12,7 @@
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/image.png",
         "buttonTitle": "Claim FREE MomCoin",
-        "splashImageUrl": "https://app.momcoined.com/splash.png",
+        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
         "splashBackgroundColor": "#eeccff",
         "webhookUrl": "https://app.momcoined.com/api/webhook",
         "subtitle": "Moms First Crypto App",

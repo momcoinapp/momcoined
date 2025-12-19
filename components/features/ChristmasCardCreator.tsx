@@ -256,7 +256,7 @@ export function ChristmasCardCreator() {
                                             onClick={() => setSelectedCard(card)}
                                             className={`aspect-square rounded-xl border-2 transition-all relative overflow-hidden group ${selectedCard.id === card.id ? 'border-pink-500 scale-105 ring-4 ring-pink-500/20' : 'border-white/10 hover:border-white/30'}`}
                                         >
-                                            <img src={card.img} className="absolute inset-0 w-full h-full object-cover" />
+                                            <img src={card.img} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
                                             {selectedCard.id === card.id && (
                                                 <div className="absolute inset-0 bg-pink-500/20 flex items-center justify-center">
                                                     <Check className="text-white w-6 h-6 drop-shadow-md" />

@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { CookieJarSlider } from "@/components/features/CookieJarSlider";
 import { MomsJourney } from "@/components/features/MomsJourney";
 import { MomStory } from "@/components/features/MomStory";
-import { TikTokEmbed } from "@/components/ui/TikTokEmbed";
+import { XVideoEmbed } from "@/components/ui/XVideoEmbed";
 import { DailyClaim } from "@/components/features/DailyClaim";
 import { ArrowRight, Gift, Sparkles } from "lucide-react";
 
@@ -86,22 +86,27 @@ export default function Home() {
                     Start Minting 🍪
                   </Button>
                 )}
-                <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm">
-                  Invite Mom 💌
+                <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center gap-1">
+                  <span>Invite Crypto Fam 🚀</span>
+                  <span className="text-xs font-normal text-pink-300 opacity-90">(Bonus for Moms)</span>
                 </Button>
               </motion.div>
             </div>
 
-            {/* Right Column: Interactive Slider */}
+            {/* Right Column: Hero Image (No Slider) */}
             <motion.div
               className="flex-1 w-full max-w-md"
               initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ type: "spring", duration: 1.5 }}
             >
-              <div className="relative group">
+              <div className="relative group perspective-1000">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-[2.5rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-                <CookieJarSlider />
+                <img
+                  src="/hero.png"
+                  alt="MomCoin App"
+                  className="relative z-10 w-full rounded-[2.5rem] shadow-2xl border-4 border-white/10 transform transition-transform group-hover:rotate-y-12 bg-black/50"
+                />
                 {/* Floating Emojis */}
                 <motion.div animate={{ y: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-6 -right-6 text-6xl drop-shadow-lg">✨</motion.div>
                 <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute -bottom-8 -left-8 text-6xl drop-shadow-lg">🟣</motion.div>
@@ -160,9 +165,9 @@ export default function Home() {
             <DailyClaim />
           </section>
 
-          {/* TikTok Section */}
+          {/* Mom & Son Holiday Message (X Embed) */}
           <section className="w-full max-w-lg mx-auto pb-12">
-            <TikTokEmbed />
+            <XVideoEmbed />
           </section>
 
           {/* Mom Story */}
