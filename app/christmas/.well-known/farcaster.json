@@ -1,0 +1,27 @@
+{
+    "noindex": false,
+    "frame": {
+        "version": "1",
+        "name": "HODLday NFT Shipper",
+        "subtitle": "by MomCoin on Base",
+        "iconUrl": "https://app.momcoined.com/cards/hodlnftpreview.png",
+        "homeUrl": "https://app.momcoined.com/christmas",
+        "imageUrl": "https://app.momcoined.com/cards/hodlnftpreview.png",
+        "buttonTitle": "Send Free Card 🎄",
+        "splashImageUrl": "https://app.momcoined.com/og-preview-holiday.jpg",
+        "splashBackgroundColor": "#1a1a2e",
+        "webhookUrl": "https://app.momcoined.com/api/webhook",
+        "description": "Send free NFT holiday cards to family & friends. Receiver gets 100 $MOM. Gas covered by Mom!",
+        "primaryCategory": "nft",
+        "tags": [
+            "holiday",
+            "cards",
+            "gift",
+            "family",
+            "christmas"
+        ],
+        "ogTitle": "HODLday NFT Shipper",
+        "ogDescription": "Free holiday NFT cards on Base. Send love, earn rewards!",
+        "ogImageUrl": "https://app.momcoined.com/cards/hodlnftpreview.png"
+    }
+}
