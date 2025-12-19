@@ -12,7 +12,7 @@
         "homeUrl": "https://app.momcoined.com",
         "imageUrl": "https://app.momcoined.com/image.png",
         "buttonTitle": "Claim FREE MomCoin",
-        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
+        "splashImageUrl": "https://app.momcoined.com/og-preview-holiday.jpg",
         "splashBackgroundColor": "#eeccff",
         "webhookUrl": "https://app.momcoined.com/api/webhook",
         "subtitle": "Moms First Crypto App",
