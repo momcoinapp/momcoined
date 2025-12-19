@@ -7,11 +7,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "MomCoin Leaderboard 🏆",
         description: "Who is the best Mom? Check the rankings.",
-        images: ["https://app.momcoined.com/og-preview.jpg"],
+        images: ["https://app.momcoined.com/og-image.png"],
     },
     other: {
         "fc:frame": "vNext",
-        "fc:frame:image": "https://app.momcoined.com/og-preview.jpg",
+        "fc:frame:image": "https://app.momcoined.com/og-image.png",
         "fc:frame:button:1": "View Leaderboard 🏆",
         "fc:frame:button:1:action": "link",
         "fc:frame:button:1:target": "https://app.momcoined.com/leaderboard",

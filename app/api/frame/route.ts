@@ -16,7 +16,7 @@ async function getResponse(req: NextRequest) {
     <html>
       <head>
         <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="${BASE_URL}/og-preview.jpg" />
+        <meta property="fc:frame:image" content="${BASE_URL}/og-image.png" />
         <meta property="fc:frame:button:1" content="Your Mom Would Be Proud 🍪" />
         <meta property="fc:frame:button:1:action" content="link" />
         <meta property="fc:frame:button:1:target" content="https://warpcast.com/momcoined" />
