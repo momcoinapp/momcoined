@@ -12,6 +12,7 @@ import { Loader2, Link, Copy, Check, Sparkles, Image as ImageIcon, Grid } from "
 import { addDoc, collection, query, where, getDocs, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
+
 const CARDS = [
     { id: 1, name: "Merry Cryptmas 🎄", img: "/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png", bg: "bg-black" },
     { id: 2, name: "Diamond Hands Mom 💎", img: "/cards/Diamond_Hands_Mom_-_Crypto_meme_NFT.png", bg: "bg-blue-900" },
@@ -23,6 +24,14 @@ const CARDS = [
     { id: 8, name: "Greatest Gift 🎁", img: "/cards/The_Greatest_Gift_NFT_-_Updated_with_branding_and_crypto_elements.png", bg: "bg-green-900" },
     { id: 9, name: "World Shine 🌟", img: "/cards/You_Make_the_World_Shine_NFT_-_Updated_with_branding_and_blockchain_elements.png", bg: "bg-orange-900" },
     { id: 10, name: "Merry CryptMas Tree 🎄", img: "/cards/Merry_CryptMas_Tree_-_Holiday_crypto_pun_NFT.png", bg: "bg-teal-900" },
+    { id: 11, name: "Feliz NaviDApp 🎅", img: "/cards/Feliz_NaviDApp_-_Base_builders_&_Farcaster_focused.png", bg: "bg-red-800" },
+    { id: 12, name: "Web3 Degen Card 🎮", img: "/cards/Feliz_NaviDApp_-_Web3_degen_greeting_card.png", bg: "bg-violet-900" },
+    { id: 13, name: "Happy HodlDays 🟣", img: "/cards/Happy_HodlDays_-_Base_&_Farcaster_frens_card.png", bg: "bg-purple-800" },
+    { id: 14, name: "Degen Greetings 🔥", img: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png", bg: "bg-amber-900" },
+    { id: 15, name: "Stack & Celebrate 📈", img: "/cards/Stack_&_Celebrate_-_Base_&_Farcaster_community_card.png", bg: "bg-emerald-900" },
+    { id: 16, name: "Crypto Celebrate 🎉", img: "/cards/Stack_and_Celebrate_-_Inclusive_crypto_greeting_card.png", bg: "bg-cyan-900" },
+    { id: 17, name: "MomCoin Holiday Magic ✨", img: "/Momcoin Christmas.jpeg", bg: "bg-green-800" },
+    { id: 18, name: "MomCoin Holiday Shine 💖", img: "/Momcoin Christmas(1).jpeg", bg: "bg-pink-800" },
 ];
 
 export function ChristmasCardCreator() {
