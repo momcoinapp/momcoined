@@ -41,7 +41,7 @@ export function MomStory() {
                                     onError={(e) => e.currentTarget.src = "/mememom1.png"}
                                 />
                                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-6 pt-24 text-center">
-                                    <p className="text-2xl font-black text-white uppercase italic">"Grandma Degen"</p>
+                                    <p className="text-2xl font-black text-white uppercase italic">"Mom Degen"</p>
                                     <p className="text-pink-400 font-mono text-xs">Est. 1958 • Crypto Native since 2022</p>
                                 </div>
                             </Card>
@@ -57,7 +57,7 @@ export function MomStory() {
                             <div className="space-y-6 text-lg text-purple-100 leading-relaxed font-medium">
                                 <p>
                                     <span className="text-3xl font-bold text-pink-500 block mb-2">It started with a text.</span>
-                                    Two years ago, <a href="https://x.com/wolffoftruth" target="_blank" className="text-blue-400 hover:underline font-bold">@wolffoftruth</a> told his grandma to download Coinbase. He thought she'd buy $20 of Bitcoin.
+                                    Two years ago, <a href="https://x.com/wolffoftruth" target="_blank" className="text-blue-400 hover:underline font-bold">@wolffoftruth</a> told his mom to download Coinbase. He thought she'd buy $20 of Bitcoin.
                                 </p>
                                 <p>
                                     <span className="text-white font-bold bg-pink-600/20 px-2 py-1 rounded">She didn't stop there.</span>
@@ -68,7 +68,7 @@ export function MomStory() {
                                     <span className="italic border-l-4 border-purple-500 pl-4 block">"You kids are onto something, but you need a Mom to make sure you're eating your vegetables and holding your bags."</span>
                                 </p>
                                 <p>
-                                    She is the real deal. A grandma, a mother, and now, a crypto advocate for the next billion users.
+                                    She is the real deal. A mother, a crypto degen, and now, an advocate for the next billion users.
                                 </p>
                             </div>
 
@@ -92,7 +92,7 @@ export function MomStory() {
                                     <Sparkles className="w-6 h-6 animate-pulse" />
                                     <div className="text-left">
                                         <div className="text-xs uppercase opacity-70">Status</div>
-                                        <div className="font-bold">Based Grandma</div>
+                                        <div className="font-bold">Based Mom</div>
                                     </div>
                                 </div>
                             </div>
