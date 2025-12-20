@@ -4,7 +4,6 @@
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
         "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
     },
-    "noindex": false,
     "frame": {
         "version": "1",
         "name": "MomCoin: Based Family",
@@ -22,7 +21,7 @@
             "https://app.momcoined.com/mom-visual-1.jpg",
             "https://app.momcoined.com/mom-visual-2.jpg"
         ],
-        "heroImageUrl": "https://app.momcoined.com/mom-grok.png",
+        "heroImageUrl": "https://app.momcoined.com/intrro0.png",
         "tagline": "Crypto for Moms",
         "primaryCategory": "social",
         "tags": [
@@ -32,7 +31,8 @@
             "education",
             "momai"
         ],
-        "castShareUrl": "https://warpcast.com/~/compose?text=Join%20MomCoin!%20%F0%9F%8D%AA",
+        "noindex": false,
+        "castShareUrl": "https://app.momcoined.com",
         "ogTitle": "MomCoin",
         "ogDescription": "The first crypto app built for Moms. Earn rewards daily.",
         "ogImageUrl": "https://app.momcoined.com/og-image.png"

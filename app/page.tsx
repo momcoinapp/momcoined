@@ -167,7 +167,7 @@ export default function Home() {
 
           {/* Mom & Son Holiday Message (X Embed) */}
           <section className="w-full max-w-lg mx-auto pb-12">
-            <XVideoEmbed />
+            <TikTokEmbed />
           </section>
 
           {/* Mom Story */}

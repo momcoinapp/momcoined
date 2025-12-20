@@ -67,6 +67,7 @@ export const metadata = {
       postUrl: "https://app.momcoined.com/api/frame"
     }),
     "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
+    "base:app_id": "69356c7982a86756bfd57bd8",
   },
 };
 

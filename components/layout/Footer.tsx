@@ -64,8 +64,9 @@ export function Footer() {
                         </a>
                     </div>
 
-                    <div className="text-sm text-gray-500">
-                        © 2024 MomCoin. Made with ❤️ for Moms.
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                        <a href="/terms" className="hover:text-white transition-colors">Terms</a>
+                        <span>© 2024 MomCoin. Made with ❤️ for Moms.</span>
                     </div>
                 </div>
             </div>
