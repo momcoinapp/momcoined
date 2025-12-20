@@ -202,12 +202,12 @@ export function ChristmasCardCreator() {
                 {/* Preview Section */}
                 <div className="order-2 md:order-1 relative group">
                     <div className={`aspect-[3/4] rounded-3xl overflow-hidden relative shadow-2xl border-4 border-white/10 ${selectedCard.bg} transition-all duration-500 transform group-hover:scale-[1.02]`}>
-                        {/* Image Layer */}
+                        {/* Image Layer - CLEAN NFT PREVIEW */}
                         <div className="absolute inset-0 z-0">
                             {mode === "ai" && generatedImage ? (
                                 <img src={generatedImage} alt="AI Generated" className="w-full h-full object-cover" />
                             ) : mode === "standard" ? (
-                                <img src={selectedCard.img} alt="Card Theme" className="w-full h-full object-cover opacity-30" />
+                                <img src={selectedCard.img} alt="Card Theme" className="w-full h-full object-cover" />
                             ) : (
                                 <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black flex items-center justify-center text-white/20">
                                     <Sparkles className="w-20 h-20" />
@@ -215,17 +215,10 @@ export function ChristmasCardCreator() {
                             )}
                         </div>
 
-                        {/* Text Layer */}
-                        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-8 text-center bg-black/20 backdrop-blur-[2px]">
-                            {mode === "standard" && <div className="text-6xl mb-4 animate-bounce">🎄</div>}
-                            <h3 className="text-3xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)] mb-2">
-                                {mode === "standard" ? selectedCard.name : "Custom AI Card"}
-                            </h3>
-                            <p className="text-white/90 font-medium italic text-xl drop-shadow-md">
-                                "{message || 'Your message here...'}"
-                            </p>
-                            <div className="mt-8 text-sm text-white/80 font-bold bg-black/40 px-4 py-2 rounded-full backdrop-blur-md">
-                                From: {name || "Your Name"}
+                        {/* Card Name Badge */}
+                        <div className="absolute bottom-4 left-4 right-4 z-10">
+                            <div className="bg-black/60 backdrop-blur-md px-4 py-2 rounded-full text-center">
+                                <span className="text-white font-bold text-sm">{selectedCard.name}</span>
                             </div>
                         </div>
                     </div>

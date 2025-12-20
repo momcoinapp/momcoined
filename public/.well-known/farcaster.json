@@ -10,7 +10,7 @@
         "name": "MomCoin: Based Family",
         "iconUrl": "https://app.momcoined.com/icon.png",
         "homeUrl": "https://app.momcoined.com",
-        "imageUrl": "https://app.momcoined.com/image.png",
+        "imageUrl": "https://app.momcoined.com/intrro0.png",
         "buttonTitle": "Claim FREE MomCoin",
         "splashImageUrl": "https://app.momcoined.com/og-preview-holiday.jpg",
         "splashBackgroundColor": "#eeccff",
@@ -18,9 +18,9 @@
         "subtitle": "Moms First Crypto App",
         "description": "Earn rewards, mint cookies, and join the best crypto family. Simple, fun, and rewarding for everyone.",
         "screenshotUrls": [
-            "https://app.momcoined.com/screenshot1.png",
-            "https://app.momcoined.com/screenshot2.png",
-            "https://app.momcoined.com/screenshot3.png"
+            "https://app.momcoined.com/intrro0.png",
+            "https://app.momcoined.com/mom-visual-1.jpg",
+            "https://app.momcoined.com/mom-visual-2.jpg"
         ],
         "heroImageUrl": "https://app.momcoined.com/mom-grok.png",
         "tagline": "Crypto for Moms",
