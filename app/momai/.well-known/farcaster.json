@@ -1,0 +1,39 @@
+{
+    "accountAssociation": {
+        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
+        "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
+        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
+    },
+    "frame": {
+        "version": "1",
+        "name": "MomAI Agent",
+        "iconUrl": "https://app.momcoined.com/mom-grok.png",
+        "homeUrl": "https://app.momcoined.com/momai",
+        "imageUrl": "https://app.momcoined.com/mom-grok.png",
+        "buttonTitle": "Ask MomAI 🤖",
+        "splashImageUrl": "https://app.momcoined.com/mom-grok.png",
+        "splashBackgroundColor": "#1a1a2e",
+        "webhookUrl": "https://app.momcoined.com/api/webhook",
+        "subtitle": "Crypto Mom AI",
+        "description": "Chat with Mom. Get roasted. Get rich. MomAI gives you crypto advice with love.",
+        "screenshotUrls": [
+            "https://app.momcoined.com/mom-grok.png",
+            "https://app.momcoined.com/mom-visual-1.jpg"
+        ],
+        "heroImageUrl": "https://app.momcoined.com/mom-grok.png",
+        "tagline": "Your Crypto Mom Advisor",
+        "primaryCategory": "social",
+        "tags": [
+            "ai",
+            "chat",
+            "advice",
+            "crypto",
+            "mom"
+        ],
+        "noindex": false,
+        "castShareUrl": "https://app.momcoined.com/momai",
+        "ogTitle": "MomAI Agent",
+        "ogDescription": "Chat with Mom. Get roasted. Get rich.",
+        "ogImageUrl": "https://app.momcoined.com/mom-grok.png"
+    }
+}

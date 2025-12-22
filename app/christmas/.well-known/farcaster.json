@@ -1,9 +1,12 @@
 {
-    "noindex": false,
+    "accountAssociation": {
+        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
+        "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
+        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
+    },
     "frame": {
         "version": "1",
-        "name": "HODLday NFT Shipper",
-        "subtitle": "by MomCoin on Base",
+        "name": "HODLday Cards",
         "iconUrl": "https://app.momcoined.com/cards/hodlnftpreview.png",
         "homeUrl": "https://app.momcoined.com/christmas",
         "imageUrl": "https://app.momcoined.com/cards/hodlnftpreview.png",
@@ -11,7 +14,15 @@
         "splashImageUrl": "https://app.momcoined.com/og-preview-holiday.jpg",
         "splashBackgroundColor": "#1a1a2e",
         "webhookUrl": "https://app.momcoined.com/api/webhook",
-        "description": "Send free NFT holiday cards to family & friends. Receiver gets 100 $MOM. Gas covered by Mom!",
+        "subtitle": "Free NFT Holiday Cards",
+        "description": "Send gasless NFT holiday cards to family & friends. Receiver gets 100 $MOM. Gas covered by Mom!",
+        "screenshotUrls": [
+            "https://app.momcoined.com/cards/hodlnftpreview.png",
+            "https://app.momcoined.com/mom-visual-1.jpg",
+            "https://app.momcoined.com/mom-visual-2.jpg"
+        ],
+        "heroImageUrl": "https://app.momcoined.com/cards/hodlnftpreview.png",
+        "tagline": "Send Love, Earn Rewards",
         "primaryCategory": "nft",
         "tags": [
             "holiday",
@@ -20,7 +31,9 @@
             "family",
             "christmas"
         ],
-        "ogTitle": "HODLday NFT Shipper",
+        "noindex": false,
+        "castShareUrl": "https://app.momcoined.com/christmas",
+        "ogTitle": "HODLday Cards by MomCoin",
         "ogDescription": "Free holiday NFT cards on Base. Send love, earn rewards!",
         "ogImageUrl": "https://app.momcoined.com/cards/hodlnftpreview.png"
     }

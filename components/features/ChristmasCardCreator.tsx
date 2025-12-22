@@ -121,7 +121,7 @@ export function ChristmasCardCreator() {
             }
 
             // 2. Save metadata to Firebase (Gasless "Backup" or Context)
-            await addDoc(collection(db, "christmas_cards"), {
+            const docRef = await addDoc(collection(db, "christmas_cards"), {
                 cardId: cardId,
                 imageUrl: mode === "ai" ? generatedImage : null,
                 message,
@@ -132,8 +132,8 @@ export function ChristmasCardCreator() {
                 isAiCustom: mode === "ai"
             });
 
-            // Generate link for sharing
-            const link = `${window.location.origin}/card/${cardId}?sender=${address}`;
+            // Generate link for sharing (Use Unique Doc ID)
+            const link = `${window.location.origin}/card/${docRef.id}`;
             setGeneratedLink(link);
 
         } catch (error) {
@@ -164,14 +164,51 @@ export function ChristmasCardCreator() {
                     </button>
                 </div>
 
-                <div className="flex flex-col gap-2">
-                    <Button onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent("I made you a MomCoin Christmas card! 🎄 Open it here: " + generatedLink)}`, '_blank')} className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white">
-                        Share on WhatsApp
+                <div className="grid grid-cols-2 gap-2">
+                    {/* Farcaster */}
+                    <Button
+                        onClick={() => window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄✨\n\nClaim your FREE 100 $MOM gift:\n${generatedLink}`)}&embeds[]=${encodeURIComponent(generatedLink)}`, '_blank')}
+                        className="w-full bg-purple-600 hover:bg-purple-500 text-white"
+                    >
+                        🟣 Farcaster
                     </Button>
-                    <Button onClick={() => setGeneratedLink("")} variant="outline" className="w-full border-white/20 text-white">
-                        Create Another
+
+                    {/* X/Twitter */}
+                    <Button
+                        onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄✨\n\nClaim your FREE 100 $MOM gift:\n${generatedLink}\n\n@momcoined #Base`)}`, '_blank')}
+                        className="w-full bg-black hover:bg-gray-900 text-white border border-white/20"
+                    >
+                        𝕏 Share on X
+                    </Button>
+
+                    {/* WhatsApp */}
+                    <Button
+                        onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄 Open it here: ${generatedLink}`)}`, '_blank')}
+                        className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white"
+                    >
+                        💬 WhatsApp
+                    </Button>
+
+                    {/* SMS/Text */}
+                    <Button
+                        onClick={() => window.open(`sms:?body=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄 Open it here: ${generatedLink}`)}`, '_self')}
+                        className="w-full bg-blue-600 hover:bg-blue-500 text-white"
+                    >
+                        📱 Text/SMS
                     </Button>
                 </div>
+
+                {/* Email */}
+                <Button
+                    onClick={() => window.open(`mailto:?subject=${encodeURIComponent('You got a MomCoin HODLday Card! 🎄')}&body=${encodeURIComponent(`I made you a special crypto holiday card!\n\nOpen it here to claim your FREE 100 $MOM gift:\n${generatedLink}\n\n🍪 Happy HODLdays from MomCoin!`)}`, '_self')}
+                    className="w-full bg-gray-700 hover:bg-gray-600 text-white"
+                >
+                    ✉️ Send via Email
+                </Button>
+
+                <Button onClick={() => setGeneratedLink("")} variant="outline" className="w-full border-white/20 text-white mt-2">
+                    Create Another Card
+                </Button>
             </div>
         );
     }

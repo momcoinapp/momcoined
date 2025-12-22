@@ -50,7 +50,7 @@
     ],
     "orientation": "portrait",
     "scope": "/",
-    "frame": {
+    "frames": {
         "version": "1",
         "name": "MomCoin",
         "iconUrl": "https://app.momcoined.com/logo.png",

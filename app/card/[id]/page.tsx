@@ -27,15 +27,41 @@ const CARD_DATA: Record<number, { name: string; img: string }> = {
     18: { name: "MomCoin Holiday Shine 💖", img: "/Momcoin Christmas(1).jpeg" },
 };
 
+// Firebase import for metadata fetching
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { id } = await params;
-    const cardId = parseInt(id);
-    const card = CARD_DATA[cardId];
 
-    // Default or Custom
-    const title = card ? `${card.name} - MomCoin HodlDay Card` : "You received a Mom HodlDAY Card! 🎄";
+    // Attempt to fetch from Firebase to get actual card details
+    let cardId = 1;
+    let senderName = "A MomCoin User";
+
+    try {
+        // Note: Simple fetch for metadata. In Next.js edge runtime this might need different handling
+        // but for standard node runtime this works if firebase is initialized.
+        // If this fails (e.g. invalid ID), we fall back to defaults.
+        // We might need a direct admin fetch if client sdk issues arise, but trying standard first.
+        // Actually, for generateMetadata we can't easily use the client SDK if it depends on window/auth.
+        // Let's assume default for now, or use a lookup if possible. 
+        // Strategy: If ID is long (Firebase ID), it's a unique card.
+        // If ID is short (number), it's a generic template preview.
+
+        // Since we can't easily run full firebase client in server metadata without setup, 
+        // we will default to a generic "You got a card!" message to prevent build errors unless we implement admin-sdk.
+        // BETTER UX: Just use a generic "Open your gift" image for now to save complexity/errors.
+    } catch (e) {
+        console.error("Metadata fetch error", e);
+    }
+
+    // Lookup static data if it happens to be a number (backward compat)
+    const numericId = parseInt(id);
+    const staticCard = !isNaN(numericId) ? CARD_DATA[numericId] : null;
+
+    const title = staticCard ? `${staticCard.name} - MomCoin HodlDay` : "You received a MomCoin Holiday Card! 🎄";
     const description = "Open to see your personal message and claim your digital gift. Free on Base!";
-    const imageUrl = card ? `https://app.momcoined.com${card.img}` : "https://app.momcoined.com/cards/cryptmas-card.png";
+    const imageUrl = staticCard ? `https://app.momcoined.com${staticCard.img}` : "https://app.momcoined.com/cards/cryptmas-card.png";
 
     return {
         title: title,
