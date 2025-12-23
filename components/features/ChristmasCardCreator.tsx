@@ -167,7 +167,7 @@ export function ChristmasCardCreator() {
                 <div className="grid grid-cols-2 gap-2">
                     {/* Farcaster */}
                     <Button
-                        onClick={() => window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄✨\n\nClaim your FREE 100 $MOM gift:\n${generatedLink}`)}&embeds[]=${encodeURIComponent(generatedLink)}`, '_blank')}
+                        onClick={() => window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent(`I just sent a #CryptoChristmas NFT card using Momcoined! 🎄✨\n\nFree gift + raffle entry inside!\nClaim yours: ${generatedLink}\n\n@momcoin`)}&embeds[]=${encodeURIComponent(generatedLink)}`, '_blank')}
                         className="w-full bg-purple-600 hover:bg-purple-500 text-white"
                     >
                         🟣 Farcaster
@@ -175,7 +175,7 @@ export function ChristmasCardCreator() {
 
                     {/* X/Twitter */}
                     <Button
-                        onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄✨\n\nClaim your FREE 100 $MOM gift:\n${generatedLink}\n\n@momcoined #Base`)}`, '_blank')}
+                        onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(`Just sent Mom's #CryptoChristmas SuperHODLmas card + 100 $MOMCOIN gift! 🎄\n\nWho's next?\n${generatedLink}\n\n@momcoined #Base`)}`, '_blank')}
                         className="w-full bg-black hover:bg-gray-900 text-white border border-white/20"
                     >
                         𝕏 Share on X
@@ -189,9 +189,22 @@ export function ChristmasCardCreator() {
                         💬 WhatsApp
                     </Button>
 
-                    {/* SMS/Text */}
+                    {/* SMS/Text - Native Share */}
                     <Button
-                        onClick={() => window.open(`sms:?body=${encodeURIComponent(`I made you a MomCoin HODLday card! 🎄 Open it here: ${generatedLink}`)}`, '_self')}
+                        onClick={() => {
+                            const shareData = {
+                                title: 'MomCoin Holiday Card',
+                                text: `Merry #CryptoChristmas! Mom sent you a SuperHODLmas gift envelope + 100 $MOMCOIN inside! Rip it open: ${generatedLink} 🎄 @momcoin`,
+                                url: generatedLink
+                            };
+
+                            if (navigator.share && navigator.canShare(shareData)) {
+                                navigator.share(shareData).catch(console.error);
+                            } else {
+                                // Fallback for desktop/older browsers
+                                window.open(`sms:?body=${encodeURIComponent(`Merry #CryptoChristmas! Mom sent you a SuperHODLmas gift + 100 $MOMCOIN! Open envelope: ${generatedLink} 🎄 @momcoin`)}`, '_self');
+                            }
+                        }}
                         className="w-full bg-blue-600 hover:bg-blue-500 text-white"
                     >
                         📱 Text/SMS
