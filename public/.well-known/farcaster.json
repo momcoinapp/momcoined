@@ -4,7 +4,7 @@
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
         "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
     },
-    "frame": {
+    "miniapp": {
         "version": "1",
         "name": "Momcoined",
         "iconUrl": "https://app.momcoined.com/Momcoin-Christmas.jpeg",
