@@ -106,7 +106,7 @@ export default function ClaimPage() {
     };
 
     const handleShare = () => {
-        const shareText = `Just ripped open Mom's envelope – got NFT + 100 $MOMCOIN! 🎁\n\nThanks @blokmom #CryptoChristmas\n\nhttps://app.momcoined.com/cards`;
+        const shareText = `Just ripped open Mom's #SuperHODLmas envelope – got NFT + 100 $MOMCOIN! 🎁 #CryptoChristmas\\n\\nSend yours FREE: https://app.momcoined.com/cards\\n\\n@blokmom @momcoined`;
         window.open(`https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}`, '_blank');
     };
 

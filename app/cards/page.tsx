@@ -30,7 +30,7 @@ export default function CardsPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     const templates = getTemplatesByEvent(event);
-    const DAILY_LIMIT = 10;
+    const DAILY_LIMIT = 3;
 
     useEffect(() => {
         setRandomQuote(getRandomQuote());
@@ -114,7 +114,7 @@ export default function CardsPage() {
     };
 
     const handleShare = (platform: string) => {
-        const shareText = `Just sent Mom's #CryptoChristmas SuperHODLmas card + raffle entry! 🎄\n\nClaim yours: ${generatedLink}\n\n@blokmom`;
+        const shareText = `Just sent Mom's #SuperHODLmas NFT Card + raffle entry! 🎄 #CryptoChristmas\n\nRip open yours: ${generatedLink}\n\n@blokmom @momcoined`;
 
         const urls: Record<string, string> = {
             farcaster: `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(generatedLink)}`,
@@ -156,10 +156,10 @@ export default function CardsPage() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-white mb-2">
-                        🎄 SuperHODLmas 2025
+                        🎄 Mom's SuperHODLmas NFT Card Mailer
                     </h1>
                     <p className="text-gray-300">
-                        Send FREE NFT cards + 100 $MOMCOIN gifts to your loved ones
+                        Send Merry Cryptmas Cheer! FREE NFT cards + 100 $MOMCOIN gifts
                     </p>
                     {isConnected && (
                         <p className="text-sm text-yellow-400 mt-2">
