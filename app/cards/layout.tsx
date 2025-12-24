@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "MomCoin Holiday NFT Card Mailer – Send Free NFT Cards on Base",
-    description: "Send free NFT holiday cards on Base. Claim MOMCOIN rewards, enter raffles. #nft #holiday #gifting",
+    title: "CryptoChristmas Card NFT Mailer | Happy New Year from Mom",
+    description: "Send free holiday NFT cards on Base. Claim MOMCOIN rewards, enter raffles.",
     openGraph: {
         title: "MomCoin Holiday NFT Card Mailer",
         description: "Free NFT cards on Base. Claim MOMCOIN rewards. #nft #holiday #gifting",
