@@ -12,16 +12,19 @@
         "splashImageUrl": "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png",
         "splashBackgroundColor": "#eeccff",
         "subtitle": "Real Mom & Son Crypto for Good",
-        "description": "Send free SuperHODLmas NFT cards with Mom quotes, claim 100 $MOMCOIN gifts, mint Cookie Jars—all on Base for anti-scam vibes and social impact!",
+        "description": "Send free SuperHODLmas NFT cards with Mom quotes, claim 100 $MOMCOIN gifts, enter NYE raffle, mint Cookie Jars – all on Base! Merry Cryptmas 🎄 #CryptoChristmas",
         "primaryCategory": "social",
         "tags": [
             "nft",
             "holiday",
-            "community",
+            "gifting",
+            "cryptochristmas",
+            "merrycryptmas",
+            "hodlday",
             "family",
+            "community",
             "base",
             "farcaster",
-            "cryptochristmas",
             "momcoin"
         ],
         "tagline": "Mom's Love + Crypto Magic 🎄",
@@ -32,12 +35,6 @@
             "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png"
         ],
         "webhookUrl": "https://app.momcoined.com/api/webhook",
-        "imageUrl": "https://app.momcoined.com/Momcoin-Christmas.jpeg",
-        "buttonTitle": "Launch MomCoin",
-        "noindex": false,
-        "castShareUrl": "https://app.momcoined.com",
-        "ogTitle": "Momcoined",
-        "ogDescription": "Send free SuperHODLmas NFT cards with Mom quotes, claim 100 $MOMCOIN gifts, mint Cookie Jars—all on Base for anti-scam vibes and social impact!",
-        "ogImageUrl": "https://app.momcoined.com/Momcoin-Christmas.jpeg"
+        "noindex": false
     }
 }
