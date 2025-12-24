@@ -5,6 +5,11 @@ import { generateMomMetadata } from "@/lib/gemini-generator";
 import { CONTRACT_ADDRESSES } from "@/lib/contracts";
 import crypto from "crypto";
 
+// GET handler for health checks (prevents 405 errors)
+export async function GET() {
+    return NextResponse.json({ status: "ok", endpoint: "alchemy-webhook" });
+}
+
 export async function POST(req: NextRequest) {
     try {
         const textBody = await req.text();
