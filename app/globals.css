@@ -4,26 +4,21 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 74, 14, 78;
-  --background-start-rgb: 248, 240, 255;
+  --foreground-rgb: 61, 11, 71;
+  --background-start-rgb: 255, 248, 255;
   --background-end-rgb: 255, 255, 255;
+  --text-primary: #3D0B47;
+  --text-secondary: #6B2A7A;
+  --bg-card: #FFFFFF;
+  --border-light: #E0C3FC;
+  --accent-pink: #FF69B4;
+  --accent-purple: #9B59B6;
 }
 
+/* Light Holiday Theme - High Contrast */
 body {
-  color: rgb(var(--foreground-rgb));
-  /* Improved Legibility: Darker background + Confetti Pattern */
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-    /* Dark overlay for text contrast */
-    url('/metadata/momcoin-confetti.png'),
-    /* Confetti Pattern */
-    linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-  background-blend-mode: overlay, normal, normal;
-  background-attachment: fixed;
-  background-size: auto, 400px, auto;
-  /* Scale confetti */
-  background-repeat: no-repeat, repeat, no-repeat;
-
+  background: #FFF8FF;
+  color: #3D0B47;
   font-family: var(--font-poppins), sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
@@ -31,23 +26,47 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism Utilities */
+/* High Contrast Card Styles */
+.card,
+.rewards-section,
+.leaderboard-item,
+.dashboard-card {
+  background: #FFFFFF !important;
+  color: #3D0B47 !important;
+  border: 2px solid #E0C3FC !important;
+}
+
+/* Glass Card - Light Mode */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  border: 2px solid #E0C3FC;
+  box-shadow: 0 8px 32px 0 rgba(155, 89, 182, 0.1);
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E0C3FC;
 }
 
-/* Particle Animation Placeholder */
+/* Text Contrast Fixes */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3D0B47;
+}
+
+p {
+  color: #6B2A7A;
+}
+
+/* Particle Animation - Festive */
 .particles {
   position: fixed;
   top: 0;
@@ -57,18 +76,53 @@ body {
   z-index: -1;
   pointer-events: none;
   background-image: radial-gradient(#FF69B4 1px, transparent 1px), radial-gradient(#9B59B6 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: 0 0, 25px 25px;
-  opacity: 0.3;
-  animation: particleMove 20s linear infinite;
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  opacity: 0.15;
+  animation: particleMove 25s linear infinite;
 }
 
 @keyframes particleMove {
   0% {
-    background-position: 0 0, 25px 25px;
+    background-position: 0 0, 30px 30px;
   }
 
   100% {
-    background-position: 50px 50px, 75px 75px;
+    background-position: 60px 60px, 90px 90px;
   }
+}
+
+/* Button Enhancements */
+button {
+  font-weight: 600;
+}
+
+/* Link Styles */
+a {
+  color: #9B59B6;
+}
+
+a:hover {
+  color: #FF69B4;
+}
+
+/* Input Fields - High Contrast */
+input,
+textarea,
+select {
+  background: #FFFFFF;
+  color: #3D0B47;
+  border: 2px solid #E0C3FC;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6B2A7A;
+  opacity: 0.6;
+}
+
+/* Navbar Enhancement */
+nav {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid #E0C3FC;
 }
