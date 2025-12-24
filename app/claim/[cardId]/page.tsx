@@ -205,6 +205,7 @@ export default function ClaimPage() {
                                     autoPlay
                                     muted
                                     playsInline
+                                    preload="auto"
                                     className="w-full h-full object-cover"
                                     onEnded={() => setStep('revealed')}
                                 />

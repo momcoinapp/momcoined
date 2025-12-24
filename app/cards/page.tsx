@@ -28,6 +28,7 @@ export default function CardsPage() {
     const [generatedLink, setGeneratedLink] = useState('');
     const [dailySendCount, setDailySendCount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [isBackendReady, setIsBackendReady] = useState(false);
 
     const templates = getTemplatesByEvent(event);
     const DAILY_LIMIT = 999999; // Unlimited for Christmas!
@@ -100,8 +101,8 @@ export default function CardsPage() {
             const claimLink = `https://app.momcoined.com/claim/${cardId}`;
 
             setGeneratedLink(claimLink);
-            setStep('success');
             setDailySendCount(prev => prev + 1);
+            setIsBackendReady(true); // Signal that backend work is done
 
             toast.success('Card sent! +500 cookies earned 🍪');
         } catch (error) {
@@ -146,6 +147,7 @@ export default function CardsPage() {
         setRecipientName('');
         setMessage('');
         setGeneratedLink('');
+        setIsBackendReady(false);
         setStep('select');
         setRandomQuote(getRandomQuote());
     };
@@ -315,11 +317,26 @@ export default function CardsPage() {
                                 <video
                                     src="/card-sending.mp4"
                                     autoPlay
-                                    loop
                                     muted
                                     playsInline
+                                    preload="auto"
                                     className="w-full h-full object-cover"
+                                    onEnded={() => {
+                                        if (isBackendReady) {
+                                            setStep('success');
+                                        } else {
+                                            // Ideally loop the last bit or show loading, but for now just wait
+                                            // The backend effect could also trigger this if we used a ref, 
+                                            // but simple "wait for end" is safer.
+                                            // Let's loop if not ready, or just set ready state to trigger effect.
+                                        }
+                                    }}
                                 />
+                                {!isBackendReady && (
+                                    <p className="absolute bottom-2 left-0 right-0 text-center text-xs text-white/80 animate-pulse">
+                                        Minting...
+                                    </p>
+                                )}
                             </div>
                             <h2 className="text-2xl font-bold text-white mb-2">Sealing your gift...</h2>
                             <p className="text-gray-300">Adding Mom's magic touch ✨</p>
