@@ -30,7 +30,7 @@ export default function CardsPage() {
     const [isLoading, setIsLoading] = useState(false);
 
     const templates = getTemplatesByEvent(event);
-    const DAILY_LIMIT = 3;
+    const DAILY_LIMIT = 999999; // Unlimited for Christmas!
 
     useEffect(() => {
         setRandomQuote(getRandomQuote());
