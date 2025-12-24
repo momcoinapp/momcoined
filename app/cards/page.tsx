@@ -158,10 +158,10 @@ export default function CardsPage() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-white mb-2">
-                        🎄 Mom's SuperHODLmas NFT Card Mailer
+                        🎄 MomCoin Holiday NFT Card Mailer
                     </h1>
                     <p className="text-gray-300">
-                        Send Merry Cryptmas Cheer! FREE NFT cards + 100 $MOMCOIN gifts
+                        Send FREE NFT Holiday Cards + 100 $MOMCOIN gifts on Base
                     </p>
                     {isConnected && (
                         <p className="text-sm text-yellow-400 mt-2">

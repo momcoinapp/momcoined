@@ -50,3 +50,15 @@ Here is how the pieces fit together. You are using the latest "Smart Wallet" sta
 | **Chat** | Gemini Flash API | ✅ Live |
 | **Agent Actions** | Coinbase AgentKit | 🚧 Ready to Build (Keys Set) |
 | **Socials** | Farcaster Frames + Neynar | ✅ Live |
+
+## 5. Mom's SuperHODLmas NFT Card Mailer (New Feature)
+*   **What it is:** A viral holiday gifting experience. Users send digital cards + 100 $MOM to friends.
+*   **Viral Hooks:**
+    *   **Unlimited Sending:** No daily limit for maximum spread.
+    *   **Video Flows:** Custom "Sending" and "Opening" animations for emotional impact.
+    *   **Mom Quotes:** 9 random wholesome/degen quotes auto-added to every card.
+*   **Tech Stack:**
+    *   **Frontend:** Next.js + Framer Motion + Video Elements.
+    *   **Backend:** Firebase (Card Storage, Status Tracking).
+    *   **Rewards:** +500 Cookies for sender/recipient to incentivize growth.
+    *   **Manifest:** Farcaster Mini App v1 compliant.

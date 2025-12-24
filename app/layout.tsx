@@ -17,8 +17,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Momcoin ❤️ Real Utility on Base – MomAI, BaseMomz NFTs & Real Change",
-  description: "Real mom & son building trust on Base. MomAI advice, BaseMomz/BaseKidz legendary NFTs, learn & earn rewards, housing Americans, helping trafficking victims. Join the family 🏠💪",
+  title: "Momcoined – NFT Holiday Cards on Base | MomAI, Rewards & Real Change",
+  description: "Send free NFT holiday cards, claim MOMCOIN rewards. Real mom & son building trust on Base. MomAI advice, BaseMomz NFTs, housing Americans, helping trafficking victims.",
   manifest: "/manifest.json",
   icons: {
     icon: "/icon.png",
@@ -54,9 +54,9 @@ export const metadata = {
     "fc:frame:button:1": "🍪 Claim 100 $MOM",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": "https://app.momcoined.com/earn",
-    "fc:frame:button:2": "🎁 Gift FREE Card",
+    "fc:frame:button:2": "🎁 Send FREE Card",
     "fc:frame:button:2:action": "link",
-    "fc:frame:button:2:target": "https://app.momcoined.com/christmas",
+    "fc:frame:button:2:target": "https://app.momcoined.com/cards",
 
     "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
     "base:app_id": "69356c7982a86756bfd57bd8",
