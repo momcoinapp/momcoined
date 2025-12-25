@@ -66,7 +66,7 @@ export default function MomChat() {
                 <div className="relative w-12 h-12">
                     <div className="absolute inset-0 bg-pink-500 rounded-full animate-pulse opacity-50"></div>
                     <img
-                        src="/mom-avatar.png"
+                        src="/mom-avatar.jpg"
                         alt="MomAI"
                         className="w-12 h-12 rounded-full border-2 border-pink-400 relative z-10 object-cover"
                         onError={(e) => e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Mom&clothing=blazerAndShirt&top=longHairBigHair"}

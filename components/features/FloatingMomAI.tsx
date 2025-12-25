@@ -24,7 +24,7 @@ export function FloatingMomAI() {
                 ) : (
                     <div className="relative">
                         <img
-                            src="/mom-avatar.png"
+                            src="/mom-avatar.jpg"
                             alt="Mom"
                             className="w-10 h-10 rounded-full object-cover border border-white/50"
                             onError={(e) => e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Mom"}

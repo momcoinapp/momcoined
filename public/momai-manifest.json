@@ -1,11 +1,11 @@
 {
     "name": "MomAI Agent",
     "description": "Chat with Mom. Get roasted. Get rich.",
-    "iconUrl": "https://app.momcoined.com/mom-avatar.png",
+    "iconUrl": "https://app.momcoined.com/mom-avatar.jpg",
     "initialPath": "/momai",
     "fc:frame": {
         "version": "1",
-        "image": "https://app.momcoined.com/mom-avatar.png",
+        "image": "https://app.momcoined.com/mom-avatar.jpg",
         "buttons": [
             {
                 "label": "Ask MomAI",
