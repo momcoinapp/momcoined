@@ -1,21 +1,34 @@
 {
     "accountAssociation": {
-        "header": "eyJmaWQiOjM1NTA1OSwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDMyMDc4N2YwYjZjMTYzYWViQ2ZGRTMwOEE5Njk1QWE1ZTk3NjFCNWUifQ",
+        "header": "eyJmaWQiOjE0NDE5NzYsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHhCNzMzNDY0YTAxQkQyOWY1OTJCNzEyZDVhMUY5YkFDNEUwMEVFYWM0In0",
         "payload": "eyJkb21haW4iOiJhcHAubW9tY29pbmVkLmNvbSJ9",
-        "signature": "MOCK_SIGNATURE_REPLACE_WITH_REAL_ONE_IF_NEEDED"
+        "signature": "4+UV2wnj6LNsAKIJX4Q+JM+yeape3QgRXhAWk3YOdhUv0X1ZaEP5pMiogll3F1tovkQAx+8nFU2+xoBZjiBnGRs="
     },
-    "frame": {
+    "miniapp": {
         "version": "1",
-        "name": "MomCoin App",
-        "iconUrl": "https://app.momcoined.com/icon.png",
-        "homeUrl": "https://app.momcoined.com",
-        "imageUrl": "https://app.momcoined.com/og-image.png",
-        "buttonTitle": "Open MomCoin",
-        "splashImageUrl": "https://app.momcoined.com/splash.png",
-        "splashBackgroundColor": "#ec4899",
-        "webhookUrl": "https://app.momcoined.com/api/webhook/farcaster"
-    },
-    "baseBuilder": {
-        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
+        "name": "Momcoined",
+        "iconUrl": "https://app.momcoined.com/Momcoin-Christmas.jpeg",
+        "homeUrl": "https://app.momcoined.com/",
+        "splashImageUrl": "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png",
+        "splashBackgroundColor": "#DC2626",
+        "subtitle": "Real Mom and Son Crypto for Good",
+        "description": "Send free holiday NFT cards with mom quotes, claim 100 MOMCOIN gifts, enter NYE raffle, mint Cookie Jars on Base",
+        "primaryCategory": "social",
+        "tags": [
+            "nft",
+            "gifting",
+            "holiday",
+            "base",
+            "momcoin"
+        ],
+        "tagline": "Moms Love and Crypto Magic",
+        "heroImageUrl": "https://app.momcoined.com/hero.jpeg",
+        "screenshotUrls": [
+            "https://app.momcoined.com/intrro0.png",
+            "https://app.momcoined.com/screenshot3.png",
+            "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png"
+        ],
+        "webhookUrl": "https://app.momcoined.com/api/webhook",
+        "noindex": false
     }
 }

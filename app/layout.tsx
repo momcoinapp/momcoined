@@ -61,13 +61,15 @@ export const metadata = {
     "baseBuilder": "{\"ownerAddress\":\"0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e\"}",
     "base:app_id": "69356c7982a86756bfd57bd8",
     "fc:miniapp": JSON.stringify({
-      version: "1.0",
-      name: "MomCoin",
-      iconUrl: "https://app.momcoined.com/icon.png",
-      splashImageUrl: "https://app.momcoined.com/splash.jpg",
-      splashBackgroundColor: "#eeccff",
-      button: { label: "Launch MomCoin" },
-      postUrl: "https://app.momcoined.com/api/frame"
+      version: "1",
+      imageUrl: "https://app.momcoined.com/hero.jpeg",
+      button: {
+        title: "Open Momcoined",
+        action: {
+          type: "launch_frame",
+          url: "https://app.momcoined.com"
+        }
+      }
     }),
   },
 };
