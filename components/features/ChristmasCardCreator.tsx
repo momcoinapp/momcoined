@@ -30,7 +30,7 @@ const CARDS = [
     { id: 14, name: "Degen Greetings 🔥", img: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png", bg: "bg-amber-900" },
     { id: 15, name: "Stack & Celebrate 📈", img: "/cards/Stack_&_Celebrate_-_Base_&_Farcaster_community_card.png", bg: "bg-emerald-900" },
     { id: 16, name: "Crypto Celebrate 🎉", img: "/cards/Stack_and_Celebrate_-_Inclusive_crypto_greeting_card.png", bg: "bg-cyan-900" },
-    { id: 17, name: "MomCoin Holiday Magic ✨", img: "/Momcoin Christmas.jpeg", bg: "bg-green-800" },
+    { id: 17, name: "MomCoin Holiday Magic ✨", img: "/Momcoin-Christmas.jpeg", bg: "bg-green-800" },
     { id: 18, name: "MomCoin Holiday Shine 💖", img: "/Momcoin Christmas(1).jpeg", bg: "bg-pink-800" },
 ];
 

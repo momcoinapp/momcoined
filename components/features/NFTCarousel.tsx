@@ -22,7 +22,7 @@ const CARDS = [
     { id: 14, img: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png" },
     { id: 15, img: "/cards/Stack_&_Celebrate_-_Base_&_Farcaster_community_card.png" },
     { id: 16, img: "/cards/Stack_and_Celebrate_-_Inclusive_crypto_greeting_card.png" },
-    { id: 17, img: "/Momcoin Christmas.jpeg" },
+    { id: 17, img: "/Momcoin-Christmas.jpeg" },
     { id: 18, img: "/Momcoin Christmas(1).jpeg" },
 ];
 

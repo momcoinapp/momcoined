@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
             14: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png",
             15: "/cards/Stack_&_Celebrate_-_Base_&_Farcaster_community_card.png",
             16: "/cards/Stack_and_Celebrate_-_Inclusive_crypto_greeting_card.png",
-            17: "/Momcoin Christmas.jpeg",
+            17: "/Momcoin-Christmas.jpeg",
             18: "/Momcoin Christmas(1).jpeg",
         };
 

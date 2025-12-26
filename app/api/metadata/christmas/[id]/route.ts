@@ -84,7 +84,7 @@ const CARD_DATA: Record<number, { name: string; image: string; quote: string }> 
     },
     17: {
         name: "MomCoin Holiday Magic",
-        image: "/Momcoin Christmas.jpeg",
+        image: "/Momcoin-Christmas.jpeg",
         quote: "Because 'thanks mom' hits different when it's onchain."
     },
     18: {
