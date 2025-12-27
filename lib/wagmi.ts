@@ -1,16 +1,15 @@
 import { http, createConfig } from "wagmi";
 import { base } from "wagmi/chains";
-import { coinbaseWallet, walletConnect } from "wagmi/connectors";
+import { coinbaseWallet } from "wagmi/connectors";
 
-const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID || "cc97e2d8d1441819bd41f75c101a4ccf";
-
+// Coinbase Smart Wallet only - no WalletConnect/MetaMask needed
 export const config = createConfig({
     chains: [base],
     connectors: [
         coinbaseWallet({
             appName: "MomCoin",
+            preference: "smartWalletOnly", // Force Smart Wallet for gasless
         }),
-        walletConnect({ projectId, showQrModal: true }),
     ],
     ssr: true,
     transports: {

@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Card data with unique funny MomCoin holiday quotes
+// Card data with unique funny MomCoin holiday quotes - Updated for New Year 2026
 const CARD_DATA: Record<number, { name: string; image: string; quote: string }> = {
     1: {
-        name: "Merry CryptMas",
+        name: "Happy HodlDays",
         image: "/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png",
-        quote: "All she wants for CryptMas is you off your phone for 5 minutes."
+        quote: "All she wants for the holidays is you off your phone for 5 minutes."
     },
     2: {
         name: "Diamond Hands Mom",
@@ -48,7 +48,7 @@ const CARD_DATA: Record<number, { name: string; image: string; quote: string }> 
         quote: "She's the real alpha, you're just LARPing."
     },
     10: {
-        name: "Merry CryptMas Tree",
+        name: "HodlDay Tree",
         image: "/cards/Merry_CryptMas_Tree_-_Holiday_crypto_pun_NFT.png",
         quote: "Tree lights: green. Portfolio: we don't talk about that."
     },
@@ -70,7 +70,7 @@ const CARD_DATA: Record<number, { name: string; image: string; quote: string }> 
     14: {
         name: "Degen Greetings",
         image: "/cards/HodlDays_Degen_Greetings_-_Crypto_friend_card.png",
-        quote: "Onchain holiday card > group chat 'Merry Christmas' text."
+        quote: "Onchain holiday card > group chat text."
     },
     15: {
         name: "Stack & Celebrate",
@@ -89,7 +89,7 @@ const CARD_DATA: Record<number, { name: string; image: string; quote: string }> 
     },
     18: {
         name: "MomCoin Holiday Shine",
-        image: "/Momcoin Christmas(1).jpeg",
+        image: "/cards/Momcoin Christmas(1).jpeg",
         quote: "Hallmark could never. This one lives on Base."
     },
 };
@@ -106,19 +106,19 @@ export async function GET(
     const cardData = CARD_DATA[tokenId];
     const isAiCustom = tokenId >= 1000;
 
-    const cardName = cardData?.name || (isAiCustom ? "AI Custom Card" : "HODLdays Card");
+    const cardName = cardData?.name || (isAiCustom ? "AI Custom Card" : "HodlDay Card");
     const cardQuote = cardData?.quote || "Not financial advice, just emotional appreciation.";
     const imageUrl = cardData
         ? `${BASE_URL}${cardData.image}`
-        : `${BASE_URL}/cards/hodlnftpreview.png`;
+        : `${BASE_URL}/hero.jpeg`;
 
     const metadata = {
-        name: `2025 HODLdays: ${cardName} #${id}`,
-        description: `${cardQuote} | Part of the 2025 Happy HODLdays Collection. Free mint on Base. Someone special in your life sent this! Join MomCoin community for a free crypto present 🎁`,
+        name: `HodlDay 2026: ${cardName} #${id}`,
+        description: `${cardQuote} | Part of the HodlDay 2026 Collection. Free mint on Base. Someone special sent this! Join MomCoin community 🎁`,
         image: imageUrl,
-        external_url: `${BASE_URL}/christmas`,
+        external_url: `${BASE_URL}/cards`,
         attributes: [
-            { trait_type: "Event", value: "Happy HODLdays 2025" },
+            { trait_type: "Event", value: "HodlDay 2026" },
             { trait_type: "Chain", value: "Base" },
             { trait_type: "Type", value: isAiCustom ? "AI Custom" : "Template Card" },
             { trait_type: "Card Style", value: cardName },
