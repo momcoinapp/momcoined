@@ -31,7 +31,7 @@ export default function CardsPage() {
     const [isBackendReady, setIsBackendReady] = useState(false);
 
     const templates = getTemplatesByEvent(event);
-    const DAILY_LIMIT = 999999; // Unlimited for Christmas!
+    const DAILY_LIMIT = 999999; // Unlimited for Holiday launch!
 
     useEffect(() => {
         setRandomQuote(getRandomQuote());
@@ -115,18 +115,18 @@ export default function CardsPage() {
     };
 
     const handleShare = (platform: string) => {
-        const shareText = `Just sent Mom's #SuperHODLmas NFT Card + raffle entry! 🎄 #CryptoChristmas\n\nRip open yours: ${generatedLink}\n\n@blokmom @momcoined`;
+        const shareText = `Just sent Mom's #HodlDay NFT Card + raffle entry! 🎆 #NewYear2026\n\nRip open yours: ${generatedLink}\n\n@blokmom @momcoined`;
 
         const urls: Record<string, string> = {
             farcaster: `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(generatedLink)}`,
             twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-            whatsapp: `https://wa.me/?text=${encodeURIComponent(`Merry #CryptoChristmas! 🎄 I sent you a SuperHODLmas gift + 100 $MOMCOIN! Rip it open: ${generatedLink}`)}`,
+            whatsapp: `https://wa.me/?text=${encodeURIComponent(`Happy #NewYear2026! 🎆 I sent you a HodlDay gift + 100 $MOMCOIN! Rip it open: ${generatedLink}`)}`,
         };
 
         if (platform === 'sms') {
-            const smsText = `Merry #CryptoChristmas! Mom sent you a SuperHODLmas envelope + 100 $MOMCOIN gift! Rip open: ${generatedLink} 🎄 @blokmom`;
+            const smsText = `Happy New Year 2026! Mom sent you a HodlDay envelope + 100 $MOMCOIN gift! Rip open: ${generatedLink} 🎆 @blokmom`;
             if (navigator.share) {
-                navigator.share({ title: 'SuperHODLmas Gift', text: smsText, url: generatedLink }).catch(console.error);
+                navigator.share({ title: 'HodlDay Gift', text: smsText, url: generatedLink }).catch(console.error);
             } else {
                 window.open(`sms:?body=${encodeURIComponent(smsText)}`, '_self');
             }
@@ -158,10 +158,10 @@ export default function CardsPage() {
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-white mb-2">
-                        🎄 CryptoChristmas Card NFT Mailer
+                        🎆 HodlDay Card NFT Mailer
                     </h1>
                     <p className="text-gray-300">
-                        Send FREE Holiday NFT Cards + 100 $MOM Gifts | Happy New Year from Mom!
+                        Send FREE Holiday NFT Cards + 100 $MOM Gifts | Happy New Year 2026 from Mom!
                     </p>
                     {isConnected && (
                         <p className="text-sm text-yellow-400 mt-2">

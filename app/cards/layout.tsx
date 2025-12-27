@@ -1,19 +1,19 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: "CryptoChristmas Card NFT Mailer | Happy New Year from Mom",
-    description: "Send free holiday NFT cards on Base. Claim MOMCOIN rewards, enter raffles.",
+    title: "HodlDay Card NFT Mailer | Happy New Year 2026 from Mom",
+    description: "Send free holiday NFT cards on Base. Claim MOMCOIN rewards, enter raffles. Happy New Year 2026!",
     openGraph: {
-        title: "MomCoin Holiday NFT Card Mailer",
-        description: "Free NFT cards on Base. Claim MOMCOIN rewards. #nft #holiday #gifting",
-        images: ['https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png'],
+        title: "HodlDay NFT Card Mailer - New Year 2026",
+        description: "Free NFT holiday cards on Base. Claim MOMCOIN rewards. #nft #holiday #newyear",
+        images: ['https://app.momcoined.com/hero.jpeg'],
         url: 'https://app.momcoined.com/cards',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'MomCoin Holiday NFT Card Mailer',
-        description: 'Free NFT cards on Base. Claim MOMCOIN rewards.',
-        images: ['https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png'],
+        title: 'HodlDay NFT Card Mailer - New Year 2026',
+        description: 'Free NFT holiday cards on Base. Claim MOMCOIN rewards.',
+        images: ['https://app.momcoined.com/hero.jpeg'],
     },
 };
 
