@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 google-service-account.json
+*-adminsdk-*.json
+*firebase*adminsdk*.json
+serviceAccount*.json
 
 # debug
 npm-debug.log*
