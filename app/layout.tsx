@@ -6,8 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import { WelcomeOverlay } from "@/components/ui/WelcomeOverlay";
-import { FloatingMomAI } from "@/components/features/FloatingMomAI";
+import { ClientComponents } from "@/components/providers/ClientComponents";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
@@ -90,7 +89,7 @@ export default function RootLayout({
               {children}
               <Footer />
             </main>
-            <FloatingMomAI />
+            <ClientComponents />
             <Toaster position="bottom-center" />
           </Providers>
         </FarcasterProvider>

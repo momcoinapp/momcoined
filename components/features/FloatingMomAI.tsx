@@ -1,12 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageSquare, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import MomChat from "@/components/features/MomChat";
+import dynamic from "next/dynamic";
+
+// Lazy load MomChat - it's heavy and not needed immediately
+const MomChat = dynamic(() => import("@/components/features/MomChat"), {
+    loading: () => <div className="p-4 text-center text-white/70">Loading MomAI...</div>,
+    ssr: false
+});
 
 export function FloatingMomAI() {
     const [isOpen, setIsOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    // Prevent hydration mismatch
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Don't render until mounted (prevents hydration issues)
+    if (!mounted) return null;
 
     return (
         <>
@@ -27,6 +42,7 @@ export function FloatingMomAI() {
                             src="/mom-avatar.jpg"
                             alt="Mom"
                             className="w-10 h-10 rounded-full object-cover border border-white/50"
+                            loading="lazy"
                             onError={(e) => e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=Mom"}
                         />
                         <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full border border-black animate-pulse" />
@@ -34,7 +50,7 @@ export function FloatingMomAI() {
                 )}
             </motion.button>
 
-            {/* Chat Window */}
+            {/* Chat Window - only loads when opened */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
