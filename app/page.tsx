@@ -124,13 +124,13 @@ export default function Home() {
                 <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wide">
                   ⚠️ Limited Time Holiday Event
                 </div>
-                <h2 className="text-3xl font-black text-white">Free Christmas Cards 🎄</h2>
+                <h2 className="text-3xl font-black text-white">Free HodlDay Cards 🎆</h2>
                 <p className="text-gray-200">
                   Mint a blockchain card for Mom. We pay gas. She gets 100 MOM.
                 </p>
-                <img src="/cards/cryptmas-card.png" className="w-48 mx-auto -rotate-3 group-hover:rotate-3 transition-transform duration-500" />
+                <img src="/hero.jpeg" className="w-48 mx-auto -rotate-3 group-hover:rotate-3 transition-transform duration-500" />
                 <Button
-                  onClick={() => window.location.href = '/christmas'}
+                  onClick={() => window.location.href = '/cards'}
                   className="w-full bg-white text-red-900 font-bold py-4 rounded-xl hover:scale-105 transition-all"
                 >
                   Send Card Now <ArrowRight className="ml-2 w-4 h-4 inline" />
@@ -167,7 +167,7 @@ export default function Home() {
 
           {/* Mom & Son Holiday Message (X Embed) */}
           <section className="w-full max-w-lg mx-auto pb-12">
-            <TikTokEmbed />
+            <XVideoEmbed />
           </section>
 
           {/* Mom Story */}
