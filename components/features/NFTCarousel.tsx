@@ -59,7 +59,7 @@ export function NFTCarousel() {
                     {[...CARDS, ...CARDS, ...CARDS].map((card, idx) => (
                         <Link
                             key={`${card.id}-${idx}`}
-                            href={`/christmas?template=${card.id}`}
+                            href={`/cards`}
                             className="relative group shrink-0 w-[200px] aspect-[3/4] rounded-2xl overflow-hidden border-2 border-white/10 hover:border-pink-500/50 transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 shadow-xl"
                         >
                             <img

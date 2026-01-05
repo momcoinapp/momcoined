@@ -20,7 +20,7 @@ import {
 const NAV_ITEMS = [
     { label: "Home", href: "/", icon: Home },
     { label: "Earn", href: "/earn", icon: CheckSquare },
-    { label: "NFTs", href: "/christmas", icon: Gift },
+    { label: "NFTs", href: "/cookiejar", icon: Gift },
     { label: "Stats", href: "/tokenomics", icon: Coins }, // Replaced Predict with Tokenomics
     { label: "Profile", href: "/profile", icon: User },
 ];

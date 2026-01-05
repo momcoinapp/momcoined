@@ -75,7 +75,7 @@ const TASKS = [
         reward: 1000,
         icon: Users,
         actionLabel: "Invite",
-        link: "/christmas"
+        link: "/cards"
     },
     {
         id: "follow_twitter_blokmom",

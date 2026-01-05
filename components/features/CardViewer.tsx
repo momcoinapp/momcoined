@@ -184,7 +184,7 @@ export function CardViewer({ id }: { id: string }) {
                 </div>
 
                 <div className="text-center">
-                    <a href="/christmas" className="text-gray-500 hover:text-white text-sm underline">
+                    <a href="/cookiejar" className="text-gray-500 hover:text-white text-sm underline">
                         Send your own card
                     </a>
                 </div>
