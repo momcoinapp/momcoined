@@ -6,29 +6,32 @@
     },
     "miniapp": {
         "version": "1",
-        "name": "Momcoined",
-        "iconUrl": "https://app.momcoined.com/Momcoin-Christmas.jpeg",
-        "homeUrl": "https://app.momcoined.com/",
-        "splashImageUrl": "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png",
-        "splashBackgroundColor": "#DC2626",
-        "subtitle": "Real Mom and Son Crypto for Good",
-        "description": "Send free holiday NFT cards with mom quotes, claim 100 MOMCOIN gifts, enter NYE raffle, mint Cookie Jars on Base",
-        "primaryCategory": "social",
+        "name": "Momcoin App",
+        "homeUrl": "https://app.momcoined.com",
+        "iconUrl": "https://app.momcoined.com/icon.png",
+        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
+        "splashBackgroundColor": "#FF69B4",
+        "primaryCategory": "games",
         "tags": [
+            "momcoin",
+            "bingo",
             "nft",
-            "gifting",
-            "holiday",
-            "base",
-            "momcoin"
+            "cookiejar",
+            "momai"
         ],
-        "tagline": "Moms Love and Crypto Magic",
-        "heroImageUrl": "https://app.momcoined.com/hero.jpeg",
+        "subtitle": "Bingo, Cookie Jars, MomAI on Base",
+        "description": "Momcoin epic Base app: Daily bingo wins, collect cookies for AI-reveal Mom and Kid NFT jars, MomAI smart wallet agent, send holiday cards. Built by real mom and son family onchain",
+        "tagline": "Family Crypto Made Fun",
+        "heroImageUrl": "https://app.momcoined.com/og-image.png",
         "screenshotUrls": [
+            "https://app.momcoined.com/screenshot1.png",
             "https://app.momcoined.com/intrro0.png",
-            "https://app.momcoined.com/screenshot3.png",
-            "https://app.momcoined.com/cards/Merry_CryptMas_-_Festive_crypto_Christmas_NFT.png"
+            "https://app.momcoined.com/screenshot3.png"
         ],
         "webhookUrl": "https://app.momcoined.com/api/webhook",
-        "noindex": false
+        "noindex": false,
+        "ogTitle": "Momcoin App - Bingo, Cookie Jars, MomAI on Base",
+        "ogDescription": "Win daily bingo, collect cookies for AI-reveal NFT jars, chat with MomAI. Family crypto on Base",
+        "ogImageUrl": "https://app.momcoined.com/og-image.png"
     }
 }

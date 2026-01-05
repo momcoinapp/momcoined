@@ -1,6 +1,7 @@
 "use client";
 
 import { NFTMintPromo } from "@/components/features/NFTMintPromo";
+import { MyJars } from "@/components/features/MyJars";
 import Leaderboard from "@/components/features/Leaderboard";
 import { motion } from "framer-motion";
 import { ArrowLeft, Cookie, Zap, Sparkles } from "lucide-react";
@@ -50,7 +51,7 @@ export function CookieJarLayout() {
                         <div className="w-12 h-12 mx-auto bg-yellow-500/20 rounded-full flex items-center justify-center text-2xl">🍪</div>
                         <h3 className="font-bold text-lg text-yellow-400">2. Fill the Jar</h3>
                         <p className="text-sm text-gray-400">
-                            Earn <strong>Cookies</strong> by doing social tasks (Referrals, Posts) OR pay $5 to instant fill.
+                            Earn <strong>Cookies</strong> by sharing (recasts, likes) OR pay $5 to instant fill.
                         </p>
                     </Card>
                     <Card className="p-6 bg-white/5 border-white/10 text-center space-y-3 hover:bg-white/10 transition-colors">
@@ -83,6 +84,11 @@ export function CookieJarLayout() {
                         </h2>
                         <Leaderboard />
                     </div>
+                </div>
+
+                {/* My Jars Section */}
+                <div className="space-y-6">
+                    <MyJars />
                 </div>
 
                 {/* FAQ / Lore */}

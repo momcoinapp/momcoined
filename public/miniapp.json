@@ -1,0 +1,39 @@
+{
+    "name": "Momcoin App",
+    "shortDescription": "Bingo, Cookie Jars, MomAI, Holiday Cards on Base",
+    "description": "Momcoin epic Base app: Daily bingo wins, collect cookies for AI-reveal Mom and Kid NFT jars, MomAI smart wallet agent, send holiday cards, learn and earn airdrops. Built by real mom and son family onchain",
+    "version": "2.0.0",
+    "homeUrl": "https://app.momcoined.com",
+    "splashImageUrl": "https://app.momcoined.com/splash.jpg",
+    "frameImageUrl": "https://app.momcoined.com/og-image.png",
+    "iconUrl": "https://app.momcoined.com/icon.png",
+    "primaryCategory": "games",
+    "tags": [
+        "momcoin",
+        "bingo",
+        "nft",
+        "cookiejar",
+        "momai",
+        "cards",
+        "airdrops",
+        "family",
+        "base"
+    ],
+    "screenshots": [
+        "https://app.momcoined.com/screenshot1.png",
+        "https://app.momcoined.com/intrro0.png",
+        "https://app.momcoined.com/screenshot3.png"
+    ],
+    "developer": {
+        "name": "Mom and Son Team",
+        "website": "https://momcoined.com"
+    },
+    "baseBuilder": {
+        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e",
+        "builderCode": "bc_pf1j8ith"
+    },
+    "social": {
+        "twitter": "https://twitter.com/momcoined",
+        "farcaster": "https://warpcast.com/momcoined"
+    }
+}

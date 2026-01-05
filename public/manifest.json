@@ -15,18 +15,19 @@
             "src": "/logo.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/icon.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "description": "Empowering moms with crypto. Daily claims, social tasks, and rewards in the MomCoin ecosystem.",
     "categories": [
-        "social"
-    ],
-    "tags": [
         "social",
-        "crypto",
-        "family",
-        "earning",
-        "fun"
+        "games",
+        "finance"
     ],
     "screenshots": [
         {
@@ -36,9 +37,9 @@
             "form_factor": "narrow"
         },
         {
-            "src": "/Momcoin-Christmas.jpeg",
+            "src": "/intrro0.png",
             "sizes": "1284x2778",
-            "type": "image/jpeg",
+            "type": "image/png",
             "form_factor": "narrow"
         },
         {
@@ -49,19 +50,5 @@
         }
     ],
     "orientation": "portrait",
-    "scope": "/",
-    "frames": {
-        "version": "1",
-        "name": "MomCoin",
-        "iconUrl": "https://app.momcoined.com/logo.png",
-        "homeUrl": "https://app.momcoined.com",
-        "imageUrl": "https://app.momcoined.com/og-image.png",
-        "buttonTitle": "Start Earning",
-        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
-        "splashBackgroundColor": "#eeccff",
-        "webhookUrl": "https://app.momcoined.com/api/webhook"
-    },
-    "baseBuilder": {
-        "ownerAddress": "0x320787f0b6c163aebCfFE308A9695Aa5e9761B5e"
-    }
+    "scope": "/"
 }

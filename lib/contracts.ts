@@ -138,6 +138,37 @@ export const MOM_COOKIE_JAR_ABI = [
         type: "function",
     },
     {
+        inputs: [{ name: "tokenId", type: "uint256" }],
+        name: "ownerOf",
+        outputs: [{ name: "", type: "address" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [
+            { name: "owner", type: "address" },
+            { name: "index", type: "uint256" },
+        ],
+        name: "tokenOfOwnerByIndex",
+        outputs: [{ name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [{ name: "tokenId", type: "uint256" }],
+        name: "tokenURI",
+        outputs: [{ name: "", type: "string" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
+        inputs: [{ name: "tokenId", type: "uint256" }],
+        name: "isFilled",
+        outputs: [{ name: "", type: "bool" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [],
         name: "mintJarETH",
         outputs: [],

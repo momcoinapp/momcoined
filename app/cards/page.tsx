@@ -6,32 +6,31 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/textarea';
-import { CARD_TEMPLATES, getRandomQuote, getTemplatesByEvent, CardTemplate } from '@/lib/cardTemplates';
+import { CARD_TEMPLATES, getRandomQuote, getTemplatesByOccasion, CardTemplate, OccasionType, OCCASION_LABELS, getAllTemplates } from '@/lib/cardTemplates';
 import { useAccount } from 'wagmi';
 import { db } from '@/lib/firebase';
 import { collection, addDoc, query, where, getDocs, Timestamp } from 'firebase/firestore';
 import Image from 'next/image';
 import toast from 'react-hot-toast';
-import { SentCardsDashboard } from '@/components/cards/SentCardsDashboard';
-
-type EventType = 'christmas' | 'newyear';
-type ViewType = 'create' | 'sent';
+import { useShareToFarcaster } from '@/hooks/useShareToFarcaster';
 
 export default function CardsPage() {
     const { address, isConnected } = useAccount();
-    const [event, setEvent] = useState<EventType>('christmas');
+    const { shareCard } = useShareToFarcaster();
+    const [occasion, setOccasion] = useState<OccasionType>('love');
     const [selectedTemplate, setSelectedTemplate] = useState<CardTemplate | null>(null);
     const [recipientName, setRecipientName] = useState('');
     const [message, setMessage] = useState('');
     const [randomQuote, setRandomQuote] = useState('');
     const [step, setStep] = useState<'select' | 'customize' | 'sending' | 'success'>('select');
     const [generatedLink, setGeneratedLink] = useState('');
+    const [cardId, setCardId] = useState('');
     const [dailySendCount, setDailySendCount] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [isBackendReady, setIsBackendReady] = useState(false);
 
-    const templates = getTemplatesByEvent(event);
-    const DAILY_LIMIT = 999999; // Unlimited for Holiday launch!
+    const templates = getTemplatesByOccasion(occasion);
+    const DAILY_LIMIT = 999999; // Unlimited!
 
     useEffect(() => {
         setRandomQuote(getRandomQuote());
@@ -45,7 +44,7 @@ export default function CardsPage() {
             today.setHours(0, 0, 0, 0);
 
             const q = query(
-                collection(db, 'superhodlmas_cards'),
+                collection(db, 'mom_cards'),
                 where('senderWallet', '==', address.toLowerCase()),
                 where('createdAt', '>=', Timestamp.fromDate(today))
             );
@@ -83,28 +82,28 @@ export default function CardsPage() {
                 templateName: selectedTemplate.name,
                 imageUri: selectedTemplate.image,
                 style: selectedTemplate.style,
-                event: event,
+                occasion: occasion,
                 rarity: selectedTemplate.rarity,
                 recipientName: recipientName || 'Friend',
-                message: message || 'Wishing you a SuperHODLmas! 🎄',
+                message: message || 'Wishing you the best! 💕',
                 quote: randomQuote,
                 senderWallet: address.toLowerCase(),
                 status: 'pending',
                 createdAt: Timestamp.now(),
-                expiresAt: Timestamp.fromDate(new Date('2026-01-15')),
+                expiresAt: Timestamp.fromDate(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)), // 30 days
                 cookiesAwarded: false,
-                raffleEntries: 1,
             };
 
-            const docRef = await addDoc(collection(db, 'superhodlmas_cards'), cardData);
-            const cardId = docRef.id;
-            const claimLink = `https://app.momcoined.com/claim/${cardId}`;
+            const docRef = await addDoc(collection(db, 'mom_cards'), cardData);
+            const newCardId = docRef.id;
+            const claimLink = `https://app.momcoined.com/claim/${newCardId}`;
 
+            setCardId(newCardId);
             setGeneratedLink(claimLink);
             setDailySendCount(prev => prev + 1);
-            setIsBackendReady(true); // Signal that backend work is done
+            setIsBackendReady(true);
 
-            toast.success('Card sent! +500 cookies earned 🍪');
+            toast.success('Card sent! +50 cookies earned 🍪');
         } catch (error) {
             console.error('Error creating card:', error);
             toast.error('Failed to create card');
@@ -114,19 +113,25 @@ export default function CardsPage() {
         }
     };
 
+    const handleShareFarcaster = () => {
+        if (cardId && recipientName) {
+            shareCard(cardId, recipientName, address?.slice(0, 8) || 'Someone', message);
+        }
+    };
+
     const handleShare = (platform: string) => {
-        const shareText = `Just sent Mom's #HodlDay NFT Card + raffle entry! 🎆 #NewYear2026\n\nRip open yours: ${generatedLink}\n\n@blokmom @momcoined`;
+        const shareText = `I just sent a Momcoined NFT card! 💕\n\nClaim yours: ${generatedLink}\n\n@momcoined #Base`;
 
         const urls: Record<string, string> = {
-            farcaster: `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(generatedLink)}`,
+            farcaster: `https://warpcast.com/~/compose?text=${encodeURIComponent(shareText)}&embeds[]=${encodeURIComponent(`https://app.momcoined.com/share/card/${cardId}?to=${encodeURIComponent(recipientName)}&from=${encodeURIComponent(address?.slice(0, 8) || 'Anon')}&msg=${encodeURIComponent(message || '')}`)}`,
             twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-            whatsapp: `https://wa.me/?text=${encodeURIComponent(`Happy #NewYear2026! 🎆 I sent you a HodlDay gift + 100 $MOMCOIN! Rip it open: ${generatedLink}`)}`,
+            whatsapp: `https://wa.me/?text=${encodeURIComponent(`I sent you a Momcoined NFT card! 💕 Claim it: ${generatedLink}`)}`,
         };
 
         if (platform === 'sms') {
-            const smsText = `Happy New Year 2026! Mom sent you a HodlDay envelope + 100 $MOMCOIN gift! Rip open: ${generatedLink} 🎆 @blokmom`;
+            const smsText = `I sent you a Momcoined NFT card! Claim it: ${generatedLink} 💕`;
             if (navigator.share) {
-                navigator.share({ title: 'HodlDay Gift', text: smsText, url: generatedLink }).catch(console.error);
+                navigator.share({ title: 'Mom Card', text: smsText, url: generatedLink }).catch(console.error);
             } else {
                 window.open(`sms:?body=${encodeURIComponent(smsText)}`, '_self');
             }
@@ -147,25 +152,26 @@ export default function CardsPage() {
         setRecipientName('');
         setMessage('');
         setGeneratedLink('');
+        setCardId('');
         setIsBackendReady(false);
         setStep('select');
         setRandomQuote(getRandomQuote());
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-red-950 via-green-950 to-black py-8 px-4">
+        <div className="min-h-screen bg-gradient-to-b from-purple-950 via-pink-950 to-black py-8 px-4">
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-bold text-white mb-2">
-                        🎆 HodlDay Card NFT Mailer
+                        💕 Mom's NFT Card Mailer
                     </h1>
                     <p className="text-gray-300">
-                        Send FREE Holiday NFT Cards + 100 $MOM Gifts | Happy New Year 2026 from Mom!
+                        Send FREE NFT Cards for any occasion + earn cookies on Base!
                     </p>
                     {isConnected && (
                         <p className="text-sm text-yellow-400 mt-2">
-                            {DAILY_LIMIT - dailySendCount} free cards remaining today
+                            Unlimited free cards available!
                         </p>
                     )}
                 </div>
@@ -179,20 +185,17 @@ export default function CardsPage() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                         >
-                            {/* Event Selector */}
-                            <div className="flex justify-center gap-4 mb-6">
-                                <Button
-                                    onClick={() => setEvent('christmas')}
-                                    className={`${event === 'christmas' ? 'bg-red-600' : 'bg-gray-700'} text-white px-6`}
-                                >
-                                    🎄 Christmas 2025
-                                </Button>
-                                <Button
-                                    onClick={() => setEvent('newyear')}
-                                    className={`${event === 'newyear' ? 'bg-purple-600' : 'bg-gray-700'} text-white px-6`}
-                                >
-                                    🎆 New Year 2026
-                                </Button>
+                            {/* Occasion Selector */}
+                            <div className="flex flex-wrap justify-center gap-2 mb-6">
+                                {(Object.keys(OCCASION_LABELS) as OccasionType[]).map((occ) => (
+                                    <Button
+                                        key={occ}
+                                        onClick={() => setOccasion(occ)}
+                                        className={`${occasion === occ ? 'bg-pink-600' : 'bg-gray-700'} text-white px-4`}
+                                    >
+                                        {OCCASION_LABELS[occ].emoji} {OCCASION_LABELS[occ].label}
+                                    </Button>
+                                ))}
                             </div>
 
                             {/* Template Gallery */}
@@ -223,16 +226,6 @@ export default function CardsPage() {
                                         </div>
                                     </Card>
                                 ))}
-                            </div>
-
-                            {/* AI Options */}
-                            <div className="mt-6 grid grid-cols-2 gap-4">
-                                <Button className="bg-pink-600 hover:bg-pink-500 text-white py-6">
-                                    ✨ Generate for Mom (Free)
-                                </Button>
-                                <Button className="bg-purple-600 hover:bg-purple-500 text-white py-6">
-                                    🔥 Generate Degen (Free)
-                                </Button>
                             </div>
                         </motion.div>
                     )}
@@ -278,9 +271,9 @@ export default function CardsPage() {
                                         />
                                     </div>
 
-                                    <div className="bg-yellow-500/20 border border-yellow-500/50 rounded-lg p-3">
-                                        <p className="text-yellow-200 text-sm italic">"{randomQuote}"</p>
-                                        <p className="text-yellow-400 text-xs mt-1">— Mom Quote (auto-added)</p>
+                                    <div className="bg-pink-500/20 border border-pink-500/50 rounded-lg p-3">
+                                        <p className="text-pink-200 text-sm italic">"{randomQuote}"</p>
+                                        <p className="text-pink-400 text-xs mt-1">— Mom Quote (auto-added)</p>
                                     </div>
 
                                     <div className="flex gap-2">
@@ -294,9 +287,9 @@ export default function CardsPage() {
                                         <Button
                                             onClick={handleSendCard}
                                             disabled={!isConnected || isLoading}
-                                            className="flex-1 bg-green-600 hover:bg-green-500 text-white"
+                                            className="flex-1 bg-pink-600 hover:bg-pink-500 text-white"
                                         >
-                                            {isLoading ? '🎄 Sending...' : '📮 Send Card'}
+                                            {isLoading ? '💌 Sending...' : '📮 Send Card'}
                                         </Button>
                                     </div>
                                 </div>
@@ -313,7 +306,7 @@ export default function CardsPage() {
                             exit={{ opacity: 0 }}
                             className="flex flex-col items-center justify-center py-20"
                         >
-                            <div className="relative w-64 h-64 mb-6 rounded-2xl overflow-hidden shadow-2xl border-4 border-yellow-500/50">
+                            <div className="relative w-64 h-64 mb-6 rounded-2xl overflow-hidden shadow-2xl border-4 border-pink-500/50">
                                 <video
                                     src="/card-sending.mp4"
                                     autoPlay
@@ -324,21 +317,16 @@ export default function CardsPage() {
                                     onEnded={() => {
                                         if (isBackendReady) {
                                             setStep('success');
-                                        } else {
-                                            // Ideally loop the last bit or show loading, but for now just wait
-                                            // The backend effect could also trigger this if we used a ref, 
-                                            // but simple "wait for end" is safer.
-                                            // Let's loop if not ready, or just set ready state to trigger effect.
                                         }
                                     }}
                                 />
                                 {!isBackendReady && (
                                     <p className="absolute bottom-2 left-0 right-0 text-center text-xs text-white/80 animate-pulse">
-                                        Minting...
+                                        Creating card...
                                     </p>
                                 )}
                             </div>
-                            <h2 className="text-2xl font-bold text-white mb-2">Sealing your gift...</h2>
+                            <h2 className="text-2xl font-bold text-white mb-2">Sealing your card...</h2>
                             <p className="text-gray-300">Adding Mom's magic touch ✨</p>
                         </motion.div>
                     )}
@@ -358,10 +346,10 @@ export default function CardsPage() {
                                 transition={{ type: 'spring', bounce: 0.5 }}
                                 className="text-8xl mb-4"
                             >
-                                🎁
+                                💕
                             </motion.div>
-                            <h2 className="text-3xl font-bold text-white mb-2">Gift Mailed!</h2>
-                            <p className="text-green-400 mb-6">+500 cookies earned 🍪 +1 raffle entry 🎟️</p>
+                            <h2 className="text-3xl font-bold text-white mb-2">Card Sent!</h2>
+                            <p className="text-pink-400 mb-6">+50 cookies earned 🍪</p>
 
                             {/* Claim Link */}
                             <div className="bg-white/10 rounded-lg p-4 mb-6 max-w-md mx-auto">

@@ -1,0 +1,13 @@
+{
+  "name": "Momcoin Bingo",
+  "description": "Hourly MOMCOIN burn + 5x daily USDC games + progressive jackpot. Win USDC + 1000 MOMCOIN bonus.",
+  "version": "1.0.0",
+  "shortDescription": "Hourly MOMCOIN + Daily USDC + Mega 8 PM Jackpot",
+  "tagline": "Play hourly. Win daily. Go viral. 🎉",
+  "homeUrl": "https://app.momcoined.com",
+  "splashImageUrl": "https://app.momcoined.com/splash.png",
+  "frameImageUrl": "https://app.momcoined.com/og-bingo.png",
+  "primaryCategory": "games",
+  "tags": ["momcoin", "bingo", "usdc", "base", "lottery", "progressive"],
+  "creatorTwitter": "@momcoined"
+}
