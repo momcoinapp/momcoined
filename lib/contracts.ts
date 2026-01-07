@@ -169,6 +169,13 @@ export const MOM_COOKIE_JAR_ABI = [
         type: "function",
     },
     {
+        inputs: [{ name: "tokenId", type: "uint256" }],
+        name: "tokenTiers",
+        outputs: [{ name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+    },
+    {
         inputs: [],
         name: "mintJarETH",
         outputs: [],

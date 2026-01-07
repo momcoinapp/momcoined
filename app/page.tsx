@@ -39,11 +39,12 @@ export default function Home() {
   if (!isMounted) return null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-black text-white overflow-hidden relative selection:bg-pink-500 selection:text-white">
-      {/* Background Gradients & Particles */}
+    <div className="min-h-screen flex flex-col bg-[#0f1016] text-white overflow-hidden relative selection:bg-pink-500 selection:text-white">
+      {/* Background Gradients & Particles - Lightened for "Mom Mode" */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-pink-600/20 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/20 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] rounded-full bg-pink-500/15 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-purple-500/15 blur-[120px]" />
+        <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[100px]" />
       </div>
 
       {/* Main Content */}
@@ -60,14 +61,20 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
+                <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-white/10 border border-white/20 backdrop-blur-md">
+                  <span className="text-sm font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-300 to-purple-300">
+                    🍪 Mom-Backed Trust & Positivity
+                  </span>
+                </div>
                 <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[1.1] mb-6 drop-shadow-sm">
-                  MomCoin: The Meme That <br />
+                  Baseposting With Mom: <br />
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-yellow-400 animate-gradient-x">
-                    Trades Like a Boss 🚀
+                    The Onchain Movement 🚀
                   </span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
-                  Join the movement. Mint cookies, send cards, and make Mom proud again.
+                  Real Mom. Real Son. Real Gains. <br />
+                  No more dirty rugs — just daily rewards and family fun.
                 </p>
               </motion.div>
 
@@ -77,84 +84,129 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
+                <div className="w-full sm:w-auto">
+                  {/* Primary CTA: Watch Video / Story */}
+                  <Button size="lg" onClick={() => document.getElementById('mom-story-video')?.scrollIntoView({ behavior: 'smooth' })} className="w-full text-xl px-8 py-8 rounded-2xl bg-white text-purple-900 hover:bg-gray-100 transition-all shadow-xl font-bold flex items-center justify-center gap-3">
+                    Watch Our Real Story 📺
+                  </Button>
+                </div>
+
                 {isConnected ? (
                   <Button size="lg" onClick={() => window.location.href = '/earn'} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-green-500 to-emerald-600 hover:scale-105 transition-all shadow-xl font-bold">
                     Go to Dashboard 🚀
                   </Button>
                 ) : (
                   <Button size="lg" onClick={handleLogin} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl bg-gradient-to-r from-pink-600 to-purple-600 hover:scale-105 transition-all shadow-xl font-bold">
-                    Start Minting 🍪
+                    Connect Wallet 🍪
                   </Button>
                 )}
-                <Button size="lg" variant="outline" onClick={handleInvite} className="w-full sm:w-auto text-xl px-10 py-8 rounded-2xl border-white/20 hover:bg-white/10 backdrop-blur-sm flex flex-col items-center justify-center gap-1">
-                  <span>Invite Crypto Fam 🚀</span>
-                  <span className="text-xs font-normal text-pink-300 opacity-90">(Bonus for Moms)</span>
-                </Button>
               </motion.div>
             </div>
 
-            {/* Right Column: Hero Image (No Slider) */}
+            {/* Right Column: Hero Image / Morphing Jar */}
             <motion.div
-              className="flex-1 w-full max-w-md"
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              className="flex-1 w-full max-w-md relative"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", duration: 1.5 }}
             >
+              {/* Decorative Blobs Behind */}
+              <div className="absolute -inset-10 bg-gradient-to-tr from-pink-500/30 to-purple-500/30 rounded-full blur-3xl animate-pulse" />
+
               <div className="relative group perspective-1000">
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-600 to-purple-600 rounded-[2.5rem] blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
                 <img
-                  src="/hero.png"
+                  src="/hero.png" // User mentioned keeping optimized for Base, standard placeholder for now
                   alt="MomCoin App"
-                  className="relative z-10 w-full rounded-[2.5rem] shadow-2xl border-4 border-white/10 transform transition-transform group-hover:rotate-y-12 bg-black/50"
+                  className="relative z-10 w-full rounded-[2.5rem] shadow-2xl border-4 border-white/10 transform transition-transform group-hover:scale-[1.02] bg-black/20"
                 />
-                {/* Floating Emojis */}
-                <motion.div animate={{ y: [0, -20, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-6 -right-6 text-6xl drop-shadow-lg">✨</motion.div>
-                <motion.div animate={{ y: [0, 20, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute -bottom-8 -left-8 text-6xl drop-shadow-lg">🟣</motion.div>
+
+                {/* Floating Badges */}
+                <motion.div animate={{ y: [0, -15, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute -top-4 -right-4 bg-yellow-400 text-black font-black px-4 py-2 rounded-xl shadow-lg border-2 border-white rotate-12 z-20">
+                  GET 100 MOM
+                </motion.div>
               </div>
             </motion.div>
           </section>
 
-          {/* ACTIVE DROPS SECTION (Christmas + Cookie Jar) */}
-          <section className="w-full max-w-6xl px-4 pb-16 grid md:grid-cols-2 gap-8">
+          {/* ACTIVE DROPS SECTION (Cards + Bingo + Jars) */}
+          <section className="w-full max-w-7xl px-4 pb-16 grid md:grid-cols-4 gap-6">
 
-            {/* 1. Christmas Cards (Featured) */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 to-green-900 border border-white/20 shadow-2xl p-8 flex flex-col items-center text-center group">
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/snow.png')] opacity-20"></div>
-              <div className="relative z-10 space-y-4">
-                <div className="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold uppercase tracking-wide">
-                  ⚠️ Limited Time Holiday Event
-                </div>
-                <h2 className="text-3xl font-black text-white">Free HodlDay Cards 🎆</h2>
-                <p className="text-gray-200">
-                  Mint a blockchain card for Mom. We pay gas. She gets 100 MOM.
+            {/* 1. Mom's Cookie Jar (The Yield) */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-pink-600/10 to-purple-600/10 border border-white/10 shadow-2xl hover:shadow-pink-500/10 p-6 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10 space-y-4 w-full">
+                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-2xl shadow-lg">🍪</div>
+                <h2 className="text-xl font-black text-white">1. Get the Jar</h2>
+                <p className="text-gray-300 text-sm">
+                  Mint Mom's Legendary Cookie Jar. It's your vault for daily sweet rewards.
                 </p>
-                <img src="/hero.jpeg" className="w-48 mx-auto -rotate-3 group-hover:rotate-3 transition-transform duration-500" />
-                <Button
-                  onClick={() => window.location.href = '/cards'}
-                  className="w-full bg-white text-red-900 font-bold py-4 rounded-xl hover:scale-105 transition-all"
-                >
-                  Send Card Now <ArrowRight className="ml-2 w-4 h-4 inline" />
-                </Button>
+                <div className="pt-2">
+                  <Button
+                    onClick={() => window.location.href = '/ear'}
+                    variant="outline"
+                    className="w-full border-pink-500/30 hover:bg-pink-500/20 text-white font-bold"
+                  >
+                    Mint Jar <Sparkles className="ml-2 w-4 h-4 inline" />
+                  </Button>
+                </div>
               </div>
             </div>
 
-            {/* 2. Mom's Cookie Jar */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-pink-900 to-purple-900 border border-white/20 shadow-2xl p-8 flex flex-col items-center text-center group">
-              <div className="relative z-10 space-y-4">
-                <div className="inline-block px-3 py-1 bg-pink-500/20 rounded-full text-xs font-bold uppercase tracking-wide text-pink-300">
-                  🔥 Minting Live
-                </div>
-                <h2 className="text-3xl font-black text-white">Mom's Cookie Jar 🍪</h2>
-                <p className="text-gray-200">
-                  The legendary NFT that gives you daily sweet rewards and perks.
+            {/* 2. baseMOMZ (The Reveal) */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-600/10 to-indigo-600/10 border border-white/10 shadow-2xl hover:shadow-purple-500/10 p-6 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
+              <div className="relative z-10 space-y-4 w-full">
+                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-2xl shadow-lg">👵</div>
+                <h2 className="text-xl font-black text-white">2. Reveal baseMOMZ</h2>
+                <p className="text-gray-300 text-sm">
+                  Fill your jar to reveal the Gen 1 PFP set: baseMOMZ. Coming soon to loyal holders.
                 </p>
-                <div className="text-6xl py-4">🍯</div>
-                <Button
-                  onClick={() => window.location.href = '/ear'}
-                  className="w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-4 rounded-xl hover:scale-105 transition-all"
-                >
-                  Mint Cookie Jar <Sparkles className="ml-2 w-4 h-4 inline" />
-                </Button>
+                <div className="pt-2">
+                  <span className="inline-block px-3 py-1 rounded-full bg-purple-500/20 text-purple-200 text-xs font-bold border border-purple-500/30">
+                    Coming Soon
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. HodlDay Cards (Generic/Viral) */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600/10 to-cyan-600/10 border border-white/10 shadow-2xl hover:shadow-cyan-500/10 p-6 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
+              <div className="relative z-10 space-y-4 w-full">
+                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-2xl shadow-lg">🎁</div>
+                <h2 className="text-xl font-black text-white">3. Send Cards</h2>
+                <p className="text-gray-300 text-sm">
+                  Send a card for FREE (we pay gas). Or use AI to gen a custom one (small fee).
+                </p>
+                <div className="pt-2">
+                  <Button
+                    onClick={() => window.location.href = '/cards'}
+                    variant="outline"
+                    className="w-full border-cyan-500/30 hover:bg-cyan-500/20 text-white font-bold"
+                  >
+                    Send for Free <ArrowRight className="ml-2 w-4 h-4 inline" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* 4. Daily Bingo Drop (New!) */}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-orange-500/20 shadow-2xl hover:shadow-orange-500/10 p-6 flex flex-col items-center text-center group hover:-translate-y-1 transition-all">
+              <div className="absolute top-0 right-0 px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold text-xs rounded-bl-xl">
+                NEW!
+              </div>
+              <div className="relative z-10 space-y-4 w-full">
+                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center text-2xl shadow-lg">🎰</div>
+                <h2 className="text-xl font-black text-white">4. Daily Drops</h2>
+                <p className="text-gray-300 text-sm">
+                  Bingo-style daily claims. 'Dab' your spot for extra yield.
+                </p>
+                <div className="pt-2">
+                  <Button
+                    onClick={() => alert("Bingo Beta Launching Soon! Join the list.")} // Placeholder
+                    className="w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-black hover:scale-105 transition-transform"
+                  >
+                    DAB NOW 🎲
+                  </Button>
+                </div>
               </div>
             </div>
 
@@ -165,13 +217,20 @@ export default function Home() {
             <DailyClaim />
           </section>
 
-          {/* Mom & Son Holiday Message (X Embed) */}
-          <section className="w-full max-w-lg mx-auto pb-12">
-            <XVideoEmbed />
+          {/* Mom & Son Holiday Message (X Embed) & Mom Story */}
+          <section id="mom-story-video" className="w-full max-w-4xl mx-auto pb-12 flex flex-col md:flex-row gap-8 items-start">
+            <div className="flex-1 w-full">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-md">
+                <p className="text-center text-gray-400 text-xs mb-2 uppercase tracking-wide">The Real Story Verified</p>
+                <XVideoEmbed />
+              </div>
+            </div>
+            <div className="flex-1 w-full pt-8 md:pt-0">
+              <MomStory />
+            </div>
           </section>
 
-          {/* Mom Story */}
-          <MomStory />
+          {/* (MomStory is merged above) */}
 
           {/* Timeline */}
           <div className="w-full bg-black/40 backdrop-blur-3xl -mx-4 py-16 mt-20 border-y border-white/5">

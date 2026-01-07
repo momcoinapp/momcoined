@@ -69,11 +69,11 @@ export function NFTMintPromo() {
 
         try {
             await writeContract({
-                address: CONTRACT_ADDRESSES.MOM_COOKIE_JAR,
+                address: CONTRACT_ADDRESSES.MOM_COOKIE_JAR as `0x${string}`,
                 abi: MOM_COOKIE_JAR_ABI,
                 functionName: "mintJarETH",
                 args: [],
-                value: parseEther("0.0003"), // ~$1
+                value: parseEther("0"), // FREE mint!
                 // @ts-ignore
                 capabilities: {
                     paymasterService: {
@@ -87,6 +87,7 @@ export function NFTMintPromo() {
             toast.error("Mint failed. (Check console)");
         }
     };
+
 
     const handleFillJar = async () => {
         if (!userAddress) {
@@ -205,7 +206,7 @@ export function NFTMintPromo() {
                                     disabled={isPending}
                                     className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white border-0 shadow-lg shadow-purple-500/25"
                                 >
-                                    {isPending ? "Minting..." : "Mint Jar ($1)"}
+                                    {isPending ? "Minting..." : "Mint Jar FREE 🍪"}
                                 </Button>
                             ) : (
                                 <div className="text-green-400 font-bold px-4 py-2 bg-green-900/20 rounded-lg border border-green-500/30 font-mono">

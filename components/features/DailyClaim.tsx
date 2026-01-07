@@ -168,7 +168,7 @@ export function DailyClaim() {
                 <div className="mt-4 flex items-start gap-2 text-xs text-purple-300 bg-purple-900/20 p-3 rounded-lg">
                     <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                     <p>
-                        Note: Faucet requires a small amount of ETH on Base for gas.
+                        Gas fees are 100% sponsored by MomCoin! 🍪
                         Rewards are distributed from the Season 1 allocation.
                     </p>
                 </div>
