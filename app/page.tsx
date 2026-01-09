@@ -142,7 +142,7 @@ export default function Home() {
                 </p>
                 <div className="pt-2">
                   <Button
-                    onClick={() => window.location.href = '/ear'}
+                    onClick={() => window.location.href = '/cookie-jar'}
                     variant="outline"
                     className="w-full border-pink-500/30 hover:bg-pink-500/20 text-white font-bold"
                   >
