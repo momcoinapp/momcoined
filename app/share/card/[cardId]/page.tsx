@@ -46,7 +46,7 @@ export async function generateMetadata({
                         type: "launch_frame",
                         url: `${BASE_URL}/claim/${cardId}`,
                         name: "Momcoined",
-                        splashImageUrl: `${BASE_URL}/mom-visual-5.png`,
+                        splashImageUrl: `${BASE_URL}/splash.png`,
                         splashBackgroundColor: "#DC2626",
                     },
                 },

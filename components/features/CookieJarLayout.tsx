@@ -17,7 +17,7 @@ export function CookieJarLayout() {
                 <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/20 rounded-full blur-[100px]" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-pink-900/20 rounded-full blur-[100px]" />
                 <div className="absolute inset-0 opacity-10 mix-blend-overlay">
-                    <img src="/mom-visual-1.jpg" alt="Background" className="w-full h-full object-cover" />
+                    <img src="/hero.png" alt="Background" className="w-full h-full object-cover" />
                 </div>
             </div>
 

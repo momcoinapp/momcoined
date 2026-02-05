@@ -9,7 +9,7 @@
         "name": "Momcoin App",
         "homeUrl": "https://app.momcoined.com",
         "iconUrl": "https://app.momcoined.com/icon.png",
-        "splashImageUrl": "https://app.momcoined.com/splash.jpg",
+        "splashImageUrl": "https://app.momcoined.com/splash.png",
         "splashBackgroundColor": "#FF69B4",
         "primaryCategory": "games",
         "tags": [
@@ -22,10 +22,10 @@
         "subtitle": "Real mom and son crypto for good",
         "description": "Momcoin epic Base app: Daily bingo wins, collect cookies for AI-reveal Mom and Kid NFT jars, MomAI smart wallet agent, send holiday cards. Built by real mom and son family onchain",
         "tagline": "Family Crypto Made Fun",
-        "heroImageUrl": "https://app.momcoined.com/og-image.png",
+        "heroImageUrl": "https://app.momcoined.com/hero.png",
         "screenshotUrls": [
             "https://app.momcoined.com/screenshot1.png",
-            "https://app.momcoined.com/intrro0.png",
+            "https://app.momcoined.com/screenshot2.png",
             "https://app.momcoined.com/screenshot3.png"
         ],
         "webhookUrl": "https://app.momcoined.com/api/webhook",

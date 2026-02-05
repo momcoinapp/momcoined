@@ -29,7 +29,7 @@ export const metadata = {
     description: "MomAI • BaseMomz/BaseKidz NFTs • Learn & Earn Rewards • Housing Americans 🏠 Helping Trafficking Victims 💪 Real change, real trust on Base.",
     images: [
       {
-        url: "https://app.momcoined.com/mom-visual-5.png",
+        url: "https://app.momcoined.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Momcoin – glowing cookie jar, mom & son, Base utility & social good",
@@ -49,7 +49,7 @@ export const metadata = {
   },
   other: {
     "fc:frame": "vNext",
-    "fc:frame:image": "https://app.momcoined.com/mom-visual-5.png",
+    "fc:frame:image": "https://app.momcoined.com/og-image.png",
     "fc:frame:button:1": "Open Momcoined",
     "fc:frame:button:1:action": "link",
     "fc:frame:button:1:target": "https://app.momcoined.com",
@@ -58,14 +58,14 @@ export const metadata = {
     "base:app_id": "69356c7982a86756bfd57bd8",
     "fc:miniapp": JSON.stringify({
       version: "next",
-      imageUrl: "https://app.momcoined.com/mom-visual-5.png",
+      imageUrl: "https://app.momcoined.com/og-image.png",
       button: {
         title: "Open Momcoined",
         action: {
           type: "launch_frame",
           url: "https://app.momcoined.com",
           name: "Momcoined",
-          splashImageUrl: "https://app.momcoined.com/mom-visual-5.png",
+          splashImageUrl: "https://app.momcoined.com/splash.png",
           splashBackgroundColor: "#DC2626"
         }
       }
